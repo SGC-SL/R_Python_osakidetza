@@ -43,6 +43,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -393,6 +398,87 @@ ul.task-list li input[type="checkbox"] {
 </center>
 </div>
 </div>
+<hr>
+<p>Te pedimos que rellenes esta pequeña encuesta de formación que nos sirve para conocer vuestras inquietudes y necesidades.</p>
+<center>
+<h3 class="anchored">
+<em>¡Muchas gracias!</em>
+</h3>
+</center>
+<pre class="shinylive-r" data-engine="r" data-code-line-numbers=""><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 500
+library(shiny)
+library(shinyMobile)
+library(RSQLite)
+library(DBI)
+
+shinyApp(
+  ui = f7Page(
+    title = "My app",
+    f7SingleLayout(
+      navbar = f7Navbar(title = "Encuesta de formación"),
+      f7BlockTitle("Pregunta 1", size = "large"),
+      f7Radio(
+        inputId = "pregunta1",
+        label = h3("¿Querrías que realizamos una formación extensiva de R y/o Python?"),
+        choices = c("Si","No"),
+        selected = "No"
+      ),
+      conditionalPanel(
+        condition = "input.pregunta1 == 'Si'",
+        f7BlockTitle("Pregunta 2", size = "large"),
+        f7CheckboxGroup(
+          inputId = "pregunta2",
+          label = "¿Qué formación le gustaría (seleccione todas las opciones que le gustaría)?",
+          choices = list(
+            f7CheckboxChoice(
+              "Una formación básica, centrada en la instalación de los programas.",
+              title = "Formación básica"
+            ),
+            f7CheckboxChoice(
+              "Una formación mas exhaustiva",
+              title = "Formación avanzada"
+            )
+          ),
+          style = list(
+            inset = TRUE,
+            outline = TRUE,
+            dividers = TRUE,
+            strong = TRUE
+          )
+        )
+      ),
+      f7Button(
+        inputId = "guardar",
+        label = "Enviar"
+      )
+    )
+  ),
+  server = function(input, output) {
+    
+  observeEvent(input$guardar,{
+    con &lt;- dbConnect(RSQLite::SQLite(),"encuesta.sqlite")
+    pregunta2 &lt;- paste(input$pregunta2, collapse = ", ")
+    pregunta2 &lt;- as.character(pregunta2)
+    df &lt;- data.frame(pregunta1 = input$pregunta1, pregunta2 = pregunta2 )
+    dbWriteTable(con,"respuesta",df, append = T)
+    dbDisconnect(con)
+    f7Notif(
+      text = "guardar con éxito"
+    )
+    updateF7Radio(
+      inputId = "pregunta1",
+      label = h3("¿Querrías que realizamos una formación extensiva de R y/o Python?"),
+      choices = c("Si","No"),
+      selected = "No"
+    )
+  })
+  }
+)
+</code></pre>
 <hr>
 <center>
 <h1>
