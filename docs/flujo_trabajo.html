@@ -393,6 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Los comandos de trabajo</h1>
 <p>Los lenguajes de programación trabajan con texto, es decir, las órdenes que el ordenador debe ejecutar se deben escribir. Algunas órdenes viene establecidas, otras se pueden instarla y otras pueden ser creadas por nosotros mismos. Una vez que tenemos las órdenes, podemos combinarlas para que el ordenador haga todo lo que deseamos.</p>
 <p>En el siguiente ejemplo disponéis de unas órdenes sencillas. Creamos un objeto que se llama “sueldo” y le sumamos otro objeto llamado “extra” para después restar una retención del 15% y obtener el sueldo neto:</p>
+<p><em>Realizado en <strong>R</strong></em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos los objetos</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sueldo <span class="ot">&lt;-</span> <span class="dv">2100</span></span>
@@ -421,25 +422,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre data-code-line-numbers=""><code>Mi sueldo es de: 2635 euros</code></pre>
 </div>
 </div>
+<p><em>Realizado en <strong>Python</strong></em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos los objetos</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sueldo <span class="op">=</span> <span class="dv">2100</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>extra <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinamos los objetos en otro llamado "sueldo_integro"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># y calculamos el sueldo neto restando el 15%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sueldo_integro <span class="op">=</span> sueldo <span class="op">+</span> extra</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>sueldo_neto <span class="op">=</span> sueldo_integro <span class="op">-</span> (<span class="fl">0.15</span> <span class="op">*</span> sueldo_integro)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimimos el sueldo neto con print()</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sueldo_neto)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>2635.0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usamos format() para mostrar el resultado de forma más visual</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mi sueldo es de: </span><span class="sc">{</span>sueldo_neto<span class="sc">}</span><span class="ss"> euros"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Mi sueldo es de: 2635.0 euros</code></pre>
+</div>
+</div>
 <p>A partir de esta idea básica se construye todo lo demás. Las ordenes se van combinando unas con otras para hacer órdenes complejas. A su vez, las órdenes puede tener variables que podemos modificar para que el ordenador realice la misma acción pero con otras condiciones.</p>
 <p>Pongamos un ejemplo sencillo. Podemos calcular el valor de la prueba chi-cuadrado para una confianza al 95% utilizando o no la corrección de Yates. Se trata de la misma orden, calcular la prueba chi-cuadrado pero con dos condiciones distintas.</p>
+<p><em>Realizado en <strong>R</strong></em></p>
 <div class="cell" data-source-line-numbers="11,17">
-<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="11,17" data-code-line-numbers="11,17"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Creamos una tabla de contingencia y la visualizamos</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>datos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">8</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">rownames</span>(datos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Boliviana"</span>, <span class="st">"Extranjera"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">colnames</span>(datos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Menor a 10.000"</span>, <span class="st">"Mayor a 10.000"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a>tabla <span class="ot">&lt;-</span> <span class="fu">as.table</span>(datos)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">print</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="11,17" data-code-line-numbers="11,17"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Creamos una tabla de contingencia y la visualizamos</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>datos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">12</span>, <span class="dv">14</span>, <span class="dv">8</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">rownames</span>(datos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Boliviana"</span>, <span class="st">"Extranjera"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">colnames</span>(datos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Menor a 10.000"</span>, <span class="st">"Mayor a 10.000"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>tabla <span class="ot">&lt;-</span> <span class="fu">as.table</span>(datos)</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">print</span>(tabla)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>           Menor a 10.000 Mayor a 10.000
 Boliviana              38             12
 Extranjera             14              8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="11,17" data-code-line-numbers="11,17"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Realizar la prueba chi-cuadrado con correción de Yates (correct = TRUE)</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>resultado <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla, <span class="at">correct =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># Mostramos los resultados</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">print</span>(resultado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="11,17" data-code-line-numbers="11,17"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Realizar la prueba chi-cuadrado con correción de Yates (correct = TRUE)</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>resultado <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla, <span class="at">correct =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># Mostramos los resultados</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="fu">print</span>(resultado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>
     Pearson's Chi-squared test with Yates' continuity correction
@@ -447,17 +471,60 @@ Extranjera             14              8</code></pre>
 data:  tabla
 X-squared = 0.62937, df = 1, p-value = 0.4276</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="11,17" data-code-line-numbers="11,17"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Realizamos la prueba chi-cuadrado sin correción de Yates (correct = FALSE)</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>resultado <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># Mostramos los resultados</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">print</span>(resultado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="11,17" data-code-line-numbers="11,17"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Realizamos la prueba chi-cuadrado sin correción de Yates (correct = FALSE)</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>resultado <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># Mostramos los resultados</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="fu">print</span>(resultado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>
     Pearson's Chi-squared test
 
 data:  tabla
 X-squared = 1.1641, df = 1, p-value = 0.2806</code></pre>
+</div>
+</div>
+<p><em>Realizado en <strong>Python</strong></em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos una tabla de contingencia</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> np.array([[<span class="dv">38</span>, <span class="dv">12</span>], [<span class="dv">14</span>, <span class="dv">8</span>]])</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>filas <span class="op">=</span> [<span class="st">"Boliviana"</span>, <span class="st">"Extranjera"</span>]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>columnas <span class="op">=</span> [<span class="st">"Menor a 10.000"</span>, <span class="st">"Mayor a 10.000"</span>]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostramos la tabla de contingencia</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tabla de contingencia:"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Tabla de contingencia:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>[[38 12]
+ [14  8]]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos la prueba chi-cuadrado con corrección de Yates</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>resultado_correcto <span class="op">=</span> chi2_contingency(datos, correction<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Resultados con corrección de Yates:"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>
+Resultados con corrección de Yates:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estadístico: </span><span class="sc">{</span>resultado_correcto[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">, p-valor: </span><span class="sc">{</span>resultado_correcto[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Estadístico: 0.6293706293706294, p-valor: 0.4275862651639998</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizamos la prueba chi-cuadrado sin corrección de Yates</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>resultado_sin_correccion <span class="op">=</span> chi2_contingency(datos, correction<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Resultados sin corrección de Yates:"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>
+Resultados sin corrección de Yates:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estadístico: </span><span class="sc">{</span>resultado_sin_correccion[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">, p-valor: </span><span class="sc">{</span>resultado_sin_correccion[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Estadístico: 1.1640839160839163, p-valor: 0.2806201795677896</code></pre>
 </div>
 </div>
 <hr>
@@ -469,101 +536,206 @@ X-squared = 1.1641, df = 1, p-value = 0.2806</code></pre>
 <h2 class="anchored" data-anchor-id="órdenes-a-instalar">Órdenes a instalar</h2>
 <p>Las ordenes a instalar suele venir compactadas en unos archivos llamado Librerías. Cada librería tiene un objetivo (tendremos algunas especializadas en manipular datos, otras en análisis estadísticos básicos, otras en minerías de texto…). Las librerías suelen ser realizadas de forma general por científicos (como tú) que desarrollan un procedimiento y lo “donan” al público para que todo el mundo pueda hacer uso de él (el modelo Open Science).</p>
 <p>A continuación vamos a instalar una librería que se llama DescTools (que dispone de ordenes para realizar el análisis descriptivo de los datos) y vamos a describir los datos que disponemos utilizando sus comandos:</p>
+<p><em>Realizado en <strong>R</strong></em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificamos si DescTools está instalada; si no, se instala</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DescTools"</span>)) {</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"DescTools"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(DescTools)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificamos si DescTools está instalada; si no, se instala</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DescTools"</span>)) {</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"DescTools"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(DescTools)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre data-code-line-numbers=""><code>Cargando paquete requerido: DescTools</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo: Calculamos intervalo de confianza para una proporción binomial</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>n_exitos <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizamos la orden BinomCI() de la librería</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">BinomCI</span>(<span class="at">x =</span> n_exitos, <span class="at">n =</span> n_total, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">method =</span> <span class="st">"wilson"</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostramos el resultado</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo: Calculamos intervalo de confianza para una proporción binomial</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>n_exitos <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>n_total <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizamos la orden BinomCI() de la librería</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">BinomCI</span>(<span class="at">x =</span> n_exitos, <span class="at">n =</span> n_total, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">method =</span> <span class="st">"wilson"</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostramos el resultado</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>     est    lwr.ci    upr.ci
 [1,] 0.5 0.4038315 0.5961685</code></pre>
 </div>
 </div>
+<p><em>Realizado en <strong>Python</strong></em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos los parámetros</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>n_exitos <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>n_total <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos el intervalo de confianza binomial con método Wilson</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>intervalo <span class="op">=</span> sm.stats.proportion_confint(count<span class="op">=</span>n_exitos, </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                                      nobs<span class="op">=</span>n_total, </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>                                      alpha<span class="op">=</span><span class="fl">0.05</span>, </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>                                      method<span class="op">=</span><span class="st">'wilson'</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Formateamos el resultado similar al output de R</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>resultado <span class="op">=</span> [[n_exitos<span class="op">/</span>n_total, intervalo[<span class="dv">0</span>], intervalo[<span class="dv">1</span>]]]</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"           est     lwr.ci     upr.ci"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>           est     lwr.ci     upr.ci</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"resultado </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">   </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">   </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">2</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>resultado 0.5000   0.4038   0.5962</code></pre>
+</div>
+</div>
 <p>Si no sabemos qué es lo que hace una orden podemos poner una interrogación antes de la orden y el ordenar buscará la información adjunta a dicha orden:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">BinomCI</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">BinomCI</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="órdenes-propias" class="level2">
 <h2 class="anchored" data-anchor-id="órdenes-propias">Órdenes propias</h2>
 <p>Si no encuentras una librería que tenga las órdenes que necesitas siempre pueden crearlas tu para luego utilizarlas. Aquí te mostramos un ejemplo de como se crearía la prueba de chi cuadrado de forma casera:</p>
+<p><em>Realizado en <strong>R</strong></em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función casera para la prueba chi-cuadrado</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>chi_cuadrado_casera <span class="ot">&lt;-</span> <span class="cf">function</span>(tabla_observada) {</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular totales de filas y columnas</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  totales_filas <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(tabla_observada)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  totales_columnas <span class="ot">&lt;-</span> <span class="fu">colSums</span>(tabla_observada)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  total_general <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_observada)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular frecuencias esperadas</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  frecuencias_esperadas <span class="ot">&lt;-</span> <span class="fu">outer</span>(totales_filas, totales_columnas) <span class="sc">/</span> total_general</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular el estadístico chi-cuadrado</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  chi_cuadrado <span class="ot">&lt;-</span> <span class="fu">sum</span>((tabla_observada <span class="sc">-</span> frecuencias_esperadas)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> frecuencias_esperadas)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular grados de libertad</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  grados_libertad <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">ncol</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular el valor p</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  valor_p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(chi_cuadrado, <span class="at">df =</span> grados_libertad)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear y devolver el resultado</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">estadistico =</span> chi_cuadrado,</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">grados_libertad =</span> grados_libertad,</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_p =</span> valor_p</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado)</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>tabla_ejemplo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Grupo A"</span>, <span class="st">"Grupo B"</span>)</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Categoría 1"</span>, <span class="st">"Categoría 2"</span>)</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tabla_ejemplo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función casera para la prueba chi-cuadrado</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>chi_cuadrado_casera <span class="ot">&lt;-</span> <span class="cf">function</span>(tabla_observada) {</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular totales de filas y columnas</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  totales_filas <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(tabla_observada)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  totales_columnas <span class="ot">&lt;-</span> <span class="fu">colSums</span>(tabla_observada)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  total_general <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_observada)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular frecuencias esperadas</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  frecuencias_esperadas <span class="ot">&lt;-</span> <span class="fu">outer</span>(totales_filas, totales_columnas) <span class="sc">/</span> total_general</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular el estadístico chi-cuadrado</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  chi_cuadrado <span class="ot">&lt;-</span> <span class="fu">sum</span>((tabla_observada <span class="sc">-</span> frecuencias_esperadas)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> frecuencias_esperadas)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular grados de libertad</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  grados_libertad <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">ncol</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular el valor p</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>  valor_p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(chi_cuadrado, <span class="at">df =</span> grados_libertad)</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear y devolver el resultado</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">estadistico =</span> chi_cuadrado,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">grados_libertad =</span> grados_libertad,</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_p =</span> valor_p</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso</span></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>tabla_ejemplo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Grupo A"</span>, <span class="st">"Grupo B"</span>)</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Categoría 1"</span>, <span class="st">"Categoría 2"</span>)</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tabla_ejemplo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>            Grupo A Grupo B
 Categoría 1      30      20
 Categoría 2      10      15</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar la función casera</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>resultado_casero <span class="ot">&lt;-</span> <span class="fu">chi_cuadrado_casera</span>(tabla_ejemplo)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir resultados de la función casera</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Valor p:"</span>, resultado_casero<span class="sc">$</span>valor_p, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar la función casera</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>resultado_casero <span class="ot">&lt;-</span> <span class="fu">chi_cuadrado_casera</span>(tabla_ejemplo)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir resultados de la función casera</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Valor p:"</span>, resultado_casero<span class="sc">$</span>valor_p, <span class="st">"</span><span class="sc">\n\n</span><span class="st">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Valor p: 0.1017069 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparar con la función incorporada chisq.test()</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>resultado_r <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla_ejemplo, <span class="at">correct =</span> F)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir resultados de chisq.test()</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Resultados de chisq.test() de R:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparar con la función incorporada chisq.test()</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>resultado_r <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tabla_ejemplo, <span class="at">correct =</span> F)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir resultados de chisq.test()</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Resultados de chisq.test() de R:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Resultados de chisq.test() de R:</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultado_r)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultado_r)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>
     Pearson's Chi-squared test
 
 data:  tabla_ejemplo
 X-squared = 2.6786, df = 1, p-value = 0.1017</code></pre>
+</div>
+</div>
+<p><em>Realizado en <strong>Python</strong></em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2, chi2_contingency</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> chi_cuadrado_casera(tabla_observada):</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular totales de filas y columnas</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    totales_filas <span class="op">=</span> tabla_observada.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    totales_columnas <span class="op">=</span> tabla_observada.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    total_general <span class="op">=</span> tabla_observada.<span class="bu">sum</span>()</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular frecuencias esperadas usando producto externo</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    frecuencias_esperadas <span class="op">=</span> np.outer(totales_filas, totales_columnas) <span class="op">/</span> total_general</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular estadístico chi-cuadrado</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    chi_cuadrado <span class="op">=</span> np.<span class="bu">sum</span>((tabla_observada <span class="op">-</span> frecuencias_esperadas)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> frecuencias_esperadas)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular grados de libertad</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>    grados_libertad <span class="op">=</span> (tabla_observada.shape[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> (tabla_observada.shape[<span class="dv">1</span>] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular valor p usando función de supervivencia</span></span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>    valor_p <span class="op">=</span> chi2.sf(chi_cuadrado, grados_libertad)</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'estadistico'</span>: chi_cuadrado,</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'grados_libertad'</span>: grados_libertad,</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'valor_p'</span>: valor_p</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso</span></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>tabla_ejemplo <span class="op">=</span> np.array([[<span class="dv">30</span>, <span class="dv">10</span>], [<span class="dv">20</span>, <span class="dv">15</span>]])</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Tabla de ejemplo:"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Tabla de ejemplo:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tabla_ejemplo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>[[30 10]
+ [20 15]]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar la función casera</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>resultado_casero <span class="op">=</span> chi_cuadrado_casera(tabla_ejemplo)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Resultados de la función casera:"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>
+Resultados de la función casera:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estadístico Chi-cuadrado: </span><span class="sc">{</span>resultado_casero[<span class="st">'estadistico'</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Estadístico Chi-cuadrado: 2.6786</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Grados de libertad: </span><span class="sc">{</span>resultado_casero[<span class="st">'grados_libertad'</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Grados de libertad: 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Valor p: </span><span class="sc">{</span>resultado_casero[<span class="st">'valor_p'</span>]<span class="sc">:.4f}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Valor p: 0.1017</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparar con SciPy (sin corrección de Yates)</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_valor, dof, expected <span class="op">=</span> chi2_contingency(tabla_ejemplo, correction<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Resultados de chi2_contingency (SciPy):"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Resultados de chi2_contingency (SciPy):</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estadístico Chi-cuadrado: </span><span class="sc">{</span>chi2_stat<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Estadístico Chi-cuadrado: 2.6786</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Grados de libertad: </span><span class="sc">{</span>dof<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Grados de libertad: 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb62" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Valor p: </span><span class="sc">{</span>p_valor<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Valor p: 0.1017</code></pre>
 </div>
 </div>
 <hr>
@@ -578,22 +750,22 @@ X-squared = 2.6786, df = 1, p-value = 0.1017</code></pre>
 </ul>
 <p>La ventaja que supone escribir en los script es que podemos escribir varias ordenes (como si fuera una hoja de word) a la vez, guardarlas y decidir cuales de ellas tendrá que ejecutar el ordenador. En este ejemplo tengo un conjunto de datos. Tengo ordenes para hacer algo de estadística básica pero solo vamos a ejecutar la línea donde se encuentra el histograma (la orden se llama hist()):</p>
 <div class="cell" data-source-line-numbers="11,12">
-<div class="sourceCode cell-code" id="cb24" data-source-line-numbers="11,12" data-code-line-numbers="11,12"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># 1. Generar un conjunto de datos aleatorios (100 números entre 1 y 100)</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>datos <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-3"><a href="#cb24-3"></a></span>
-<span id="cb24-4"><a href="#cb24-4"></a><span class="co"># 2. Calcular la media de los datos</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>media_datos <span class="ot">&lt;-</span> <span class="fu">mean</span>(datos)</span>
-<span id="cb24-6"><a href="#cb24-6"></a></span>
-<span id="cb24-7"><a href="#cb24-7"></a><span class="co"># 3. Calcular la desviación estándar de los datos</span></span>
-<span id="cb24-8"><a href="#cb24-8"></a>desviacion_estandar <span class="ot">&lt;-</span> <span class="fu">sd</span>(datos)</span>
-<span id="cb24-9"><a href="#cb24-9"></a></span>
-<span id="cb24-10"><a href="#cb24-10"></a><span class="co"># 4. Crear un histograma para visualizar los datos</span></span>
-<span id="cb24-11"><a href="#cb24-11"></a><span class="fu">hist</span>(datos, <span class="at">main =</span> <span class="st">"Histograma de Datos Aleatorios"</span>, <span class="at">col =</span> <span class="st">"skyblue"</span>, <span class="at">xlab =</span> <span class="st">"Valores"</span>, </span>
-<span id="cb24-12"><a href="#cb24-12"></a>     <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64" data-source-line-numbers="11,12" data-code-line-numbers="11,12"><pre class="sourceCode numberSource r numberLines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># 1. Generar un conjunto de datos aleatorios (100 números entre 1 y 100)</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>datos <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb64-3"><a href="#cb64-3"></a></span>
+<span id="cb64-4"><a href="#cb64-4"></a><span class="co"># 2. Calcular la media de los datos</span></span>
+<span id="cb64-5"><a href="#cb64-5"></a>media_datos <span class="ot">&lt;-</span> <span class="fu">mean</span>(datos)</span>
+<span id="cb64-6"><a href="#cb64-6"></a></span>
+<span id="cb64-7"><a href="#cb64-7"></a><span class="co"># 3. Calcular la desviación estándar de los datos</span></span>
+<span id="cb64-8"><a href="#cb64-8"></a>desviacion_estandar <span class="ot">&lt;-</span> <span class="fu">sd</span>(datos)</span>
+<span id="cb64-9"><a href="#cb64-9"></a></span>
+<span id="cb64-10"><a href="#cb64-10"></a><span class="co"># 4. Crear un histograma para visualizar los datos</span></span>
+<span id="cb64-11"><a href="#cb64-11"></a><span class="fu">hist</span>(datos, <span class="at">main =</span> <span class="st">"Histograma de Datos Aleatorios"</span>, <span class="at">col =</span> <span class="st">"skyblue"</span>, <span class="at">xlab =</span> <span class="st">"Valores"</span>, </span>
+<span id="cb64-12"><a href="#cb64-12"></a>     <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="flujo_trabajo_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="flujo_trabajo_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
