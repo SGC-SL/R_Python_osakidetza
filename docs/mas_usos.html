@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Otras utilidades – R y Python en Osakidetza</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Logo_2.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.9.1/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+  
+
+    
+
+    <meta charset="UTF-8">
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Texto sobre imagen difuminada</title>
+
+        <style>
+
+        /* Contenedor general */
+
+        .background-container {
+
+          position: relative; /* Posiciona los elementos dentro del contenedor */
+
+            max-height: 100vh;
+
+            height: 52vh;
+
+            overflow: hidden;
+
+            display: block;
+
+        }
+
+      
+
+      /* Imagen de fondo */
+
+        .background-container img {
+
+          position: absolute;
+
+          top: 0;
+
+          left: 0;
+
+          width: 100%;
+
+          height: 100%;
+
+          object-fit: cover; 
+
+            filter: blur(10px);
+
+        }
+
+      
+
+      /* Texto en primer plano */
+
+        .foreground-text {
+
+          position: relative;
+
+          top: 50%;
+
+          left: 50%; /* Centra el texto horizontalmente */
+
+          transform: translate(-50%, -50%); /* Ajusta el punto de anclaje al centro */
+
+          color: white;
+
+          font-size: 2rem;
+
+          font-weight: bold;
+
+          text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Hace el texto más legible */
+
+            z-index: 1; /* Coloca el texto por delante de la imagen */
+
+        }
+
+        .ALA-top {
+
+          position: relative;
+
+          text-align: center;
+
+          font-size: 80px;
+
+          color: #ffffff;
+
+          padding-right: 140px;
+
+          margin-bottom: -0.5rem;
+
+          font-weight: bold;
+
+          padding-top: 0px;
+
+        }
+
+
+
+        .ALA-bottom {
+
+          position: relative;
+
+          text-align: center;
+
+          font-size: 80px;
+
+          color: #EEECEA;
+
+          padding-left: 0px;
+
+          font-weight: bold;
+
+          filter: blur(0px);
+
+        }
+
+      </style>
+
+        </head>
+
+        <body class="nav-fixed">
+
+        <div class="background-container">
+
+          <img src="Inicio.jpg" alt="Fondo difuminado">
+
+            <div class="foreground-text">
+
+              <div class="ALA-top">R y Python</div>
+
+              <div class="ALA-bottom">en Osakidetza</div>
+
+            </div>
+
+              </div>
+
+              
+
+              
+
+              
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+
+
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./imagenes/Logo_2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">R y Python en Osakidetza</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-primeros-pasos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Primeros pasos</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-primeros-pasos">    
+        <li>
+    <a class="dropdown-item" href="./flujo_trabajo.html">
+ <span class="dropdown-text">Flujo de trabajo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./interfaz_trabajo.html">
+ <span class="dropdown-text">Interfaces</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gestión-y-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gestión y Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gestión-y-análisis">    
+        <li>
+    <a class="dropdown-item" href="./Gestion_dato.html">
+ <span class="dropdown-text">Obtención y gestión Datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./estadistica.html">
+ <span class="dropdown-text">Análisis estadísticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mas_usos.html">
+ <span class="dropdown-text">Más usos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-difusión-resultados" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Difusión resultados</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-difusión-resultados">    
+        <li>
+    <a class="dropdown-item" href="./difusion_propia.html">
+ <span class="dropdown-text">Difusión propia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./difusion_externa.html">
+ <span class="dropdown-text">Difusión de conocimientos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.osakidetza.euskadi.eus/portada-hospital-santa-marina/"> <i class="bi bi-globe2" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#creación-de-programas-informáticos" id="toc-creación-de-programas-informáticos" class="nav-link active" data-scroll-target="#creación-de-programas-informáticos">Creación de programas informáticos</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-de-una-app" id="toc-ejemplo-de-una-app" class="nav-link" data-scroll-target="#ejemplo-de-una-app">Ejemplo de una app</a></li>
+  </ul></li>
+  <li><a href="#problemas-lógicos-y-de-optimización" id="toc-problemas-lógicos-y-de-optimización" class="nav-link" data-scroll-target="#problemas-lógicos-y-de-optimización">Problemas lógicos y de optimización</a></li>
+  <li><a href="#ecuaciones-diferenciales-y-modelos-epidemiológicos" id="toc-ecuaciones-diferenciales-y-modelos-epidemiológicos" class="nav-link" data-scroll-target="#ecuaciones-diferenciales-y-modelos-epidemiológicos">Ecuaciones diferenciales y modelos epidemiológicos</a></li>
+  <li><a href="#mapas-interactivos" id="toc-mapas-interactivos" class="nav-link" data-scroll-target="#mapas-interactivos">Mapas interactivos</a></li>
+  <li><a href="#teoría-de-juegos" id="toc-teoría-de-juegos" class="nav-link" data-scroll-target="#teoría-de-juegos">Teoría de juegos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Otras utilidades</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Al tratarse de lenguajes de programación, el uso de R y Python no se limita únicamente al análisis estadístico. Aunque R se especializa en ello y Python es un lenguaje más amplio; también podemos utilizarlos para otros tipo de usos. A continuación te presentamos algunos de ellos.</p>
+<section id="creación-de-programas-informáticos" class="level1">
+<h1>Creación de programas informáticos</h1>
+<p>Ambos lenguajes pueden ser utilizados para la creación de programas informáticos debido a que pueden integrar otro tipo de lenguajes como son <strong>html</strong>, <strong>JavaScript</strong> y <strong>CSS</strong>. Para poder hacerlos hacemos uso de Frameworks:</p>
+<center>
+<strong>Un framework de desarrollo web es una estructura o conjunto de herramientas predefinidas que proporciona una base para la construcción de aplicaciones web</strong>
+</center>
+<p>Nosotros os presentamos dos de ellos: <a href="https://shiny.posit.co/">shiny</a> y <a href="https://www.djangoproject.com/">djando</a> (este último ha sido utilizado para la creación de aplicaciones tan famosas como <strong>Spotify</strong> o <strong>Instagram</strong>).</p>
+<hr>
+<section id="ejemplo-de-una-app" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-de-una-app">Ejemplo de una app</h2>
+<p>A continuación os presentamos un pequeño ejemplo de una app realizada con <a href="https://shiny.posit.co/">shiny</a>. Se trata de la escala de Braden:</p>
+<pre class="shinylive-r" data-engine="r" data-code-line-numbers=""><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 1000
+library(shiny); library(shinyWidgets); library(bslib); library(dplyr)
+
+ui &lt;- fluidPage(theme = bs_theme(preset = "shiny"),
+                br(),
+                h3("Escala de Braden"),
+                hr(),
+                wellPanel(radioGroupButtons(
+                    inputId = "Sensorial",
+                    label = "Percepción sensorial",
+                    choices = c("Completamente limitada", "Muy limitada", "Ligeramente limitada","Sin limitaciones"),
+                    direction = "horizontal",
+                    justified = T
+                  ),
+                  radioGroupButtons(inputId = "Humedad",
+                                    label = "Exposición a al humedad",
+                                    choices = c("Constantemente húmeda", "Húmeda con frecuencia", "Ocasionalmente húmeda","Raramente húmeda"),
+                                    direction = "horizontal",
+                                    justified = T
+                  ),radioGroupButtons(inputId = "Actividad",
+                                      label = "Actividad",
+                                      choices = c("Encamado", "En silla", "Deambula ocasionalmente","Deambula frecuentemente"),
+                                      direction = "horizontal",
+                                      justified = T
+                  ),
+                  radioGroupButtons(inputId = "Movilidad",
+                                    label = "Movilidad",
+                                    choices = c("Completamente inmovil", "Muy limitada", "Ligeramente limitada","Sin limitaciones"),
+                                    direction = "horizontal",
+                                    justified = T
+                  ),
+                  radioGroupButtons(inputId = "Nutricion",
+                                    label = "Nutrición",
+                                    choices = c("Muy pobre", "Probablemente inadecuada", "Adecuada","Excelente"),
+                                    direction = "horizontal",
+                                    justified = T
+                  ),
+                  radioGroupButtons(inputId = "Riesgo_lesion",
+                                    label = "Riesgo de lesiones cutáneas",
+                                    choices = c("Problema", "Problema potencial", "No existe problema aparente"),
+                                    direction = "horizontal",
+                                    justified = T
+                  )
+                ),
+                  br(),
+                    wellPanel(
+                      h4("Resultado"),
+                      fluidRow(
+                        column(6,h6("Resultado numérico"),
+                               verbatimTextOutput("resultado")),
+                        column(6,h6("Interpretación"),
+                               uiOutput("interpretacion"))
+                      )
+                    )
+                  )
+
+server &lt;- function(input,output,session){
+  suma &lt;- reactiveVal(0)
+  observe({
+    sensorial &lt;- if_else(input$Sensorial == "Completamente limitada",1,
+                         if_else(input$Sensorial == "Muy limitada",2,
+                                 if_else(input$Sensorial == "Ligeramente limitada",3,4)))
+    humedad &lt;- if_else(input$Humedad == "Constantemente húmeda",1,
+                       if_else(input$Humedad == "Húmeda con frecuencia",2,
+                               if_else(input$Humedad == "Ocasionalmente húmeda",3,4)))
+    actividad &lt;- if_else(input$Actividad == "Encamado",1,
+                         if_else(input$Actividad == "En silla",2,
+                                 if_else(input$Actividad == "Deambula ocasionalmente",3,4)))
+    movilidad &lt;- if_else(input$Movilidad == "Completamente inmovil",1,
+                         if_else(input$Movilidad == "Muy limitada",2,
+                                 if_else(input$Movilidad == "Ligeramente limitada",3,4)))
+    nutricion &lt;- if_else(input$Nutricion == "Muy pobre",1,
+                         if_else(input$Nutricion == "Probablemente inadecuada",2,
+                                 if_else(input$Nutricion == "Adecuada",3,4)))
+    lesion &lt;- if_else(input$Riesgo_lesion == "Problema",1,
+                      if_else(input$Riesgo_lesion == "Problema potencial",2,3))
+    valor = sensorial + humedad + actividad + movilidad + nutricion + lesion
+    suma(valor)
+  })
+  output$resultado &lt;- renderText({
+    suma()
+  })
+  output$interpretacion &lt;- renderUI({
+    valor &lt;- suma()
+    inter &lt;- if_else(valor &lt; 12, "Riesgo alto",
+                     if_else(valor &lt;= 15, "Riesgo medio",
+                             if_else(valor &lt;= 18,"Riesgo bajo","Sin riesgo")))
+    if (grepl("Riesgo alto", inter)) { # Si contiene "riesgobajo"
+      tags$pre(style = "color: red; font-weight: bold;", inter )
+    } else {
+      if (grepl("Riesgo medio", inter)) { # Si contiene "riesgobajo"
+        tags$pre(style = "color: orange; font-weight: bold;", inter )
+      } else {
+        if (grepl("Riesgo bajo", inter)) { # Si contiene "riesgobajo"
+          tags$pre(style = "color: #acaa0e; font-weight: bold;", inter )
+        } else {
+          if (grepl("Sin riesgo", inter)) { # Si contiene "riesgobajo"
+            tags$pre(style = "color: green; font-weight: bold;", inter )
+          }}}}
+  })
+  
+}
+
+shinyApp(ui,server)</code></pre>
+<hr>
+</section>
+</section>
+<section id="problemas-lógicos-y-de-optimización" class="level1">
+<h1>Problemas lógicos y de optimización</h1>
+<p>Otra utilidad que os presentamos es el uso de nuestros lenguajes de programación para tratar con problemas de optimización; problemas tan acuciantes en Osakidetza. Podemos hacer uso de librerías especializadas en tratar con estos problemas para solucionar distintas situaciones. A continuación os presentamos un ejemplo en R y Python:</p>
+<p><em>Realizado en <strong>R</strong></em></p>
+<p><strong>Enunciado</strong></p>
+<p><em>En un hospital, las enfermeras deben seleccionar los apósitos adecuados para tratar úlceras por presión en los pacientes. El hospital dispone de tres tipos de apósitos: hidrocoloides, hidrogeles y alginatos. Cada tipo de apósito tiene un costo asociado por unidad, y existen requerimientos mínimos de uso para garantizar una atención adecuada a los pacientes. Además, el hospital cuenta con una capacidad máxima disponible para cada tipo de apósito debido a restricciones presupuestarias y de inventario.</em></p>
+<p><em>Datos del problema: Costos por unidad:</em></p>
+<p><em>- Hidrocoloides: 10 €/unidad</em></p>
+<p><em>- Hidrogeles: 15 €/unidad</em></p>
+<p><em>- Alginatos: 25 €/unidad</em></p>
+<p><em>Requerimientos mínimos:</em></p>
+<p><em>- Se necesitan al menos 30 unidades de hidrocoloides.</em></p>
+<p><em>- Se necesitan al menos 20 unidades de hidrogeles.</em></p>
+<p><em>- Se necesitan al menos 10 unidades de alginatos.</em></p>
+<p><em>Capacidades máximas disponibles:</em></p>
+<p><em>- Hidrocoloides: hasta 50 unidades.</em></p>
+<p><em>- Hidrogeles: hasta 40 unidades.</em></p>
+<p><em>- Alginatos: hasta 30 unidades.</em></p>
+<p><em>Objetivo: Determinar la cantidad óptima de cada tipo de apósito que debe utilizarse para minimizar el costo total, cumpliendo con los requerimientos mínimos y respetando las capacidades máximas disponibles.</em></p>
+<p><em>Pregunta: ¿Cuántas unidades de cada tipo de apósito deben usarse para minimizar el costo total del tratamiento? ¿Cuál será el costo mínimo total?</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lpSolve)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Definición del problema</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Costos por unidad de cada tipo de apósito</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>costos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">25</span>)  <span class="co"># Hidrocoloides, Hidrogeles, Alginatos</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Restricciones (requerimientos mínimos para los pacientes)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>requerimientos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">20</span>, <span class="dv">10</span>)  <span class="co"># Cantidad mínima necesaria de cada tipo de apósito</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Capacidad máxima disponible para cada tipo de apósito</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>capacidades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">40</span>, <span class="dv">30</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de restricciones (filas: tipos de apósitos; columnas: variables)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>matriz_restricciones <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="co"># Restricción para hidrocoloides</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>), <span class="co"># Restricción para hidrogeles</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Restricción para alginatos</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipos de restricción (&gt;= para requerimientos mínimos)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>direcciones <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"&gt;="</span>, <span class="fu">length</span>(requerimientos))</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Resolver el problema con lpSolve</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">lp</span>(</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"min"</span>,                <span class="co"># Minimizar el costo total</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">objective.in =</span> costos,            <span class="co"># Función objetivo (costos)</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">const.mat =</span> matriz_restricciones, <span class="co"># Matriz de restricciones</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">const.dir =</span> direcciones,          <span class="co"># Tipos de restricciones (&gt;=)</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">const.rhs =</span> requerimientos        <span class="co"># Lado derecho (requerimientos mínimos)</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Mostrar los resultados</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Costo mínimo total:"</span>, resultado<span class="sc">$</span>objval, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Costo mínimo total: 850 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Cantidad óptima de apósitos:</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Cantidad óptima de apósitos:</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(resultado<span class="sc">$</span>solution) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Hidrocoloides"</span>, <span class="st">"Hidrogeles"</span>, <span class="st">"Alginatos"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resultado<span class="sc">$</span>solution)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Hidrocoloides    Hidrogeles     Alginatos 
+           30            20            10 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización gráfica del resultado</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df_resultados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Tipo =</span> <span class="fu">c</span>(<span class="st">"Hidrocoloides"</span>, <span class="st">"Hidrogeles"</span>, <span class="st">"Alginatos"</span>),</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cantidad =</span> resultado<span class="sc">$</span>solution</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_resultados, <span class="fu">aes</span>(<span class="at">x =</span> Tipo, <span class="at">y =</span> Cantidad, <span class="at">fill =</span> Tipo)) <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución Óptima de Apósitos"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Tipo de Apósito"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Cantidad"</span>) <span class="sc">+</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mas_usos_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Realizado en <strong>Python</strong></em></p>
+<p><strong><em>Enunciado:</em></strong></p>
+<p><em>Un hospital tiene tres tipos de turnos: mañana, tarde y noche. Para cada turno, se requieren un número mínimo de enfermeras para garantizar la atención adecuada de los pacientes. Cada tipo de enfermera tiene un costo diferente por hora.</em></p>
+<p><em>Los datos del problema son los siguientes:</em></p>
+<p><em>Turnos: Mañana, Tarde y Noche.</em></p>
+<p><em>Requerimiento mínimo de enfermeras:</em></p>
+<p><em>Mañana: 5 enfermeras</em></p>
+<p><em>Tarde: 4 enfermeras</em></p>
+<p><em>Noche: 3 enfermeras</em></p>
+<p><em>Costos por hora:</em></p>
+<p><em>Enfermeras para turno de mañana: 10 €/hora</em></p>
+<p><em>Enfermeras para turno de tarde: 12 €/hora</em></p>
+<p><em>Enfermeras para turno de noche: 15 €/hora</em></p>
+<p><em>Objetivo: Determinar la cantidad de enfermeras a asignar a cada turno de forma que se minimicen los costos totales, cumpliendo con los requerimientos mínimos de personal para cada turno.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pulp <span class="im">import</span> LpProblem, LpMinimize, LpVariable, LpStatus, SCIP_PY</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el problema de optimización</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> LpProblem(<span class="st">"Minimizar_Costos_Enfermeras"</span>, LpMinimize)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir las variables de decisión (cantidad de enfermeras asignadas a cada turno)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> LpVariable(<span class="st">'x1'</span>, lowBound<span class="op">=</span><span class="dv">5</span>, cat<span class="op">=</span><span class="st">'Integer'</span>)  <span class="co"># Enfermeras para turno de mañana</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> LpVariable(<span class="st">'x2'</span>, lowBound<span class="op">=</span><span class="dv">4</span>, cat<span class="op">=</span><span class="st">'Integer'</span>)  <span class="co"># Enfermeras para turno de tarde</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>x3 <span class="op">=</span> LpVariable(<span class="st">'x3'</span>, lowBound<span class="op">=</span><span class="dv">3</span>, cat<span class="op">=</span><span class="st">'Integer'</span>)  <span class="co"># Enfermeras para turno de noche</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir la función objetivo (minimizar el costo total)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>prob <span class="op">+=</span> <span class="dv">10</span> <span class="op">*</span> x1 <span class="op">+</span> <span class="dv">12</span> <span class="op">*</span> x2 <span class="op">+</span> <span class="dv">15</span> <span class="op">*</span> x3, <span class="st">"Costo Total"</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Resolver el problema utilizando CBC (COIN-OR CBC)</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>prob.solve(SCIP_PY(msg<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar el resultado</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> prob.status <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Cantidad de enfermeras para turno de mañana: </span><span class="sc">{</span>x1<span class="sc">.</span>varValue<span class="sc">}</span><span class="ss"> enfermeras"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Cantidad de enfermeras para turno de tarde: </span><span class="sc">{</span>x2<span class="sc">.</span>varValue<span class="sc">}</span><span class="ss"> enfermeras"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Cantidad de enfermeras para turno de noche: </span><span class="sc">{</span>x3<span class="sc">.</span>varValue<span class="sc">}</span><span class="ss"> enfermeras"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Costo total mínimo: </span><span class="sc">{</span>prob<span class="sc">.</span>objective<span class="sc">.</span>value()<span class="sc">}</span><span class="ss"> €"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"El problema no tiene solución óptima. Estado: </span><span class="sc">{</span>LpStatus[prob.status]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Cantidad de enfermeras para turno de mañana: 5.0 enfermeras
+Cantidad de enfermeras para turno de tarde: 4.0 enfermeras
+Cantidad de enfermeras para turno de noche: 3.0 enfermeras
+Costo total mínimo: 143.0 €</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="ecuaciones-diferenciales-y-modelos-epidemiológicos" class="level1">
+<h1>Ecuaciones diferenciales y modelos epidemiológicos</h1>
+<p>Nuestros lenguajes de programación también son usado para la realización de vigilancia y modelaje epidemiológico a través de modelos como <a href="https://es.wikipedia.org/wiki/Modelos_compartimentales_en_epidemiolog%C3%ADa">SIR y SEIR</a>.</p>
+<p>A continuación presentamos un ejemplo de su uso:</p>
+<p><strong>Enunciado</strong></p>
+<p><em>Un hospital desea modelar la propagación de una enfermedad infecciosa en una población cerrada de 1,000 individuos. La enfermedad se transmite de persona a persona con una tasa de transmisión del 30% por contacto entre un individuo susceptible y uno infectado. Además, los individuos infectados se recuperan a una tasa del 10% por día, es decir, el tiempo promedio para que una persona se recupere es de 10 días.</em></p>
+<p><em>Inicialmente, hay 990 personas susceptibles, 10 personas infectadas y ninguna persona recuperada. El objetivo es analizar cómo evoluciona la propagación de la enfermedad a lo largo de 100 días y determinar:</em></p>
+<p><em>1. ¿Cuándo alcanza la enfermedad su pico máximo de infectados?</em></p>
+<p><em>2. ¿Cuántas personas permanecen susceptibles al final del período?</em></p>
+<p><em>3. ¿Cuántas personas se habrán recuperado después de 100 días?</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo Epidemiológico SIR en R</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete necesario</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(deSolve)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Definir el modelo SIR</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>sir_model <span class="ot">&lt;-</span> <span class="cf">function</span>(time, state, parameters) {</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">as.list</span>(<span class="fu">c</span>(state, parameters)), {</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ecuaciones diferenciales del modelo SIR</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    dS <span class="ot">&lt;-</span> <span class="sc">-</span>beta <span class="sc">*</span> S <span class="sc">*</span> I <span class="sc">/</span> N         <span class="co"># Cambio en la población susceptible</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    dI <span class="ot">&lt;-</span> beta <span class="sc">*</span> S <span class="sc">*</span> I <span class="sc">/</span> N <span class="sc">-</span> gamma <span class="sc">*</span> I <span class="co"># Cambio en la población infectada</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    dR <span class="ot">&lt;-</span> gamma <span class="sc">*</span> I                <span class="co"># Cambio en la población recuperada</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Retornar las derivadas</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">list</span>(<span class="fu">c</span>(dS, dI, dR)))</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Parámetros y condiciones iniciales</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Parámetros del modelo</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>parameters <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">beta =</span> <span class="fl">0.3</span>,   <span class="co"># Tasa de transmisión (probabilidad de contagio por contacto)</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">gamma =</span> <span class="fl">0.1</span>   <span class="co"># Tasa de recuperación (1/duración promedio de la enfermedad)</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Condiciones iniciales</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>initial_state <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">S =</span> <span class="dv">990</span>,  <span class="co"># Población susceptible inicial</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">I =</span> <span class="dv">10</span>,   <span class="co"># Población infectada inicial</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">R =</span> <span class="dv">0</span>     <span class="co"># Población recuperada inicial</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Tamaño total de la población</span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">sum</span>(initial_state)</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Tiempo de simulación (en días)</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Resolver el sistema de ecuaciones diferenciales</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">ode</span>(</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> initial_state,</span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> time,</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">func =</span> sir_model,</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">parms =</span> parameters</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir el resultado a un dataframe para facilitar la visualización</span></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>output_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(output)</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Visualización de los resultados</span></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> output_df, <span class="fu">aes</span>(<span class="at">x =</span> time)) <span class="sc">+</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> S, <span class="at">color =</span> <span class="st">"Susceptibles"</span>), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> I, <span class="at">color =</span> <span class="st">"Infectados"</span>), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> R, <span class="at">color =</span> <span class="st">"Recuperados"</span>), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Modelo Epidemiológico SIR"</span>,</span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tiempo (días)"</span>,</span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Número de individuos"</span>,</span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Estado"</span></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>, <span class="st">"green"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mas_usos_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="mapas-interactivos" class="level1">
+<h1>Mapas interactivos</h1>
+<p>Nuestros lenguajes de programación también disponen de formas para crear gráficos y mapas interactivos. Una gran utilidad puede ser la creación de mapas geoespaciales interactivos del que os dejamos un pequeño ejemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar la librería leaflet</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un mapa centrado en Madrid, España</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>mapa <span class="ot">&lt;-</span> <span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">3.7038</span>, <span class="at">lat =</span> <span class="fl">40.4168</span>, <span class="at">zoom =</span> <span class="dv">12</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>()</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir marcadores para algunos puntos de interés</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>mapa <span class="ot">&lt;-</span> mapa <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">3.7038</span>, <span class="at">lat =</span> <span class="fl">40.4168</span>, <span class="at">popup =</span> <span class="st">"Puerta del Sol"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">3.6934</span>, <span class="at">lat =</span> <span class="fl">40.4180</span>, <span class="at">popup =</span> <span class="st">"Museo del Prado"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">3.6887</span>, <span class="at">lat =</span> <span class="fl">40.4076</span>, <span class="at">popup =</span> <span class="st">"Parque del Retiro"</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir un círculo alrededor del centro de la ciudad</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>mapa <span class="ot">&lt;-</span> mapa <span class="sc">%&gt;%</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircles</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">3.7038</span>, <span class="at">lat =</span> <span class="fl">40.4168</span>, <span class="at">radius =</span> <span class="dv">1000</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fillColor =</span> <span class="st">"pink"</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir una capa de polígono para representar un área</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>area_poligono <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">lng =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.71</span>, <span class="sc">-</span><span class="fl">3.69</span>, <span class="sc">-</span><span class="fl">3.68</span>, <span class="sc">-</span><span class="fl">3.70</span>),</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>                            <span class="at">lat =</span> <span class="fu">c</span>(<span class="fl">40.41</span>, <span class="fl">40.42</span>, <span class="fl">40.41</span>, <span class="fl">40.40</span>))</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar el mapa</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>mapa</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-f31f9faed45b9f4752a3" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f31f9faed45b9f4752a3">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.4168,-3.7038],12,[]],"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[40.4168,-3.7038,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Puerta del Sol",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[40.418,-3.6934,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Museo del Prado",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addMarkers","args":[40.4076,-3.6887,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Parque del Retiro",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircles","args":[40.4168,-3.7038,1000,null,null,{"interactive":true,"className":"","stroke":true,"color":"red","weight":5,"opacity":0.5,"fill":true,"fillColor":"pink","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[40.4076,40.418],"lng":[-3.7038,-3.6887]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<hr>
+</section>
+<section id="teoría-de-juegos" class="level1">
+<h1>Teoría de juegos</h1>
+<p>Otro ejemplo de los distintos usos que tienen nuestros lenguajes de programación sería para resolver problemas relacionadas con teoría de juegos. A continuación os presentamos un ejemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rgamer)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos el juego</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>juego <span class="ot">&lt;-</span> <span class="fu">extensive_form</span>(</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">players =</span> <span class="fu">list</span>(<span class="st">"Kepa"</span>, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">rep</span>(<span class="st">"Peio"</span>, <span class="dv">2</span>),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="dv">4</span>)),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">actions =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"game"</span>),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"game"</span>), <span class="fu">c</span>(<span class="st">"stat"</span>, <span class="st">"game"</span>)),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">payoffs =</span> <span class="fu">list</span>(<span class="at">Kepa =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Peio =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>)),</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"right"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mas_usos_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>solucion_juego <span class="ot">&lt;-</span> <span class="fu">solve_efg</span>(juego)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>backward induction: [(stat), (stat, game)]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_path</span>(solucion_juego)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="mas_usos_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Osakidetza, Hospital Santa Marina. 2025. I Apraiz; S Ballesteros; R Blanco.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>
