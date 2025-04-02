@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Úlceras por Presión en Centros Socio Sanitarios – R y Python en Osakidetza</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Logo_2.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../imagenes/Logo_2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R y Python en Osakidetza</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-primeros-pasos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Primeros pasos</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-primeros-pasos">    
+        <li>
+    <a class="dropdown-item" href="../flujo_trabajo.html">
+ <span class="dropdown-text">Flujo de trabajo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../interfaz_trabajo.html">
+ <span class="dropdown-text">Interfaces</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gestión-y-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gestión y Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gestión-y-análisis">    
+        <li>
+    <a class="dropdown-item" href="../Gestion_dato.html">
+ <span class="dropdown-text">Obtención y gestión Datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../estadistica.html">
+ <span class="dropdown-text">Análisis estadísticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../mas_usos.html">
+ <span class="dropdown-text">Más usos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-difusión-resultados" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Difusión resultados</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-difusión-resultados">    
+        <li>
+    <a class="dropdown-item" href="../difusion_propia.html">
+ <span class="dropdown-text">Difusión propia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../difusion_externa.html">
+ <span class="dropdown-text">Difusión de conocimientos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.osakidetza.euskadi.eus/portada-hospital-santa-marina/"> <i class="bi bi-globe2" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#qué-veremos-hoy" id="toc-qué-veremos-hoy" class="nav-link active" data-scroll-target="#qué-veremos-hoy">¿Qué veremos hoy?</a></li>
+  <li><a href="#comencemos-por-una-definición-sencilla" id="toc-comencemos-por-una-definición-sencilla" class="nav-link" data-scroll-target="#comencemos-por-una-definición-sencilla">Comencemos por una definición sencilla</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#clasificación-de-las-upp" id="toc-clasificación-de-las-upp" class="nav-link" data-scroll-target="#clasificación-de-las-upp">Clasificación de las UPP</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a></li>
+  <li><a href="#que-más-le-puede-ocurrir-a-una-upp" id="toc-que-más-le-puede-ocurrir-a-una-upp" class="nav-link" data-scroll-target="#que-más-le-puede-ocurrir-a-una-upp">¿Que más le puede ocurrir a una UPP?</a></li>
+  <li><a href="#infecciones-de-las-upp" id="toc-infecciones-de-las-upp" class="nav-link" data-scroll-target="#infecciones-de-las-upp">Infecciones de las UPP</a></li>
+  <li><a href="#resumiendo-los-conceptos" id="toc-resumiendo-los-conceptos" class="nav-link" data-scroll-target="#resumiendo-los-conceptos">Resumiendo los conceptos</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a></li>
+  </ul></li>
+  <li><a href="#cómo-describimos-las-upp" id="toc-cómo-describimos-las-upp" class="nav-link" data-scroll-target="#cómo-describimos-las-upp">¿Cómo describimos las UPP?</a>
+  <ul class="collapse">
+  <li><a href="#lo-primero-de-todo-la-herida" id="toc-lo-primero-de-todo-la-herida" class="nav-link" data-scroll-target="#lo-primero-de-todo-la-herida">Lo primero de todo: “La herida”</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"></a></li>
+  <li><a href="#lo-segundo-la-piel-perilesional" id="toc-lo-segundo-la-piel-perilesional" class="nav-link" data-scroll-target="#lo-segundo-la-piel-perilesional">Lo segundo: “La piel perilesional”</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"></a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"></a></li>
+  <li><a href="#lo-tercero-la-persona" id="toc-lo-tercero-la-persona" class="nav-link" data-scroll-target="#lo-tercero-la-persona">Lo tercero: “La persona”</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"></a></li>
+  <li><a href="#descripción-general-de-la-upp" id="toc-descripción-general-de-la-upp" class="nav-link" data-scroll-target="#descripción-general-de-la-upp">Descripción general de la UPP</a></li>
+  <li><a href="#resumiendo-conceptos" id="toc-resumiendo-conceptos" class="nav-link" data-scroll-target="#resumiendo-conceptos">Resumiendo conceptos</a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"></a></li>
+  </ul></li>
+  <li><a href="#qué-podemos-hacer-contra-las-upp" id="toc-qué-podemos-hacer-contra-las-upp" class="nav-link" data-scroll-target="#qué-podemos-hacer-contra-las-upp">¿Qué podemos hacer contra las UPP?</a>
+  <ul class="collapse">
+  <li><a href="#continuamos-con-nuestra-herida" id="toc-continuamos-con-nuestra-herida" class="nav-link" data-scroll-target="#continuamos-con-nuestra-herida">Continuamos con nuestra herida</a></li>
+  <li><a href="#paso-0-conocer-el-dogma-de-las-heridas." id="toc-paso-0-conocer-el-dogma-de-las-heridas." class="nav-link" data-scroll-target="#paso-0-conocer-el-dogma-de-las-heridas.">Paso 0: Conocer el “Dogma” de las heridas.</a></li>
+  <li><a href="#tratando-la-herida" id="toc-tratando-la-herida" class="nav-link" data-scroll-target="#tratando-la-herida">1. Tratando la herida</a></li>
+  <li><a href="#tratando-la-piel-perilesional" id="toc-tratando-la-piel-perilesional" class="nav-link" data-scroll-target="#tratando-la-piel-perilesional">2. Tratando la piel perilesional</a></li>
+  <li><a href="#tratando-a-la-persona" id="toc-tratando-a-la-persona" class="nav-link" data-scroll-target="#tratando-a-la-persona">3. Tratando a la persona</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"></a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"></a></li>
+  <li><a href="#caso-2" id="toc-caso-2" class="nav-link" data-scroll-target="#caso-2">Caso 2</a></li>
+  <li><a href="#caso-3" id="toc-caso-3" class="nav-link" data-scroll-target="#caso-3">Caso 3</a></li>
+  <li><a href="#resumiendo-conceptos-1" id="toc-resumiendo-conceptos-1" class="nav-link" data-scroll-target="#resumiendo-conceptos-1">Resumiendo conceptos</a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"></a></li>
+  </ul></li>
+  <li><a href="#qué-consecuencias-pueden-tener-las-upp" id="toc-qué-consecuencias-pueden-tener-las-upp" class="nav-link" data-scroll-target="#qué-consecuencias-pueden-tener-las-upp">¿Qué consecuencias pueden tener las UPP?</a>
+  <ul class="collapse">
+  <li><a href="#limitaciones" id="toc-limitaciones" class="nav-link" data-scroll-target="#limitaciones">Limitaciones</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"></a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"></a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Presentacion UPP.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Úlceras por Presión en Centros Socio Sanitarios</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="qué-veremos-hoy" class="level2" data-state="hide-menubar">
+<h2 data-state="hide-menubar" class="anchored" data-anchor-id="qué-veremos-hoy">¿Qué veremos hoy?</h2>
+<ul class="menu">
+<ul>
+</ul></ul></section>
+<section id="comencemos-por-una-definición-sencilla" class="level1" data-stack-name="Entendiendo las UPP">
+<h1 data-stack-name="Entendiendo las UPP">Comencemos por una definición sencilla</h1>
+<section id="section" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section"></h2>
+<p><em>Las úlceras por presión son áreas de</em> <strong><em>piel lesionada</em></strong> <em>por permanecer en una misma posición durante demasiado tiempo</em></p>
+<p>. . .</p>
+<p><strong>¿Cual es el origen?</strong></p>
+</section>
+<section id="section-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-1"></h2>
+<div style="margin-top: 150px; font-size: 3em; color: red;">
+<p>¿Cual es el origen?</p>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<div class="r-stack">
+<p><img src="Imagenes/piel_1.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/cama_1.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/posicion_anatomica.png" class="fragment" width="500" height="500"></p>
+</div>
+<p>. . .</p>
+<p>¿Qué podría ocurrir en la piel (cuerpo) con la presión?</p>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"></h2>
+<p><img src="Imagenes/Grados_UPP.jpg" class="fragment" style="width:100.0%;height:100.0%" data-align="center"></p>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"></h2>
+<div class="r-stack">
+<p><img src="Imagenes/UPP_1.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/UPP_2.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/UPP_3.jpg" class="fragment" width="500" height="500"></p>
+</div>
+</section>
+<section id="clasificación-de-las-upp" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="clasificación-de-las-upp">Clasificación de las UPP</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Grado I: Piel intacta pero enrojecida.</li>
+<li>Grado II: Piel <strong>NO</strong> intacta, afecta de forma superficial.</li>
+<li>Grado III: Piel <strong>NO</strong> intacta, afecta de forma profunda.</li>
+<li>Grado IV: Piel y músculo <strong>NO</strong> intactos, afecta a hueso.</li>
+</ul>
+</div>
+<p>. . .</p>
+<p>Cuestionario</p>
+</section>
+<section id="section-5" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-5"></h2>
+<div style="margin-top: 150px; font-size: 3em; color: green;">
+<p>Cuestionario</p>
+</div>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6"></h2>
+<div class="r-stack">
+<p><img src="Imagenes/UPP_1.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/UPP_2.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/UPP_3.jpg" class="fragment" width="500" height="500"></p>
+<p><img src="Imagenes/UPP_4.jpg" class="fragment" width="500" height="500"> <img src="Imagenes/UPP_5.jpg" class="fragment" width="500" height="500"></p>
+</div>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7"></h2>
+<p><img src="Imagenes/UPP_6.jpg" class="fragment" style="width:95.0%;height:95.0%" data-align="center"></p>
+</section>
+<section id="que-más-le-puede-ocurrir-a-una-upp" class="level2">
+<h2 class="anchored" data-anchor-id="que-más-le-puede-ocurrir-a-una-upp">¿Que más le puede ocurrir a una UPP?</h2>
+<div class="fragment fade-in">
+<ul>
+<li>Extienda por la zona</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>Necrosis</li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<div class="fragment highlight-red">
+<ul>
+<li>Infección</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="infecciones-de-las-upp" class="level2">
+<h2 class="anchored" data-anchor-id="infecciones-de-las-upp">Infecciones de las UPP</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Colonización</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Bio-films</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><strong>Definición:</strong> Presencia de microorganismos en el lecho de la herida.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><strong>Definición:</strong> Capa gruesa de microorganismos que generan una matriz extracelular y adheridas a un soporte solido.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="resumiendo-los-conceptos" class="level2">
+<h2 class="anchored" data-anchor-id="resumiendo-los-conceptos">Resumiendo los conceptos</h2>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8"></h2>
+<div class="fragment custom blur">
+<ul>
+<li>Las UPP son lesiones de la piel producidas por la isquemia generada por la presión contra superficies duras.</li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li>Las UPP ocurren generalmente en lugares donde hay menor “Cantidad” de piel.</li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li>Las UPP ocurren generalmente cuando nos encontramos inmóviles.</li>
+</ul>
+</div>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9"></h2>
+<div class="fragment custom blur">
+<ul>
+<li>Las UPP tienen distintos grados en función de su profundidad.</li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li>Las UPP pueden evolucionar: Extenderse, hacerse mas profundas o infectarse</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="cómo-describimos-las-upp" class="level1" data-stack-name="Describiendo las UPP">
+<h1 data-stack-name="Describiendo las UPP">¿Cómo describimos las UPP?</h1>
+<section id="lo-primero-de-todo-la-herida" class="level2">
+<h2 class="anchored" data-anchor-id="lo-primero-de-todo-la-herida">Lo primero de todo: “La herida”</h2>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10"></h2>
+<p><img src="Imagenes/UPP_4.jpg" class="fragment" style="width:70.0%;height:70.0%" data-aling="center" data-left="150"></p>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11"></h2>
+<div class="fragment">
+<ul>
+<li>¿Dónde se encuentra ubicada la UPP?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Cual es el grado de la UPP?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Cual es la extensión de la UPP?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Está infectada?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Tiene exuado?</li>
+</ul>
+</div>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12"></h2>
+<div class="fragment">
+<ul>
+<li>Sacro</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>II</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>5cm * 5cm = 25 cm^2</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Aparentemente <strong>No</strong></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Aparentemente <strong>No</strong></li>
+</ul>
+</div>
+</section>
+<section id="lo-segundo-la-piel-perilesional" class="level2">
+<h2 class="anchored" data-anchor-id="lo-segundo-la-piel-perilesional">Lo segundo: “La piel perilesional”</h2>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13"></h2>
+<p><img src="Imagenes/UPP_4.jpg" class="fragment" style="width:70.0%;height:70.0%" data-aling="center" data-left="150"></p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14"></h2>
+<div class="fragment">
+<ul>
+<li>¿Se encuentra íntegra?</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Aparentemente <strong>Sí</strong></p>
+</div>
+</section>
+<section id="lo-tercero-la-persona" class="level2">
+<h2 class="anchored" data-anchor-id="lo-tercero-la-persona">Lo tercero: “La persona”</h2>
+<p>¿Que creéis que realizaremos en este apartado?</p>
+<p>. . .</p>
+<div class="r-stack">
+<p><img src="Imagenes/UPP_4.jpg" class="fragment" width="300" height="300"></p>
+<p><img src="Imagenes/persona.jpg" class="fragment" width="350" height="350"></p>
+</div>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15"></h2>
+<div class="fragment">
+<ul>
+<li>¿Cuantos años tiene la persona?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Cual es su grado de movilidad?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Que enfermedades tiene?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Que medicamentos toma?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Que alimentación tiene?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Que cuidados tiene?</li>
+</ul>
+</div>
+</section>
+<section id="descripción-general-de-la-upp" class="level2">
+<h2 class="anchored" data-anchor-id="descripción-general-de-la-upp">Descripción general de la UPP</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">La herida</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">La piel perilesional</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">La persona</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<ul>
+<li>UPP de segundo grado (II) en zona sacra de 25 cm de área sin exudado aparente y sin infección aparente.</li>
+</ul>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<ul>
+<li>Zona perilesional integra.</li>
+</ul>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<ul>
+<li>Mujer de 95 años con un deterioro cognitivo avanzado, totalmente aparente e inmóvil. No controla esfinteres. Tiene problemas vasculares y toma Sintrom. Su alimentación es muy limitada. Se encuentra encamada con una cuidadora diurna.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="resumiendo-conceptos" class="level2">
+<h2 class="anchored" data-anchor-id="resumiendo-conceptos">Resumiendo conceptos</h2>
+</section>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16"></h2>
+<div class="fragment">
+<ul>
+<li>Debemos describir la herida, la piel perilesional y a la persona.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>La herida la describiremos indicando la ubicación, el grado de profundidad, el lecho de la herida, el exudado y la posible infección.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>La piel periolesional la describiremos indicando si se encuentra íntegra, infectada y si se encuentra seca.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>La personal al describiremos indicando las enfermedades, el tratamiento la nutrición y los tipos de cuidados que tiene.</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="qué-podemos-hacer-contra-las-upp" class="level1" data-stack-name="Tratando las UPP">
+<h1 data-stack-name="Tratando las UPP">¿Qué podemos hacer contra las UPP?</h1>
+<section id="continuamos-con-nuestra-herida" class="level2">
+<h2 class="anchored" data-anchor-id="continuamos-con-nuestra-herida">Continuamos con nuestra herida</h2>
+<p><img src="Imagenes/UPP_4.jpg" style="width:50.0%;height:50.0%"></p>
+</section>
+<section id="paso-0-conocer-el-dogma-de-las-heridas." class="level2">
+<h2 class="anchored" data-anchor-id="paso-0-conocer-el-dogma-de-las-heridas.">Paso 0: Conocer el “Dogma” de las heridas.</h2>
+<p>. . .</p>
+<p><em>Nosotros</em> <strong><em>NO CURAMOS</em></strong> <em>la herida, solamente le damos el mejor “ambiente” para que se cure.</em></p>
+<div class="fragment">
+<ul>
+<li>¿Como tratamos la herida?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Como tratamos la piel perilesional?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>¿Como tratamos a la persona?</li>
+</ul>
+</div>
+</section>
+<section id="tratando-la-herida" class="level2">
+<h2 class="anchored" data-anchor-id="tratando-la-herida">1. Tratando la herida</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Tipo de lecho</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">La infección</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">El exudado</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">La presión</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>El lecho de la herida tiene que estar “limpio”.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>El lecho de la herida tiene que estar libre de infección.</p>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>Ni mucho ni poco.</p>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<p>No tiene que haber presión.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="tratando-la-piel-perilesional" class="level2">
+<h2 class="anchored" data-anchor-id="tratando-la-piel-perilesional">2. Tratando la piel perilesional</h2>
+<p>La piel tiene que estar seca e integra.</p>
+</section>
+<section id="tratando-a-la-persona" class="level2">
+<h2 class="anchored" data-anchor-id="tratando-a-la-persona">3. Tratando a la persona</h2>
+<p>Cambios posturales.</p>
+<p>Muy hidratación.</p>
+<p>Buena alimentación.</p>
+</section>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17"></h2>
+<p><img src="Imagenes/Codigo QR.png" style="width:100.0%;height:100.0%"></p>
+</section>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18"></h2>
+<p><img src="Imagenes/UPP_4.jpg" style="width:50.0%;height:50.0%"></p>
+</section>
+<section id="caso-2" class="level2">
+<h2 class="anchored" data-anchor-id="caso-2">Caso 2</h2>
+<div class="column" style="width:50%;">
+<p><img src="Imagenes/UPP_3.jpg" style="width:60.0%;height:60.0%"></p>
+</div>
+<div class="column" style="width:50%;">
+<ul>
+<li>Mujer de 67 años.</li>
+<li>Demencia cognitiva avanzada.</li>
+<li>Buena alimentación.</li>
+<li>No toma medicación.</li>
+<li>Tiene cuidadora por las noches.</li>
+</ul>
+</div>
+</section>
+<section id="caso-3" class="level2">
+<h2 class="anchored" data-anchor-id="caso-3">Caso 3</h2>
+<div class="column" style="width:50%;">
+<p><img src="Imagenes/UPP_5.jpg" style="width:50.0%;height:50.0%"></p>
+</div>
+<div class="column" style="width:50%;">
+<ul>
+<li>Hombre de 80 años.</li>
+<li>Demencia cognitiva avanzada.</li>
+<li>Malnutrición.</li>
+<li>No tiene cuidador.</li>
+<li>Toma Sintrom.</li>
+</ul>
+</div>
+</section>
+<section id="resumiendo-conceptos-1" class="level2">
+<h2 class="anchored" data-anchor-id="resumiendo-conceptos-1">Resumiendo conceptos</h2>
+</section>
+<section id="section-19" class="level2">
+<h2 class="anchored" data-anchor-id="section-19"></h2>
+<div class="fragment">
+<ul>
+<li><strong>No curamos</strong> solo ayudamos a mejorar las condiciones.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Trataremos el lecho de la herida. Controlaremos la infección y el tejido desvitalizado. Aportaremos y controlaremos el exudado. Controlaremos el olor. Controlaremos la presión.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>No limpiaremos</strong> de forma continua.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Mantendremos la piel perilesional limpiea y seca.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Aplicaremos cambios posturales, vigilaremos la nutrición.</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="qué-consecuencias-pueden-tener-las-upp" class="level1" data-stack-name="Consencuencias de las UPP">
+<h1 data-stack-name="Consencuencias de las UPP">¿Qué consecuencias pueden tener las UPP?</h1>
+<section id="limitaciones" class="level2">
+<h2 class="anchored" data-anchor-id="limitaciones">Limitaciones</h2>
+<div class="column" style="width:30%;">
+<p><strong>Consecuencias físicas</strong></p>
+<ul>
+<li>Dolor.</li>
+<li>Infecciones graves.</li>
+<li>Amputaciones.</li>
+<li>…</li>
+</ul>
+</div>
+<div class="column" style="width:30%;">
+<p><strong>Consecuencias psicológicas</strong></p>
+<ul>
+<li>Depresiones.</li>
+<li>Ansiedad.</li>
+<li>…</li>
+</ul>
+</div>
+<div class="column" style="width:30%;">
+<p><strong>Consecuencias sociales</strong></p>
+<ul>
+<li>Aislamiento.</li>
+<li>Estigma.</li>
+<li>…</li>
+</ul>
+</div>
+</section>
+<section id="section-20" class="level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-auto-animate="true" data-auto-animate-easing="ease-in-out" class="anchored" data-anchor-id="section-20"></h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #98c1f9; width: 200px; height: 150px; margin: 10px;">
+<p>Social</p>
+</div>
+<div data-id="box2" data-auto-animate-delay="0.1" style="background: #4f81c5; width: 200px; height: 150px; margin: 10px;">
+<p>Persona</p>
+</div>
+<div data-id="box3" data-auto-animate-delay="0.2" style="background: #3e6293; width: 200px; height: 150px; margin: 10px;">
+<p>Piel perilesional</p>
+</div>
+<div data-id="box3" data-auto-animate-delay="0.3" style="background: #193863; width: 200px; height: 150px; margin: 10px;">
+<p>Herida</p>
+</div>
+</div>
+</section>
+<section id="section-21" class="level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-auto-animate="true" data-auto-animate-easing="ease-in-out" class="anchored" data-anchor-id="section-21"></h2>
+<div class="r-stack">
+<div data-id="box1" style="background: #98c1f9; width: 350px; height: 350px; border-radius: 200px;">
+
+</div>
+<div data-id="box2" style="background: #4f81c5; width: 250px; height: 250px; border-radius: 200px;">
+
+</div>
+<div data-id="box3" style="background: #3e6293; width: 150px; height: 150px; border-radius: 200px;">
+
+</div>
+<div data-id="box3" data-auto-animate-delay="0.3" style="background: #193863; width: 50px; height: 50px; border-radius: 200px;">
+
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Osakidetza, Hospital Santa Marina. 2025. I Apraiz; S Ballesteros; R Blanco.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>

@@ -740,5 +740,124 @@
     "title": "A Sample Title - The SocioEconomic Aspects of Stock Assessments",
     "section": "Study area",
     "text": "Study area\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque ex, vehicula dictum risus fermentum, feugiat faucibus neque. Etiam purus quam, lacinia vel porta in, malesuada ac nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed bibendum placerat tellus, ac finibus lectus euismod eget. Nulla mattis diam vitae bibendum consequat.\n\n\n\n\n\n\nFigure 1: the study area\n\n\n\nSee Figure 1 for a picture of the study area. Etiam vitae eros tristique, porta sapien a, aliquet mauris. Praesent ultricies mi nulla, et dignissim nulla mattis at. Fusce rhoncus leo quis odio euismod, hendrerit facilisis risus tincidunt. Aenean at lectus justo. Cras fringilla lacus nisl, ac convallis odio tincidunt vel. Integer vel egestas nisi. Curabitur vitae imperdiet justo.\nCurabitur efficitur in risus quis egestas. Suspendisse porta interdum leo ac ultricies. Pellentesque bibendum, felis vitae fermentum eleifend, nunc nunc fermentum nisi, ac maximus felis lacus lobortis risus. Suspendisse potenti. Nunc vitae consequat elit. Fusce id ligula sed lectus condimentum laoreet. Vestibulum faucibus commodo suscipit. Nulla tempor tellus vel massa efficitur euismod. Duis nec commodo mauris, sit amet tincidunt elit. Cras mollis non ante sed venenatis. In ultricies ante accumsan lectus rhoncus, vel pharetra sem convallis."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#toma-un-café-y-comenzamos",
+    "href": "Presentacion/presentación_ejemplo.html#toma-un-café-y-comenzamos",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "¡Toma un café y comenzamos!",
+    "text": "¡Toma un café y comenzamos!"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section",
+    "href": "Presentacion/presentación_ejemplo.html#section",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Lenguajes de programación sencillos.\n\nAltamente utilizados en la investigación y el sectores de la innovación.\n\n\nDe carácter abierto y colaborativo."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-1",
+    "href": "Presentacion/presentación_ejemplo.html#section-1",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "De carácter abierto y colaborativo."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#cuales-son-sus-similitudes-y-diferencias",
+    "href": "Presentacion/presentación_ejemplo.html#cuales-son-sus-similitudes-y-diferencias",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "¿Cuales son sus similitudes y diferencias?",
+    "text": "¿Cuales son sus similitudes y diferencias?"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-2",
+    "href": "Presentacion/presentación_ejemplo.html#section-2",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Característica\nR\nPython\n\n\n\n\nDiseñado para análisis estadístico\n✅\n✅\n\n\nMultipropósito (desarrollo web, etc.)\n❌\n✅\n\n\nCódigo abierto\n✅\n✅\n\n\nGran cantidad de paquetes disponibles\n✅\n✅\n\n\nFacilidad de aprendizaje inicial\n❌\n✅\n\n\nPotente visualización de datos\n✅\n❌\n\n\nSoporte para múltiples formatos de datos\n✅\n✅\n\n\nVelocidad de ejecución\n❌\n✅\n\n\nIdeal para principiantes\n❌\n✅\n\n\nAmplia comunidad y ecosistema\n✅\n✅\n\n\nIntegración con sistemas de producción\n❌\n✅\n\n\nUso en desarrollo web\n✅\n✅"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-3",
+    "href": "Presentacion/presentación_ejemplo.html#section-3",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Su principal diferencia es la Programación orientada a objetos.\nPython es un lenguaje orientado a objetos (muchos tipos de datos). Mientas que R trabaja fundamentalmente con números, vectores y datos."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad",
+    "href": "Presentacion/presentación_ejemplo.html#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "¿Qué podemos hacer con ellos en el campo de la sanidad?",
+    "text": "¿Qué podemos hacer con ellos en el campo de la sanidad?\n\n\nInvestigación sanitaria\n\n\n\n\nGestión y análisis de las Bases de datos\n\n\n\n\nGestión óptima de los recursos sanitarios\n\n\n\n\nDifusión óptima del conocimiento"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-5",
+    "href": "Presentacion/presentación_ejemplo.html#section-5",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Concepto clave:\nLos lenguajes de programación trabajan con texto. Es decir, debemos escribir las órdenes que le queremos dar al ordenado"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#la-escrita-de-los-lenguajes-de-programación",
+    "href": "Presentacion/presentación_ejemplo.html#la-escrita-de-los-lenguajes-de-programación",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "La escrita de los lenguajes de programación",
+    "text": "La escrita de los lenguajes de programación\n\nSueldo &lt;- 2600\nExtra &lt;- 300\n\nSueldo_total &lt;- Sueldo + Extra\n\nprint(Sueldo_total)\n\n[1] 2900"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#combinación-de-órdenes",
+    "href": "Presentacion/presentación_ejemplo.html#combinación-de-órdenes",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Combinación de órdenes",
+    "text": "Combinación de órdenes\n\nif (!require(\"DescTools\")) {\n  install.packages(\"DescTools\")\n  library(DescTools)\n}\n\nCargando paquete requerido: DescTools\n\nn_exitos &lt;- 50\nn_total &lt;- 100\n\n# Utilizamos la orden BinomCI() de la librería\n\nresultado &lt;- BinomCI(x = n_exitos, n = n_total, conf.level = 0.95, method = \"wilson\")\n\n# Mostramos el resultado\nprint(resultado)\n\n     est    lwr.ci    upr.ci\n[1,] 0.5 0.4038315 0.5961685"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#realizando-los-mismo-en-python",
+    "href": "Presentacion/presentación_ejemplo.html#realizando-los-mismo-en-python",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Realizando los mismo en Python",
+    "text": "Realizando los mismo en Python"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-6",
+    "href": "Presentacion/presentación_ejemplo.html#section-6",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "import statsmodels.api as sm\n\n# Definimos los parámetros\nn_exitos = 50\nn_total = 100\n\n# Calculamos el intervalo de confianza binomial con método Wilson\nintervalo = sm.stats.proportion_confint(count=n_exitos, \n                                      nobs=n_total, \n                                      alpha=0.05, \n                                      method='wilson')\n\n# Formateamos el resultado similar al output de R\nresultado = [[n_exitos/n_total, intervalo[0], intervalo[1]]]\nprint(f\"resultado {resultado[0][0]:.4f}   {resultado[0][1]:.4f}   {resultado[0][2]:.4f}\")\n\nresultado 0.5000   0.4038   0.5962"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#creando-órdenes-propias",
+    "href": "Presentacion/presentación_ejemplo.html#creando-órdenes-propias",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Creando órdenes propias",
+    "text": "Creando órdenes propias"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-7",
+    "href": "Presentacion/presentación_ejemplo.html#section-7",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "# Función casera para la prueba chi-cuadrado\nchi_cuadrado_casera &lt;- function(tabla_observada) {\n  # Calcular totales de filas y columnas\n  totales_filas &lt;- rowSums(tabla_observada)\n  totales_columnas &lt;- colSums(tabla_observada)\n  total_general &lt;- sum(tabla_observada)\n  \n  # Calcular frecuencias esperadas\n  frecuencias_esperadas &lt;- outer(totales_filas, totales_columnas) / total_general\n  \n  # Calcular el estadístico chi-cuadrado\n  chi_cuadrado &lt;- sum((tabla_observada - frecuencias_esperadas)^2 / frecuencias_esperadas)\n  \n  # Calcular grados de libertad\n  grados_libertad &lt;- (nrow(tabla_observada) - 1) * (ncol(tabla_observada) - 1)\n  \n  # Calcular el valor p\n  valor_p &lt;- 1 - pchisq(chi_cuadrado, df = grados_libertad)\n  \n  # Crear y devolver el resultado\n  resultado &lt;- list(\n    estadistico = chi_cuadrado,\n    grados_libertad = grados_libertad,\n    valor_p = valor_p\n  )\n  \n  return(resultado)\n}\n\n# Ejemplo de uso\ntabla_ejemplo &lt;- matrix(c(30, 10, 20, 15), nrow = 2)\ncolnames(tabla_ejemplo) &lt;- c(\"Grupo A\", \"Grupo B\")\nrownames(tabla_ejemplo) &lt;- c(\"Categoría 1\", \"Categoría 2\")\nprint(tabla_ejemplo)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#dónde-podemos-trabajar",
+    "href": "Presentacion/presentación_ejemplo.html#dónde-podemos-trabajar",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "¿Dónde podemos trabajar?",
+    "text": "¿Dónde podemos trabajar?"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-9",
+    "href": "Presentacion/presentación_ejemplo.html#section-9",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Concepto clave:\nEl trabajo con los lenguajes de programación se realiza a través de IDE (Entornos de Desarrollo Integrados)."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-12",
+    "href": "Presentacion/presentación_ejemplo.html#section-12",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "9 de abril de 2025. Descubriendo R y Python en Osakidetza"
   }
 ]

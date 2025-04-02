@@ -11,7 +11,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <title>R y Python en Osakidetza – Descubriendo R en Osakidetza</title>
+  <title>R y Python en Osakidetza – Descubriendo R y Python en Osakidetza</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,11 +29,81 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="logo.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/simplemenu/simplemenu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -325,27 +395,315 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="Logo_2.png" data-background-position="2% 2%, left top" data-background-size="200px" data-state="hide-menubar" class="quarto-title-block center">
-  <h1 class="title">Descubriendo R en Osakidetza</h1>
+<section id="title-slide" data-background-image="imagenes/Logo_2.png" data-background-position="2% 2%, left top" data-background-size="300px" data-state="hide-menubar" class="quarto-title-block center">
+  <h1 class="title">Descubriendo R y Python en Osakidetza</h1>
+  <p class="subtitle">Plan formativo corportativo</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="bienvenido" class="slide level2 center">
-<h2>¡Bienvenido!</h2>
-<p>Esto es una presentación de ejemplo.</p>
+<section id="toma-un-café-y-comenzamos" class="slide level2 center" data-state="hide-menubar">
+<h2>¡Toma un café y comenzamos!</h2>
+<ul class="menu">
+<ul>
+</ul></ul></section>
+<section>
+<section id="qué-es-r-qué-es-python" class="title-slide slide level1 center" data-stack-name="¿Qué es R y Python?">
+<h1>¿Qué es R? ¿Qué es Python?</h1>
+
 </section>
-<section id="muchas-gracias" class="slide level2 center">
-<h2>¡Muchas gracias!</h2>
+<section id="section" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<p>Lenguajes de programación <strong>sencillos.</strong></p>
+<div class="fragment">
+<p><strong>Altamente utilizados</strong> en la investigación y el sectores de la innovación.</p>
+</div>
+<div class="fragment">
+<p>De carácter <strong>abierto y colaborativo.</strong></p>
+</div>
+</section>
+<section id="section-1" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<div style="margin-top: 150px; font-size: 3em; color: red;">
+<p>De carácter abierto y colaborativo.</p>
+</div>
+</section>
+<section id="cuales-son-sus-similitudes-y-diferencias" class="slide level2 center">
+<h2>¿Cuales son sus similitudes y diferencias?</h2>
+</section>
+<section id="section-2" class="slide level2 center">
+<h2></h2>
+<div class="table" style="height: 50px; weight: 5px; font-size: 10;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>R</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diseñado para análisis estadístico</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Multipropósito (desarrollo web, etc.)</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Código abierto</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Gran cantidad de paquetes disponibles</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Facilidad de aprendizaje inicial</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Potente visualización de datos</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Soporte para múltiples formatos de datos</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Velocidad de ejecución</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Ideal para principiantes</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Amplia comunidad y ecosistema</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Integración con sistemas de producción</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Uso en desarrollo web</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="section-3" class="slide level2 center">
+<h2></h2>
+<p>Su principal diferencia es la <strong>Programación orientada a objetos.</strong></p>
+<p>Python es un lenguaje orientado a objetos (muchos tipos de datos). Mientas que R trabaja fundamentalmente con números, vectores y datos.</p>
+</section>
+<section id="qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad" class="slide level2 center">
+<h2>¿Qué podemos hacer con ellos en el campo de la sanidad?</h2>
+<div class="fragment">
+<ul>
+<li>Investigación sanitaria</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Gestión y análisis de las Bases de datos</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Gestión óptima de los recursos sanitarios</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Difusión óptima del conocimiento</li>
+</ul>
+</div>
+</section>
+<section id="section-4" class="slide level2 center">
+<h2></h2>
+<p><img data-src="Imagenes/chat.png" class="fragment" width="16000" height="400"></p>
+</section></section>
+<section>
+<section id="cómo-podemos-trabajar-con-ellos" class="title-slide slide level1 center" data-stack-name="¿Cómo trabajamos?">
+<h1>¿Cómo podemos trabajar con ellos?</h1>
+
+</section>
+<section id="section-5" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<p><strong>Concepto clave:</strong></p>
+<p><em>Los lenguajes de programación trabajan con texto. Es decir, debemos escribir las órdenes que le queremos dar al ordenado</em></p>
+</section>
+<section id="la-escrita-de-los-lenguajes-de-programación" class="slide level2 center">
+<h2>La escrita de los lenguajes de programación</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="|1-2|4|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>Sueldo <span class="ot">&lt;-</span> <span class="dv">2600</span></span>
+<span id="cb1-2"><a></a>Extra <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a>Sueldo_total <span class="ot">&lt;-</span> Sueldo <span class="sc">+</span> Extra</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a><span class="fu">print</span>(Sueldo_total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2900</code></pre>
+</div>
+</div>
+</section>
+<section id="combinación-de-órdenes" class="slide level2 center">
+<h2>Combinación de órdenes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|2-3|11|14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DescTools"</span>)) {</span>
+<span id="cb3-2"><a></a>  <span class="fu">install.packages</span>(<span class="st">"DescTools"</span>)</span>
+<span id="cb3-3"><a></a>  <span class="fu">library</span>(DescTools)</span>
+<span id="cb3-4"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: DescTools</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="|2-3|11|14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>n_exitos <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb5-2"><a></a>n_total <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a><span class="co"># Utilizamos la orden BinomCI() de la librería</span></span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>resultado <span class="ot">&lt;-</span> <span class="fu">BinomCI</span>(<span class="at">x =</span> n_exitos, <span class="at">n =</span> n_total, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">method =</span> <span class="st">"wilson"</span>)</span>
+<span id="cb5-7"><a></a></span>
+<span id="cb5-8"><a></a><span class="co"># Mostramos el resultado</span></span>
+<span id="cb5-9"><a></a><span class="fu">print</span>(resultado)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     est    lwr.ci    upr.ci
+[1,] 0.5 0.4038315 0.5961685</code></pre>
+</div>
+</div>
+</section>
+<section id="realizando-los-mismo-en-python" class="slide level2 center">
+<h2>Realizando los mismo en Python</h2>
+</section>
+<section id="section-6" class="slide level2 center">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|1|4-5|8-11|15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="co"># Definimos los parámetros</span></span>
+<span id="cb7-4"><a></a>n_exitos <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb7-5"><a></a>n_total <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb7-6"><a></a></span>
+<span id="cb7-7"><a></a><span class="co"># Calculamos el intervalo de confianza binomial con método Wilson</span></span>
+<span id="cb7-8"><a></a>intervalo <span class="op">=</span> sm.stats.proportion_confint(count<span class="op">=</span>n_exitos, </span>
+<span id="cb7-9"><a></a>                                      nobs<span class="op">=</span>n_total, </span>
+<span id="cb7-10"><a></a>                                      alpha<span class="op">=</span><span class="fl">0.05</span>, </span>
+<span id="cb7-11"><a></a>                                      method<span class="op">=</span><span class="st">'wilson'</span>)</span>
+<span id="cb7-12"><a></a></span>
+<span id="cb7-13"><a></a><span class="co"># Formateamos el resultado similar al output de R</span></span>
+<span id="cb7-14"><a></a>resultado <span class="op">=</span> [[n_exitos<span class="op">/</span>n_total, intervalo[<span class="dv">0</span>], intervalo[<span class="dv">1</span>]]]</span>
+<span id="cb7-15"><a></a><span class="bu">print</span>(<span class="ss">f"resultado </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">   </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">   </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">2</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>resultado 0.5000   0.4038   0.5962</code></pre>
+</div>
+</div>
+</section>
+<section id="creando-órdenes-propias" class="slide level2 center">
+<h2>Creando órdenes propias</h2>
+</section>
+<section id="section-7" class="slide level2 center">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Función casera para la prueba chi-cuadrado</span></span>
+<span id="cb9-2"><a></a>chi_cuadrado_casera <span class="ot">&lt;-</span> <span class="cf">function</span>(tabla_observada) {</span>
+<span id="cb9-3"><a></a>  <span class="co"># Calcular totales de filas y columnas</span></span>
+<span id="cb9-4"><a></a>  totales_filas <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(tabla_observada)</span>
+<span id="cb9-5"><a></a>  totales_columnas <span class="ot">&lt;-</span> <span class="fu">colSums</span>(tabla_observada)</span>
+<span id="cb9-6"><a></a>  total_general <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_observada)</span>
+<span id="cb9-7"><a></a>  </span>
+<span id="cb9-8"><a></a>  <span class="co"># Calcular frecuencias esperadas</span></span>
+<span id="cb9-9"><a></a>  frecuencias_esperadas <span class="ot">&lt;-</span> <span class="fu">outer</span>(totales_filas, totales_columnas) <span class="sc">/</span> total_general</span>
+<span id="cb9-10"><a></a>  </span>
+<span id="cb9-11"><a></a>  <span class="co"># Calcular el estadístico chi-cuadrado</span></span>
+<span id="cb9-12"><a></a>  chi_cuadrado <span class="ot">&lt;-</span> <span class="fu">sum</span>((tabla_observada <span class="sc">-</span> frecuencias_esperadas)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> frecuencias_esperadas)</span>
+<span id="cb9-13"><a></a>  </span>
+<span id="cb9-14"><a></a>  <span class="co"># Calcular grados de libertad</span></span>
+<span id="cb9-15"><a></a>  grados_libertad <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">ncol</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-16"><a></a>  </span>
+<span id="cb9-17"><a></a>  <span class="co"># Calcular el valor p</span></span>
+<span id="cb9-18"><a></a>  valor_p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(chi_cuadrado, <span class="at">df =</span> grados_libertad)</span>
+<span id="cb9-19"><a></a>  </span>
+<span id="cb9-20"><a></a>  <span class="co"># Crear y devolver el resultado</span></span>
+<span id="cb9-21"><a></a>  resultado <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-22"><a></a>    <span class="at">estadistico =</span> chi_cuadrado,</span>
+<span id="cb9-23"><a></a>    <span class="at">grados_libertad =</span> grados_libertad,</span>
+<span id="cb9-24"><a></a>    <span class="at">valor_p =</span> valor_p</span>
+<span id="cb9-25"><a></a>  )</span>
+<span id="cb9-26"><a></a>  </span>
+<span id="cb9-27"><a></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb9-28"><a></a>}</span>
+<span id="cb9-29"><a></a></span>
+<span id="cb9-30"><a></a><span class="co"># Ejemplo de uso</span></span>
+<span id="cb9-31"><a></a>tabla_ejemplo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb9-32"><a></a><span class="fu">colnames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Grupo A"</span>, <span class="st">"Grupo B"</span>)</span>
+<span id="cb9-33"><a></a><span class="fu">rownames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Categoría 1"</span>, <span class="st">"Categoría 2"</span>)</span>
+<span id="cb9-34"><a></a><span class="fu">print</span>(tabla_ejemplo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dónde-podemos-trabajar" class="slide level2 center">
+<h2>¿Dónde podemos trabajar?</h2>
+</section>
+<section id="section-8" class="slide level2 center">
+<h2></h2>
+</section>
+<section id="section-9" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
+<p><strong>Concepto clave:</strong></p>
+<p><em>El trabajo con los lenguajes de programación se realiza a través de IDE (Entornos de Desarrollo Integrados).</em></p>
+</section>
+<section id="section-10" class="slide level2 center">
+<h2></h2>
+<div class="r-stack">
+<p><img data-src="Imagenes/R_studio.png" class="fragment" width="900" height="500"></p>
+<p><img data-src="Imagenes/pychamr.png" class="fragment" width="300" height="500"></p>
+<p><img data-src="Imagenes/visual.png" class="fragment" width="300" height="500"> <img data-src="Imagenes/positron.png" class="fragment" width="300" height="500"></p>
+</div>
+</section></section>
+<section>
+<section id="qué-podemos-hacer" class="title-slide slide level1 center" data-stack-name="¿Cómo hacemos?">
+<h1>¿Qué podemos hacer?</h1>
+
+</section>
+<section id="section-11" class="slide level2 center">
+<h2></h2>
+</section></section>
+<section>
+<section id="cómo-podemos-trabajar-con-ellos-1" class="title-slide slide level1 center" data-stack-name="¿Cómo difundimos?">
+<h1>¿Cómo podemos trabajar con ellos?</h1>
+
+</section>
+<section id="section-12" class="slide level2 center" data-auto-animate="true">
+<h2 data-id="quarto-animate-title"></h2>
 
 <div class="quarto-auto-generated-content">
-<p><img src="Osakidetza.png" class="slide-logo"></p>
+<p><img src="Logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p>9 de abril de 2025. Descubriendo R</p>
+<p>9 de abril de 2025. Descubriendo R y Python en Osakidetza</p>
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -356,6 +714,8 @@
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/simplemenu/simplemenu.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -376,7 +736,9 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide"},
+'chalkboard': {"buttons":true},
+'simplemenu': {"menubarclass":"menubar","menuclass":"menu","activeclass":"active","activeelement":"li","flat":false,"barhtml":{"header":"<div class='menubar'><a class='logo' href='#'><img src='imagenes/Logo_2.png'></a><ul class='menu'></ul><div class='slide-number'></div><div>","footer":""},"scale":0.8},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -547,7 +909,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, Simplemenu, QuartoSupport,
 
           RevealMath,
           RevealNotes,
