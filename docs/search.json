@@ -753,7 +753,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Lenguajes de programación sencillos.\n\nAltamente utilizados en la investigación y el sectores de la innovación.\n\n\nDe carácter abierto y colaborativo."
+    "text": "Lenguajes de programación sencillos.\n\n. . .\n\nAltamente utilizados en la investigación y el sectores de la innovación.\n\n. . .\n\nDe carácter abierto y colaborativo."
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-1",
@@ -781,14 +781,14 @@
     "href": "Presentacion/presentación_ejemplo.html#section-3",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Su principal diferencia es la Programación orientada a objetos.\nPython es un lenguaje orientado a objetos (muchos tipos de datos). Mientas que R trabaja fundamentalmente con números, vectores y datos."
+    "text": "Su principal diferencia es la Programación orientada a objetos.\nPython es un lenguaje orientado a objetos (muchos tipos de datos). Mientras que R trabaja fundamentalmente con números, vectores y datos."
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad",
     "href": "Presentacion/presentación_ejemplo.html#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "¿Qué podemos hacer con ellos en el campo de la sanidad?",
-    "text": "¿Qué podemos hacer con ellos en el campo de la sanidad?\n\n\nInvestigación sanitaria\n\n\n\n\nGestión y análisis de las Bases de datos\n\n\n\n\nGestión óptima de los recursos sanitarios\n\n\n\n\nDifusión óptima del conocimiento"
+    "text": "¿Qué podemos hacer con ellos en el campo de la sanidad?\n. . .\n\nInvestigación sanitaria\n\n. . .\n\nGestión y análisis de las Bases de datos\n\n. . .\n\nGestión óptima de los recursos sanitarios\n\n. . .\n\nDifusión óptima del conocimiento\n\n. . ."
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-5",
@@ -823,7 +823,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-6",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "import statsmodels.api as sm\n\n# Definimos los parámetros\nn_exitos = 50\nn_total = 100\n\n# Calculamos el intervalo de confianza binomial con método Wilson\nintervalo = sm.stats.proportion_confint(count=n_exitos, \n                                      nobs=n_total, \n                                      alpha=0.05, \n                                      method='wilson')\n\n# Formateamos el resultado similar al output de R\nresultado = [[n_exitos/n_total, intervalo[0], intervalo[1]]]\nprint(f\"resultado {resultado[0][0]:.4f}   {resultado[0][1]:.4f}   {resultado[0][2]:.4f}\")\n\nresultado 0.5000   0.4038   0.5962"
+    "text": "Ejemplo básico\n\nSueldo &lt;- 2600\nExtra &lt;- 300\n\nSueldo_total &lt;- Sueldo + Extra\n\nprint(cat(\"Mi sueldo es de:\", Sueldo_total, \"euros.\"))\n\nMi sueldo es de: 2900 euros.NULL"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#creando-órdenes-propias",
@@ -837,7 +837,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-7",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "# Función casera para la prueba chi-cuadrado\nchi_cuadrado_casera &lt;- function(tabla_observada) {\n  # Calcular totales de filas y columnas\n  totales_filas &lt;- rowSums(tabla_observada)\n  totales_columnas &lt;- colSums(tabla_observada)\n  total_general &lt;- sum(tabla_observada)\n  \n  # Calcular frecuencias esperadas\n  frecuencias_esperadas &lt;- outer(totales_filas, totales_columnas) / total_general\n  \n  # Calcular el estadístico chi-cuadrado\n  chi_cuadrado &lt;- sum((tabla_observada - frecuencias_esperadas)^2 / frecuencias_esperadas)\n  \n  # Calcular grados de libertad\n  grados_libertad &lt;- (nrow(tabla_observada) - 1) * (ncol(tabla_observada) - 1)\n  \n  # Calcular el valor p\n  valor_p &lt;- 1 - pchisq(chi_cuadrado, df = grados_libertad)\n  \n  # Crear y devolver el resultado\n  resultado &lt;- list(\n    estadistico = chi_cuadrado,\n    grados_libertad = grados_libertad,\n    valor_p = valor_p\n  )\n  \n  return(resultado)\n}\n\n# Ejemplo de uso\ntabla_ejemplo &lt;- matrix(c(30, 10, 20, 15), nrow = 2)\ncolnames(tabla_ejemplo) &lt;- c(\"Grupo A\", \"Grupo B\")\nrownames(tabla_ejemplo) &lt;- c(\"Categoría 1\", \"Categoría 2\")\nprint(tabla_ejemplo)"
+    "text": "Ejemplo en R\n\nlibrary(DescTools)\n\nn_exitos &lt;- 50\nn_total &lt;- 100\n\n# Utilizamos la orden BinomCI() de la librería\n\nresultado &lt;- BinomCI(x = n_exitos, \n                     n = n_total, \n                     conf.level = 0.95, \n                     method = \"wilson\")\n\n# Mostramos el resultado\nprint(resultado)\n\n     est    lwr.ci    upr.ci\n[1,] 0.5 0.4038315 0.5961685"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#dónde-podemos-trabajar",
@@ -851,7 +851,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-9",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Concepto clave:\nEl trabajo con los lenguajes de programación se realiza a través de IDE (Entornos de Desarrollo Integrados)."
+    "text": "Ejemplo en Python\n\nimport statsmodels.api as sm\n\n# Definimos los parámetros\nn_exitos = 50\nn_total = 100\n\n# Calculamos el intervalo de confianza binomial con método Wilson\nintervalo = sm.stats.proportion_confint(count=n_exitos, \n                                      nobs=n_total, \n                                      alpha=0.05, \n                                      method='wilson')\n\n# Formateamos el resultado similar al output de R\nresultado = [[n_exitos/n_total, intervalo[0], intervalo[1]]]\nprint(f\"resultado {resultado[0][0]:.4f}   {resultado[0][1]:.4f}   {resultado[0][2]:.4f}\")\n\nresultado 0.5000   0.4038   0.5962"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-12",
@@ -859,5 +859,453 @@
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
     "text": "9 de abril de 2025. Descubriendo R y Python en Osakidetza"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#fin-de-la-primera-parte.",
+    "href": "Presentacion/presentación_ejemplo.html#fin-de-la-primera-parte.",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Fin de la primera parte.",
+    "text": "Fin de la primera parte.\n(Sorbo de café)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#la-escritura-de-los-lenguajes-de-programación",
+    "href": "Presentacion/presentación_ejemplo.html#la-escritura-de-los-lenguajes-de-programación",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "La escritura de los lenguajes de programación",
+    "text": "La escritura de los lenguajes de programación"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#importando-órdenes-de-librerias",
+    "href": "Presentacion/presentación_ejemplo.html#importando-órdenes-de-librerias",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Importando órdenes de librerias",
+    "text": "Importando órdenes de librerias"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-8",
+    "href": "Presentacion/presentación_ejemplo.html#section-8",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Instalar librerias en R\n\ninstall.packages(\"DescTools\")"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-10",
+    "href": "Presentacion/presentación_ejemplo.html#section-10",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Instalar librerias en Python\n\npip install statsmodels.api"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-11",
+    "href": "Presentacion/presentación_ejemplo.html#section-11",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "# Función casera para la prueba chi-cuadrado\nchi_cuadrado_casera &lt;- function(tabla_observada) {\n  # Calcular totales de filas y columnas\n  totales_filas &lt;- rowSums(tabla_observada)\n  totales_columnas &lt;- colSums(tabla_observada)\n  total_general &lt;- sum(tabla_observada)\n  \n  # Calcular frecuencias esperadas\n  frecuencias_esperadas &lt;- outer(totales_filas, totales_columnas) / total_general\n  \n  # Calcular el estadístico chi-cuadrado\n  chi_cuadrado &lt;- sum((tabla_observada - frecuencias_esperadas)^2 / frecuencias_esperadas)\n  \n  # Calcular grados de libertad\n  grados_libertad &lt;- (nrow(tabla_observada) - 1) * (ncol(tabla_observada) - 1)\n  \n  # Calcular el valor p\n  valor_p &lt;- 1 - pchisq(chi_cuadrado, df = grados_libertad)\n  \n  # Crear y devolver el resultado\n  resultado &lt;- list(\n    estadistico = chi_cuadrado,\n    grados_libertad = grados_libertad,\n    valor_p = valor_p\n  )\n  \n  return(resultado)\n}\n\n# Ejemplo de uso\ntabla_ejemplo &lt;- matrix(c(30, 10, 20, 15), nrow = 2)\ncolnames(tabla_ejemplo) &lt;- c(\"Grupo A\", \"Grupo B\")\nrownames(tabla_ejemplo) &lt;- c(\"Categoría 1\", \"Categoría 2\")\nprint(tabla_ejemplo)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-13",
+    "href": "Presentacion/presentación_ejemplo.html#section-13",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Concepto clave:\nEl trabajo con los lenguajes de programación se realiza a través de IDE (Entornos de Desarrollo Integrados)."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-14",
+    "href": "Presentacion/presentación_ejemplo.html#section-14",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "RstudioPyCharmVisual StudioPositron"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#resumen",
+    "href": "Presentacion/presentación_ejemplo.html#resumen",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Resumen",
+    "text": "Resumen\n\n\nUso de consola o Scripts\n\n\n\n\nDefinición de variables y atributos\n\n\n\n\nEjecución de instrucciones\n\n\n\n\nTipos de datos (numéricos, textos, booleanos)\n\n\n\n\nOperadores (aritméticos, lógicos, asignación)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#fin-de-la-segunda-parte.",
+    "href": "Presentacion/presentación_ejemplo.html#fin-de-la-segunda-parte.",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Fin de la segunda parte.",
+    "text": "Fin de la segunda parte.\n(Sorbo de café)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-15",
+    "href": "Presentacion/presentación_ejemplo.html#section-15",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "%%{init: { 'logLevel': 'debug', 'theme': 'forest' } }%%\n\ntimeline\n    title Realización de un estudio de investigación / Innovación\n    section hipótesis, Recopilación de información y diseño\n        Teorización  : Realización de la teoría de investigación.\n        Revisión     : Revisión sistemática de la literatura y estado actual.\n        Diseño       : Diseño del estudio y de los materiales necesarios.\n    section Recogida de datos, Análisis e interpretación\n        Recogida de datos : Recogida de la información.\n        Análisis de datos : Análisis de los resultados.\n        Implementación y sostenibilidad: Valoración de la implementación y la sostenibilidad de las acciones.\n    section Difusión\n        Comunicación: Comunicación de los resultados"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm",
+    "href": "Presentacion/presentación_ejemplo.html#el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "El modelo Cross Industry Standard Process for Data Minning (CRISP-DM)",
+    "text": "El modelo Cross Industry Standard Process for Data Minning (CRISP-DM)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-16",
+    "href": "Presentacion/presentación_ejemplo.html#section-16",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "CRISP-DM\n\n\n\nanalyticsindiamag.com"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#revisión-de-la-literatura",
+    "href": "Presentacion/presentación_ejemplo.html#revisión-de-la-literatura",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "1. Revisión de la literatura",
+    "text": "1. Revisión de la literatura"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-17",
+    "href": "Presentacion/presentación_ejemplo.html#section-17",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Realización de Metaanálisis\n\n# Instalar y cargar el paquete metafor\nlibrary(metafor)\n\n# Crear un conjunto de datos de ejemplo\n# Supongamos que tenemos 5 estudios con tamaños de efecto (yi) y varianzas (vi)\ndata &lt;- data.frame(\n  study = c(\"Estudio 1\", \"Estudio 2\", \"Estudio 3\", \"Estudio 4\", \"Estudio 5\"),\n  yi = c(0.2, 0.5, -0.1, 0.3, 0.4),   # Tamaños de efecto\n  vi = c(0.04, 0.03, 0.05, 0.02, 0.04) # Varianzas\n)\n\n# Visualizar los datos\nprint(data)\n\n# Realizar el meta-análisis (modelo de efectos aleatorios)\nmeta_result &lt;- rma(yi = yi, vi = vi, data = data, method = \"REML\")\n\n# Resumen de los resultados del meta-análisis\nprint(meta_result)\n\n# Crear un forest plot para visualizar los resultados\nforest(meta_result, slab = data$study)\n\n# Funnel plot para evaluar sesgos de publicación\nfunnel(meta_result)\n\n# Análisis de heterogeneidad\ncat(\"Heterogeneidad:\\n\")\ncat(paste(\"Q =\", meta_result$QE, \", p =\", meta_result$QEp, \"\\n\"))\ncat(paste(\"I^2 =\", round(meta_result$I2, 2), \"%\\n\"))"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#recogida-de-datos",
+    "href": "Presentacion/presentación_ejemplo.html#recogida-de-datos",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "2. Recogida de datos",
+    "text": "2. Recogida de datos"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-18",
+    "href": "Presentacion/presentación_ejemplo.html#section-18",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Una base de datos es una colección organizada de información que se almacena electrónicamente y a la que se puede consultar de forma organizada\n\nBases de datos SQLBases de datos no solo SQL\n\n\nOrganizan la información en tablas estructuradas previamente.\n\n\n\nOrganizan la información de forma dinámica (Como cuadernos con hojas)."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-19",
+    "href": "Presentacion/presentación_ejemplo.html#section-19",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Cuadernos de recogida de datos electrónicos\n\nRapidez y automatización\nMenos errores humanos\nFacilidad de almacenamiento y acceso\nSeguridad y respaldo\nAnálisis avanzado y visualización\nIntegración con otros sistemas\nEscalabilidad"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#procesamiento-estadístico",
+    "href": "Presentacion/presentación_ejemplo.html#procesamiento-estadístico",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "3. Procesamiento estadístico",
+    "text": "3. Procesamiento estadístico"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-20",
+    "href": "Presentacion/presentación_ejemplo.html#section-20",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Estadística descriptivaEstadística inferencial\n\n\nEstadística destinada al resumen de datos a través de valores y gráficos.\nTanto R como Python permiten realizan este tipo de análisis.\n\n\nEstadística destinada a encontrar asociaciones. Tiene dos enfoques: frecuentista y bayesiano.\nTanto R como Python permiten realizar este tipo de análisis."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-21",
+    "href": "Presentacion/presentación_ejemplo.html#section-21",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Ejemplo estadística descriptiva\n\n# 1. Generamos de datos simulados\nset.seed(123) # Fijamos la semilla para reproducibilidad\n\n# Creamos dos grupos con datos simulados\ngrupo_A &lt;- rnorm(50, mean = 70, sd = 10) # Grupo A: media 70, desviación estándar 10\ngrupo_B &lt;- rnorm(50, mean = 75, sd = 12) # Grupo B: media 75, desviación estándar 12\n\n# Combinamos los datos en un dataframe\ndatos &lt;- data.frame(\n  Grupo = rep(c(\"A\", \"B\"), each = 50),\n  Valor = c(grupo_A, grupo_B)\n)\n\n# ============================================\n# 2. Análisis descriptivo\n# ============================================\n\n# Resumen estadístico general\nsummary(datos)\n\nlibrary(dplyr)\nresumen_por_grupo &lt;- datos %&gt;%\n  group_by(Grupo) %&gt;%\n  summarise(\n    Media = mean(Valor),\n    Mediana = median(Valor),\n    Desviacion_Estandar = sd(Valor),\n    Minimo = min(Valor),\n    Maximo = max(Valor)\n  )\nprint(resumen_por_grupo)\n\n# ============================================\n# 3. Visualización de datos\n# ============================================\n\nlibrary(ggplot2)\n\n# Boxplot para comparar los grupos\nggplot(datos, aes(x = Grupo, y = Valor, fill = Grupo)) +\n  geom_boxplot() +\n  labs(title = \"Comparación de Grupos\", x = \"Grupo\", y = \"Valor\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-22",
+    "href": "Presentacion/presentación_ejemplo.html#section-22",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Resultados\n\n\n\nAdjuntando el paquete: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n# A tibble: 2 × 6\n  Grupo Media Mediana Desviacion_Estandar Minimo Maximo\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 A      70.3    69.3                9.26   50.3   91.7\n2 B      76.8    76.8               10.9    47.3  101."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-23",
+    "href": "Presentacion/presentación_ejemplo.html#section-23",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Ejemplo estadística inferencial\n\n# Creamos dos grupos con datos simulados\ngrupo_A &lt;- rnorm(50, mean = 70, sd = 10) # Grupo A: media 70, desviación estándar 10\ngrupo_B &lt;- rnorm(50, mean = 75, sd = 12) # Grupo B: media 75, desviación estándar 12\n\n# Combinamos los datos en un dataframe\ndatos &lt;- data.frame(\n  Grupo = rep(c(\"A\", \"B\"), each = 50),\n  Valor = c(grupo_A, grupo_B)\n)\n\nt_test &lt;- t.test(grupo_A, grupo_B)\nprint(t_test)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-24",
+    "href": "Presentacion/presentación_ejemplo.html#section-24",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Resultados\n\n\n\n    Welch Two Sample t-test\n\ndata:  grupo_A and grupo_B\nt = -3.793, df = 96.588, p-value = 0.0002594\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n -12.193431  -3.815942\nsample estimates:\nmean of x mean of y \n 67.46100  75.46568"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-25",
+    "href": "Presentacion/presentación_ejemplo.html#section-25",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Modelaje supervisadoModelaje no supervisadoDeep learning\n\n\nTécnica dentro del aprendizaje automático (machine learning) que utiliza conjuntos de datos etiquetados para entrenar algoritmos.\n\nModelos de Regresión y clasificación.(scikit-learn)\n…\n\n\n\nTécnica dentro del aprendizaje automático (machine learning) que utiliza conjuntos de datos NO etiquetados para entrenar algoritmos.\n\nClustering.\n…\n\n\n\nTécnica avanzada de inteligencia artificial (IA) que utiliza redes neuronales artificiales profundas para aprender automáticamente a partir de grandes cantidades de datos.\n\nRedes neuronales. (Keras)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-26",
+    "href": "Presentacion/presentación_ejemplo.html#section-26",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Ejemplo\n\n# Cargar librerías necesarias\nlibrary(dplyr)\nlibrary(caret)  # Para matriz de confusión\nlibrary(pROC)   # Para curva ROC\n\n# Descargar los datos del Titanic directamente desde un repositorio\nurl &lt;- \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\ntitanic_data &lt;- read.csv(url)\n\n# Seleccionar las variables relevantes y eliminar valores faltantes\ntitanic_clean &lt;- titanic_data %&gt;%\n  select(Survived, Sex, Age) %&gt;%\n  na.omit()\n\n# Convertir las variables categóricas en factores\ntitanic_clean$Survived &lt;- as.factor(titanic_clean$Survived)\ntitanic_clean$Sex &lt;- as.factor(titanic_clean$Sex)\n\n# Ajustar el modelo de regresión logística\nmodel &lt;- glm(Survived ~ Sex + Age, data = titanic_clean, family = binomial)\n\n# Generar probabilidades predichas\nprobabilities &lt;- predict(model, type = \"response\")\n\n# Clasificar según un umbral (por ejemplo, 0.5)\npredicted_classes &lt;- ifelse(probabilities &gt; 0.5, 1, 0)\n\n# Crear una matriz de confusión\nconf_matrix &lt;- confusionMatrix(as.factor(predicted_classes), titanic_clean$Survived)\n\n# Extraer sensibilidad y especificidad\nsummary(model)\nsensitivity &lt;- conf_matrix$byClass[\"Sensitivity\"]\nspecificity &lt;- conf_matrix$byClass[\"Specificity\"]\n\n# Mostrar resultados de sensibilidad y especificidad\ncat(\"Sensibilidad:\", sensitivity, \"\\n\")\ncat(\"Especificidad:\", specificity, \"\\n\")\n\n# Calcular la curva ROC\nroc_curve &lt;- roc(titanic_clean$Survived, probabilities)\n\n# Graficar la curva ROC\nplot(roc_curve, col = \"blue\", main = \"Curva ROC - Modelo Titanic\")\nabline(a = 0, b = 1, col = \"red\", lty = 2)  # Línea de referencia (clasificador aleatorio)\ntext(0.6, 0.4, paste(\"AUC =\", round(auc(roc_curve), 2)), col = \"blue\")"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-27",
+    "href": "Presentacion/presentación_ejemplo.html#section-27",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Resultado\n\n\nCargando paquete requerido: lattice\n\n\n\nAdjuntando el paquete: 'caret'\n\n\nThe following objects are masked from 'package:DescTools':\n\n    MAE, RMSE\n\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAdjuntando el paquete: 'pROC'\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\n\n\nCall:\nglm(formula = Survived ~ Sex + Age, family = binomial, data = titanic_clean)\n\nCoefficients:\n             Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  1.277273   0.230169   5.549 2.87e-08 ***\nSexmale     -2.465920   0.185384 -13.302  &lt; 2e-16 ***\nAge         -0.005426   0.006310  -0.860     0.39    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 964.52  on 713  degrees of freedom\nResidual deviance: 749.96  on 711  degrees of freedom\nAIC: 755.96\n\nNumber of Fisher Scoring iterations: 4\n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-28",
+    "href": "Presentacion/presentación_ejemplo.html#section-28",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Resultado: evaluación\n\n\nSensibilidad: 0.8490566 \n\n\nEspecificidad: 0.6793103 \n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#otros-tipos-de-análisis",
+    "href": "Presentacion/presentación_ejemplo.html#otros-tipos-de-análisis",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Otros tipos de análisis",
+    "text": "Otros tipos de análisis"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-29",
+    "href": "Presentacion/presentación_ejemplo.html#section-29",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Mineria de texto.\n\n. . .\n\nAnálisis geoespaciales.\n\n. . .\n\nEcuaciones diferenciales.\n\n. . .\n\nProblemas de optimización.\n\n. . .\n\nTeoría de juegos."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#fin-de-la-tercera-parte.",
+    "href": "Presentacion/presentación_ejemplo.html#fin-de-la-tercera-parte.",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Fin de la tercera parte.",
+    "text": "Fin de la tercera parte.\n(Sorbo de café)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#tipos-de-difusión",
+    "href": "Presentacion/presentación_ejemplo.html#tipos-de-difusión",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Tipos de difusión",
+    "text": "Tipos de difusión"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-30",
+    "href": "Presentacion/presentación_ejemplo.html#section-30",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Texto escrito (Revistas científicas).\n\n. . .\n\nPonencias (Congresos y conferencias).\n\n. . .\n\nInterna (Cuadro de mando).\n\n. . .\n\nGlobal (Páginas web)."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#otros-usos",
+    "href": "Presentacion/presentación_ejemplo.html#otros-usos",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Otros usos",
+    "text": "Otros usos"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-31",
+    "href": "Presentacion/presentación_ejemplo.html#section-31",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Creación de programas informáticos"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-33",
+    "href": "Presentacion/presentación_ejemplo.html#section-33",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Revisión de la literatura\n\n\nRecogida de datos\n\n\nAnálisis de datos\n\n\nDifusión"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-35",
+    "href": "Presentacion/presentación_ejemplo.html#section-35",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Sólo el conocimiento nos dará libertad\n. . .\nSólo la libertad nos dará la capacidad de cuidar\n. . .\nConocimiento➡️ Libertad➡️ Cuidar"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-36",
+    "href": "Presentacion/presentación_ejemplo.html#section-36",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Conocimiento➡️ Libertad➡️ Cuidar"
+  },
+  {
+    "objectID": "CRISP-DM.html",
+    "href": "CRISP-DM.html",
+    "title": "Título del Proyecto",
+    "section": "",
+    "text": "El primer objetivo del analista es comprender a fondo, desde una perspectiva de negocio, lo que el cliente realmente quiere lograr. A menudo, el cliente tiene muchos objetivos y limitaciones que compiten entre sí y que deben ser equilibrados adecuadamente. El objetivo del analista es descubrir factores importantes al principio del proyecto que pueden influir en el resultado final. Una consecuencia probable de descuidar este paso sería gastar mucho esfuerzo en producir las respuestas correctas a las preguntas equivocadas.\n\n\nRecopilar la información que se conoce sobre la situación empresarial de la organización al inicio del proyecto. Estos detalles no sólo sirven para identificar más de cerca los objetivos de negocio a alcanzar, sino también para identificar los recursos, tanto humanos como materiales, que pueden ser utilizados o necesarios durante el transcurso del proyecto.\n\n\n\nDesarrollar organigramas que identifiquen las divisiones, departamentos y grupos de proyectos. El organigrama también debe identificar los nombres y responsabilidades de los gerentes\nIdentificar a las personas claves y sus roles\nIdentificar un patrocinador interno (patrocinador financiero y usuario principal/experto en el dominio)\nIndicar si existe un comité directivo y hacer una lista de sus miembros\nIdentificar las unidades de negocio afectadas por el proyecto de minería de datos (por ejemplo, marketing, ventas, finanzas)\n\n\n\n\n\nIdentificar el área del problema (por ejemplo, marketing, atención al cliente, desarrollo de negocios, etc.)\nDescribir el problema en términos generales\nComprobar el estado actual del proyecto (por ejemplo, comprobar si ya está claro dentro de la unidad de negocio que se va a realizar un proyecto de minería de datos, o si es necesario promover la minería de datos como una tecnología clave en el negocio).\nAclarar los requisitos previos del proyecto (por ejemplo, ¿cuál es la motivación del proyecto? ¿El negocio ya utiliza la minería de datos?)\nSi es necesario, preparar presentaciones sobre la minería de datos a la empresa\nIdentificar el grupo objetivo para el producto final (por ejemplo, ¿Se espera que entreguemos un informe para la alta gerencia o un sistema para ser utilizado por usuarios inexpertos?)\nIdentificar las necesidades y expectativas de los usuarios\n\n\n\n\n\nDescribir cualquier solución que se utilice actualmente para tratar el problema\nDescribir las ventajas y desventajas de la solución actual y el nivel de aceptación por parte de los usuarios.\n\n\n\n\n\nDescribir el objetivo principal del cliente, desde una perspectiva de negocio. Además del objetivo principal del negocio, normalmente hay un gran número de preguntas comerciales relacionadas que el cliente desea abordar. Por ejemplo, el objetivo principal del negocio podría ser mantener a los clientes actuales mediante la predicción de cuándo son propensos a pasarse a la competencia, mientras que un objetivo secundario del negocio podría ser determinar si las tarifas más bajas afectan sólo a un segmento particular de clientes.\n\nDescribir brevemente el problema a resolver\nEspecificar todas las preguntas de negocio con la mayor precisión posible\nEspecificar cualquier otro requisito del negocio (por ejemplo, el negocio no quiere perder ningún cliente).\nEspecificar los beneficios esperados en términos de negocio\nTenga cuidado en fijar metas inalcanzables, hágalas lo más realistas posible\n\n\n\n\nDescribir los criterios para un resultado exitoso o útil del proyecto desde el punto de vista empresarial. Esto podría ser bastante específico y fácilmente medible, como la reducción de la rotación de clientes a un cierto nivel, o general y subjetivo, como “dar una visión útil de las relaciones”. En este último caso, asegúrese de indicar quién haría el juicio subjetivo.\n\nEspecificar los criterios de éxito del negocio (por ejemplo, mejorar la tasa de respuesta en una campaña de correo en un 10 por ciento y la tasa de registro en un 20 por ciento).\nIdentificar quién evalúa los criterios de éxito\n\nCada uno de los criterios de éxito debe estar relacionado con al menos uno de los objetivos de negocio especificados\nAntes de comenzar la evaluación de la situación, usted podría analizar experiencias previas de este problema, ya sea internamente, usando CRISP-DM, o externamente, usando soluciones pre-empaquetadas.\n\n\n\n\nEsta tarea implica una investigación más detallada sobre todos los recursos, limitaciones, suposiciones y otros factores que deben ser considerados al determinar la meta del análisis de datos y al desarrollar el plan del proyecto.\n\n\nEnumere los recursos disponibles para el proyecto, incluyendo el personal (expertos en negocios y datos, apoyo técnico, expertos en minería de datos), datos (acceso a datos operativos o almacenados), recursos informáticos (plataformas de hardware) y software (herramientas de minería de datos, otro software relevante).\n\n\n\nIdentificar el hardware base\nEstablecer la disponibilidad del hardware para el proyecto de minería de datos.\nComprobar si el cronograma de mantenimiento del hardware entra en conflicto con la disponibilidad para el proyecto de minería de datos.\n\n\n\n\n\nIdentificar las fuentes de datos\nIdentificar el tipo de fuentes de datos (fuentes en línea, expertos, documentación escrita, etc.)\nIdentificar las fuentes de conocimientos\nIdentificar el tipo de fuentes de conocimiento (fuentes en línea, expertos, documentación escrita, etc.)\nRevisar las herramientas y técnicas disponibles\nDescribir los conocimientos previos (de manera formal o informal)\n\n\n\n\n\nIdentificar el patrocinador del proyecto (si es diferente del patrocinador interno como en Organización)\nIdentificar al administrador del sistema, al administrador de la base de datos y al personal de soporte técnico para preguntas adicionales.\nIdentificar a los analistas de mercado, expertos en minería de datos y estadísticos, y verificar su disponibilidad.\nComprobar la disponibilidad de los expertos de dominio para las fases siguientes.\n\nRecuerde que se puede necesitar personal técnico en momentos puntuales durante todo el proyecto, por ejemplo, durante la transformación de datos.\n\n\n\n\nEnumerar todos los requisitos del proyecto, incluyendo el cronograma de finalización, la comprensibilidad, la calidad de los resultados y la seguridad, así como los aspectos legales\nListar las suposiciones hechas por el proyecto. Estos pueden ser supuestos sobre los datos, que pueden ser verificados durante la minería de datos, pero también pueden incluir supuestos no verificables relacionados con el proyecto. Es particularmente importante enumerar estos últimos si afectan a la validez de los resultados.\nEnumerar las limitaciones del proyecto. Estas limitaciones pueden incluir la falta de recursos para llevar a cabo algunas de las tareas del proyecto en el tiempo requerido, o pueden existir limitaciones legales o éticas en el uso de los datos o de la solución necesaria para llevar a cabo la tarea de minería de datos.\n\n\n\nEspecificar el perfil del grupo objetivo\nCapturar todos los requisitos\nCapturar los requisitos de comprensibilidad, precisión, despliegue, mantenimiento y reproducibilidad del proyecto de minería de datos y de los modelos resultantes.\nCapturar los requisitos de seguridad, restricciones legales, privacidad, informes y calendario del proyecto.\n\n\n\n\n\nAclarar todas las suposiciones (incluidas las implícitas) y hacerlas explícitas (por ejemplo, para abordar la cuestión empresarial, es necesario un número mínimo de clientes con más de 50 años de edad).\nListar las suposiciones sobre la calidad de los datos (por ejemplo, exactitud, disponibilidad)\nListar las suposiciones sobre factores externos (por ejemplo, cuestiones económicas, productos de la competencia)\nAclarar las suposiciones que conducen a cualquier estimación (por ejemplo, se supone que el precio de una herramienta específica es inferior a 1.000 dólares).\nListar todas las suposiciones con respecto a si es necesario entender, describir o explicar el modelo (por ejemplo, cómo se debe presentar el modelo y los resultados a la alta gerencia/patrocinador).\n\nLa lista de suposiciones también incluye las suposiciones iniciales del proyecto\n\n\n\n\nRevisar las restricciones generales (por ejemplo, cuestiones legales, presupuesto, plazos y recursos).\nRevisar el acceso a las fuentes de datos (por ejemplo, restricciones de acceso, contraseña requerida).\nRevisar la accesibilidad técnica de los datos (sistemas operativos, sistema de gestión de datos, formato de archivo o base de datos).\nComprobar las restricciones de presupuesto (costes fijos, costes de ejecución, etc.)\n\n\n\n\n\nEnumere los riesgos, es decir, los eventos que pueden ocurrir, que impactan el cronograma, el costo o el resultado. Enumerar los correspondientes planes de contingencia.\n\n\n\nIdentificar los riesgos del negocio (por ejemplo, la competencia obtiene primero mejores resultados).\nIdentificar los riesgos organizacionales (por ejemplo, el departamento que solicita el proyecto no tiene fondos para el proyecto).\nIdentificar los riesgos financieros (por ejemplo, el financiamiento de las siguientes etapas depende de los resultados iniciales de la minería de datos).\nIdentificar los riesgos técnicos\nIdentificar los riesgos que dependen de los datos y de las fuentes de datos (por ejemplo, mala calidad).\n\n\n\n\n\nDeterminar las condiciones bajo las cuales cada riesgo puede ocurrir\nDesarrollar planes de contingencia\n\n\n\n\n\nElaborar un glosario de terminología relevante para el proyecto. Esto debe incluir al menos dos componentes:\n\nUn glosario de terminología empresarial relevante, que forma parte del entendimiento empresarial disponible para el proyecto.\nUn glosario de terminología de minería de datos, ilustrado con ejemplos relevantes para el problema empresarial en cuestión.\n\n\nVerificar la existencia de glosarios previos; de lo contrario, comenzar a redactarlos.\nHablar con los expertos de dominio para entender su terminología\nFamiliarizarse con la terminología del negocio\n\n\n\n\nPreparar un análisis de costo-beneficio para el proyecto, comparando los costos del proyecto con los beneficios potenciales para el negocio si es exitoso.\n\nEstimar los costos de la recolección de datos\nEstimar los costos de desarrollo e implementación de una solución\nIdentificar los beneficios (por ejemplo, la mejora de la satisfacción del cliente, el retorno de la inversión y el aumento de los ingresos).\nEstimar los costos operativos\n\nLa comparación debe ser lo más específica posible, ya que esto permite presentar una mejor propuesta de negocio.\nRecuerde identificar los costos ocultos, tales como la extracción y preparación repetida de datos, los cambios en los flujos de trabajo y el tiempo requerido para la capacitación.\n\n\n\n\nUna meta empresarial establece los objetivos en la terminología empresarial; una meta de minería de datos establece los objetivos del proyecto en términos técnicos. Por ejemplo, el objetivo empresarial podría ser, “Aumentar las ventas de catálogos a clientes existentes”, mientras que el objetivo de la minería de datos podría ser, “Predecir cuántos productos comprará un cliente, dadas sus compras en los últimos tres años, la información demográfica relevante y el precio del artículo”.\n\n\nDescribe los resultados previstos del proyecto que permitan alcanzar los objetivos de negocio. Tenga en cuenta que normalmente se trata de mensajes técnicos.\n\nTraducir las preguntas de negocio a objetivos de minería de datos (por ejemplo, una campaña de marketing requiere la segmentación de los clientes para decidir a quién dirigirse en esta campaña; se debe especificar el nivel/tamaño de los segmentos).\nEspecificar el tipo de problema de minería de datos (por ejemplo, clasificación, descripción, predicción y agrupación). Para más detalles sobre los tipos de problemas de minería de datos, véase el Apéndice 2.\n\n\n\n\nDefinir los criterios para un resultado exitoso del proyecto en términos técnicos, por ejemplo, un cierto nivel de precisión predictiva o un perfil de propensión a la compra con un determinado grado de “elevación”. Al igual que con los criterios de éxito empresarial, puede ser necesario describirlos en términos subjetivos, en cuyo caso se debe identificar a la persona o personas que hacen el juicio subjetivo.\n\nEspecificar los criterios para la evaluación del modelo (por ejemplo, la precisión, el rendimiento y la complejidad del modelo).\nDefinir ‘benchmarks’ para los criterios de evaluación\nEspecificar los criterios que se refieren a los criterios de evaluación subjetivos (por ejemplo, el modelo explica la capacidad y los datos y los conocimientos de marketing proporcionados por el modelo).\n\nRecuerde que los criterios de éxito de la minería de datos son diferentes a los criterios de éxito del negocio definidos anteriormente.\nRecuerde que es prudente planificar la implementación desde el inicio del proyecto.\n\n\n\n\nDescriba el plan previsto para alcanzar los objetivos de la minería de datos y, por lo tanto, para alcanzar los objetivos del negocio.\n\n\nEnumerar las etapas a ejecutar en el proyecto, junto con su duración, recursos requeridos, entradas, salidas y dependencias. Siempre que sea posible, explicite las iteraciones a gran escala en el proceso de minería de datos, por ejemplo, las repeticiones de las fases de modelado y evaluación. Como parte del plan del proyecto, también es importante analizar las dependencias entre el cronograma y los riesgos. Marque los resultados de estos análisis explícitamente en el plan del proyecto, idealmente con acciones y recomendaciones de acciones si los riesgos se manifiestan.\nAunque esta es la única tarea en la que se menciona directamente el plan del proyecto, debe ser consultado continuamente y revisado a lo largo de todo el proyecto. El plan de proyecto debe ser consultado como mínimo cada vez que se inicie una nueva tarea o se inicie una nueva iteración de una tarea o actividad.\n\nDefinir el plan de proceso inicial y discutir la viabilidad con todo el personal involucrado.\nCombinar todos los objetivos identificados y las técnicas seleccionadas en un procedimiento coherente que resuelva las cuestiones de negocio y cumpla con los criterios de éxito del negocio.\nEstimar el esfuerzo y los recursos necesarios para lograr y desplegar la solución. (Es útil tener en cuenta la experiencia de otras personas al estimar las escalas de tiempo para los proyectos de minería de datos. Por ejemplo, a menudo se postula que entre el 50 y el 70 por ciento del tiempo y el esfuerzo de un proyecto de minería de datos se utiliza en la fase de preparación de datos y entre el 20 y el 30 por ciento en la fase de comprensión de datos, mientras que sólo entre el 10 y el 20 por ciento se gasta en cada una de las fases de modelado, evaluación y comprensión de negocios, y entre el 5 y el 10 por ciento en la fase de implementación).\nIdentificar los pasos críticos\nIdentificar los puntos de decisión\nIdentificar los puntos de revisión\nIdentificar las principales iteraciones\n\n\n\n\nAl final de la primera fase, el equipo del proyecto realiza una evaluación inicial de las herramientas y técnicas. Aquí, es importante seleccionar una herramienta de minería de datos que soporte varios métodos para diferentes etapas del proceso, ya que la selección de herramientas y técnicas puede influir en todo el proyecto.\n\nCrear una lista de criterios de selección de herramientas y técnicas (o utilizar uno existente si está disponible).\nElegir herramientas y técnicas potenciales\nEvaluar la idoneidad de las técnicas\nRevisar y priorizar las técnicas aplicables de acuerdo a la evaluación de soluciones alternativas."
+  },
+  {
+    "objectID": "CRISP-DM.html#establecimiento-de-los-objetivos-del-negocio",
+    "href": "CRISP-DM.html#establecimiento-de-los-objetivos-del-negocio",
+    "title": "Título del Proyecto",
+    "section": "",
+    "text": "El primer objetivo del analista es comprender a fondo, desde una perspectiva de negocio, lo que el cliente realmente quiere lograr. A menudo, el cliente tiene muchos objetivos y limitaciones que compiten entre sí y que deben ser equilibrados adecuadamente. El objetivo del analista es descubrir factores importantes al principio del proyecto que pueden influir en el resultado final. Una consecuencia probable de descuidar este paso sería gastar mucho esfuerzo en producir las respuestas correctas a las preguntas equivocadas.\n\n\nRecopilar la información que se conoce sobre la situación empresarial de la organización al inicio del proyecto. Estos detalles no sólo sirven para identificar más de cerca los objetivos de negocio a alcanzar, sino también para identificar los recursos, tanto humanos como materiales, que pueden ser utilizados o necesarios durante el transcurso del proyecto.\n\n\n\nDesarrollar organigramas que identifiquen las divisiones, departamentos y grupos de proyectos. El organigrama también debe identificar los nombres y responsabilidades de los gerentes\nIdentificar a las personas claves y sus roles\nIdentificar un patrocinador interno (patrocinador financiero y usuario principal/experto en el dominio)\nIndicar si existe un comité directivo y hacer una lista de sus miembros\nIdentificar las unidades de negocio afectadas por el proyecto de minería de datos (por ejemplo, marketing, ventas, finanzas)\n\n\n\n\n\nIdentificar el área del problema (por ejemplo, marketing, atención al cliente, desarrollo de negocios, etc.)\nDescribir el problema en términos generales\nComprobar el estado actual del proyecto (por ejemplo, comprobar si ya está claro dentro de la unidad de negocio que se va a realizar un proyecto de minería de datos, o si es necesario promover la minería de datos como una tecnología clave en el negocio).\nAclarar los requisitos previos del proyecto (por ejemplo, ¿cuál es la motivación del proyecto? ¿El negocio ya utiliza la minería de datos?)\nSi es necesario, preparar presentaciones sobre la minería de datos a la empresa\nIdentificar el grupo objetivo para el producto final (por ejemplo, ¿Se espera que entreguemos un informe para la alta gerencia o un sistema para ser utilizado por usuarios inexpertos?)\nIdentificar las necesidades y expectativas de los usuarios\n\n\n\n\n\nDescribir cualquier solución que se utilice actualmente para tratar el problema\nDescribir las ventajas y desventajas de la solución actual y el nivel de aceptación por parte de los usuarios.\n\n\n\n\n\nDescribir el objetivo principal del cliente, desde una perspectiva de negocio. Además del objetivo principal del negocio, normalmente hay un gran número de preguntas comerciales relacionadas que el cliente desea abordar. Por ejemplo, el objetivo principal del negocio podría ser mantener a los clientes actuales mediante la predicción de cuándo son propensos a pasarse a la competencia, mientras que un objetivo secundario del negocio podría ser determinar si las tarifas más bajas afectan sólo a un segmento particular de clientes.\n\nDescribir brevemente el problema a resolver\nEspecificar todas las preguntas de negocio con la mayor precisión posible\nEspecificar cualquier otro requisito del negocio (por ejemplo, el negocio no quiere perder ningún cliente).\nEspecificar los beneficios esperados en términos de negocio\nTenga cuidado en fijar metas inalcanzables, hágalas lo más realistas posible\n\n\n\n\nDescribir los criterios para un resultado exitoso o útil del proyecto desde el punto de vista empresarial. Esto podría ser bastante específico y fácilmente medible, como la reducción de la rotación de clientes a un cierto nivel, o general y subjetivo, como “dar una visión útil de las relaciones”. En este último caso, asegúrese de indicar quién haría el juicio subjetivo.\n\nEspecificar los criterios de éxito del negocio (por ejemplo, mejorar la tasa de respuesta en una campaña de correo en un 10 por ciento y la tasa de registro en un 20 por ciento).\nIdentificar quién evalúa los criterios de éxito\n\nCada uno de los criterios de éxito debe estar relacionado con al menos uno de los objetivos de negocio especificados\nAntes de comenzar la evaluación de la situación, usted podría analizar experiencias previas de este problema, ya sea internamente, usando CRISP-DM, o externamente, usando soluciones pre-empaquetadas."
+  },
+  {
+    "objectID": "CRISP-DM.html#evaluación-de-la-situación",
+    "href": "CRISP-DM.html#evaluación-de-la-situación",
+    "title": "Título del Proyecto",
+    "section": "",
+    "text": "Esta tarea implica una investigación más detallada sobre todos los recursos, limitaciones, suposiciones y otros factores que deben ser considerados al determinar la meta del análisis de datos y al desarrollar el plan del proyecto.\n\n\nEnumere los recursos disponibles para el proyecto, incluyendo el personal (expertos en negocios y datos, apoyo técnico, expertos en minería de datos), datos (acceso a datos operativos o almacenados), recursos informáticos (plataformas de hardware) y software (herramientas de minería de datos, otro software relevante).\n\n\n\nIdentificar el hardware base\nEstablecer la disponibilidad del hardware para el proyecto de minería de datos.\nComprobar si el cronograma de mantenimiento del hardware entra en conflicto con la disponibilidad para el proyecto de minería de datos.\n\n\n\n\n\nIdentificar las fuentes de datos\nIdentificar el tipo de fuentes de datos (fuentes en línea, expertos, documentación escrita, etc.)\nIdentificar las fuentes de conocimientos\nIdentificar el tipo de fuentes de conocimiento (fuentes en línea, expertos, documentación escrita, etc.)\nRevisar las herramientas y técnicas disponibles\nDescribir los conocimientos previos (de manera formal o informal)\n\n\n\n\n\nIdentificar el patrocinador del proyecto (si es diferente del patrocinador interno como en Organización)\nIdentificar al administrador del sistema, al administrador de la base de datos y al personal de soporte técnico para preguntas adicionales.\nIdentificar a los analistas de mercado, expertos en minería de datos y estadísticos, y verificar su disponibilidad.\nComprobar la disponibilidad de los expertos de dominio para las fases siguientes.\n\nRecuerde que se puede necesitar personal técnico en momentos puntuales durante todo el proyecto, por ejemplo, durante la transformación de datos.\n\n\n\n\nEnumerar todos los requisitos del proyecto, incluyendo el cronograma de finalización, la comprensibilidad, la calidad de los resultados y la seguridad, así como los aspectos legales\nListar las suposiciones hechas por el proyecto. Estos pueden ser supuestos sobre los datos, que pueden ser verificados durante la minería de datos, pero también pueden incluir supuestos no verificables relacionados con el proyecto. Es particularmente importante enumerar estos últimos si afectan a la validez de los resultados.\nEnumerar las limitaciones del proyecto. Estas limitaciones pueden incluir la falta de recursos para llevar a cabo algunas de las tareas del proyecto en el tiempo requerido, o pueden existir limitaciones legales o éticas en el uso de los datos o de la solución necesaria para llevar a cabo la tarea de minería de datos.\n\n\n\nEspecificar el perfil del grupo objetivo\nCapturar todos los requisitos\nCapturar los requisitos de comprensibilidad, precisión, despliegue, mantenimiento y reproducibilidad del proyecto de minería de datos y de los modelos resultantes.\nCapturar los requisitos de seguridad, restricciones legales, privacidad, informes y calendario del proyecto.\n\n\n\n\n\nAclarar todas las suposiciones (incluidas las implícitas) y hacerlas explícitas (por ejemplo, para abordar la cuestión empresarial, es necesario un número mínimo de clientes con más de 50 años de edad).\nListar las suposiciones sobre la calidad de los datos (por ejemplo, exactitud, disponibilidad)\nListar las suposiciones sobre factores externos (por ejemplo, cuestiones económicas, productos de la competencia)\nAclarar las suposiciones que conducen a cualquier estimación (por ejemplo, se supone que el precio de una herramienta específica es inferior a 1.000 dólares).\nListar todas las suposiciones con respecto a si es necesario entender, describir o explicar el modelo (por ejemplo, cómo se debe presentar el modelo y los resultados a la alta gerencia/patrocinador).\n\nLa lista de suposiciones también incluye las suposiciones iniciales del proyecto\n\n\n\n\nRevisar las restricciones generales (por ejemplo, cuestiones legales, presupuesto, plazos y recursos).\nRevisar el acceso a las fuentes de datos (por ejemplo, restricciones de acceso, contraseña requerida).\nRevisar la accesibilidad técnica de los datos (sistemas operativos, sistema de gestión de datos, formato de archivo o base de datos).\nComprobar las restricciones de presupuesto (costes fijos, costes de ejecución, etc.)\n\n\n\n\n\nEnumere los riesgos, es decir, los eventos que pueden ocurrir, que impactan el cronograma, el costo o el resultado. Enumerar los correspondientes planes de contingencia.\n\n\n\nIdentificar los riesgos del negocio (por ejemplo, la competencia obtiene primero mejores resultados).\nIdentificar los riesgos organizacionales (por ejemplo, el departamento que solicita el proyecto no tiene fondos para el proyecto).\nIdentificar los riesgos financieros (por ejemplo, el financiamiento de las siguientes etapas depende de los resultados iniciales de la minería de datos).\nIdentificar los riesgos técnicos\nIdentificar los riesgos que dependen de los datos y de las fuentes de datos (por ejemplo, mala calidad).\n\n\n\n\n\nDeterminar las condiciones bajo las cuales cada riesgo puede ocurrir\nDesarrollar planes de contingencia\n\n\n\n\n\nElaborar un glosario de terminología relevante para el proyecto. Esto debe incluir al menos dos componentes:\n\nUn glosario de terminología empresarial relevante, que forma parte del entendimiento empresarial disponible para el proyecto.\nUn glosario de terminología de minería de datos, ilustrado con ejemplos relevantes para el problema empresarial en cuestión.\n\n\nVerificar la existencia de glosarios previos; de lo contrario, comenzar a redactarlos.\nHablar con los expertos de dominio para entender su terminología\nFamiliarizarse con la terminología del negocio\n\n\n\n\nPreparar un análisis de costo-beneficio para el proyecto, comparando los costos del proyecto con los beneficios potenciales para el negocio si es exitoso.\n\nEstimar los costos de la recolección de datos\nEstimar los costos de desarrollo e implementación de una solución\nIdentificar los beneficios (por ejemplo, la mejora de la satisfacción del cliente, el retorno de la inversión y el aumento de los ingresos).\nEstimar los costos operativos\n\nLa comparación debe ser lo más específica posible, ya que esto permite presentar una mejor propuesta de negocio.\nRecuerde identificar los costos ocultos, tales como la extracción y preparación repetida de datos, los cambios en los flujos de trabajo y el tiempo requerido para la capacitación."
+  },
+  {
+    "objectID": "CRISP-DM.html#determinar-los-objetivos-de-la-minería-de-datos",
+    "href": "CRISP-DM.html#determinar-los-objetivos-de-la-minería-de-datos",
+    "title": "Título del Proyecto",
+    "section": "",
+    "text": "Una meta empresarial establece los objetivos en la terminología empresarial; una meta de minería de datos establece los objetivos del proyecto en términos técnicos. Por ejemplo, el objetivo empresarial podría ser, “Aumentar las ventas de catálogos a clientes existentes”, mientras que el objetivo de la minería de datos podría ser, “Predecir cuántos productos comprará un cliente, dadas sus compras en los últimos tres años, la información demográfica relevante y el precio del artículo”.\n\n\nDescribe los resultados previstos del proyecto que permitan alcanzar los objetivos de negocio. Tenga en cuenta que normalmente se trata de mensajes técnicos.\n\nTraducir las preguntas de negocio a objetivos de minería de datos (por ejemplo, una campaña de marketing requiere la segmentación de los clientes para decidir a quién dirigirse en esta campaña; se debe especificar el nivel/tamaño de los segmentos).\nEspecificar el tipo de problema de minería de datos (por ejemplo, clasificación, descripción, predicción y agrupación). Para más detalles sobre los tipos de problemas de minería de datos, véase el Apéndice 2.\n\n\n\n\nDefinir los criterios para un resultado exitoso del proyecto en términos técnicos, por ejemplo, un cierto nivel de precisión predictiva o un perfil de propensión a la compra con un determinado grado de “elevación”. Al igual que con los criterios de éxito empresarial, puede ser necesario describirlos en términos subjetivos, en cuyo caso se debe identificar a la persona o personas que hacen el juicio subjetivo.\n\nEspecificar los criterios para la evaluación del modelo (por ejemplo, la precisión, el rendimiento y la complejidad del modelo).\nDefinir ‘benchmarks’ para los criterios de evaluación\nEspecificar los criterios que se refieren a los criterios de evaluación subjetivos (por ejemplo, el modelo explica la capacidad y los datos y los conocimientos de marketing proporcionados por el modelo).\n\nRecuerde que los criterios de éxito de la minería de datos son diferentes a los criterios de éxito del negocio definidos anteriormente.\nRecuerde que es prudente planificar la implementación desde el inicio del proyecto."
+  },
+  {
+    "objectID": "CRISP-DM.html#generación-del-plan-de-proyecto",
+    "href": "CRISP-DM.html#generación-del-plan-de-proyecto",
+    "title": "Título del Proyecto",
+    "section": "",
+    "text": "Describa el plan previsto para alcanzar los objetivos de la minería de datos y, por lo tanto, para alcanzar los objetivos del negocio.\n\n\nEnumerar las etapas a ejecutar en el proyecto, junto con su duración, recursos requeridos, entradas, salidas y dependencias. Siempre que sea posible, explicite las iteraciones a gran escala en el proceso de minería de datos, por ejemplo, las repeticiones de las fases de modelado y evaluación. Como parte del plan del proyecto, también es importante analizar las dependencias entre el cronograma y los riesgos. Marque los resultados de estos análisis explícitamente en el plan del proyecto, idealmente con acciones y recomendaciones de acciones si los riesgos se manifiestan.\nAunque esta es la única tarea en la que se menciona directamente el plan del proyecto, debe ser consultado continuamente y revisado a lo largo de todo el proyecto. El plan de proyecto debe ser consultado como mínimo cada vez que se inicie una nueva tarea o se inicie una nueva iteración de una tarea o actividad.\n\nDefinir el plan de proceso inicial y discutir la viabilidad con todo el personal involucrado.\nCombinar todos los objetivos identificados y las técnicas seleccionadas en un procedimiento coherente que resuelva las cuestiones de negocio y cumpla con los criterios de éxito del negocio.\nEstimar el esfuerzo y los recursos necesarios para lograr y desplegar la solución. (Es útil tener en cuenta la experiencia de otras personas al estimar las escalas de tiempo para los proyectos de minería de datos. Por ejemplo, a menudo se postula que entre el 50 y el 70 por ciento del tiempo y el esfuerzo de un proyecto de minería de datos se utiliza en la fase de preparación de datos y entre el 20 y el 30 por ciento en la fase de comprensión de datos, mientras que sólo entre el 10 y el 20 por ciento se gasta en cada una de las fases de modelado, evaluación y comprensión de negocios, y entre el 5 y el 10 por ciento en la fase de implementación).\nIdentificar los pasos críticos\nIdentificar los puntos de decisión\nIdentificar los puntos de revisión\nIdentificar las principales iteraciones\n\n\n\n\nAl final de la primera fase, el equipo del proyecto realiza una evaluación inicial de las herramientas y técnicas. Aquí, es importante seleccionar una herramienta de minería de datos que soporte varios métodos para diferentes etapas del proceso, ya que la selección de herramientas y técnicas puede influir en todo el proyecto.\n\nCrear una lista de criterios de selección de herramientas y técnicas (o utilizar uno existente si está disponible).\nElegir herramientas y técnicas potenciales\nEvaluar la idoneidad de las técnicas\nRevisar y priorizar las técnicas aplicables de acuerdo a la evaluación de soluciones alternativas."
+  },
+  {
+    "objectID": "CRISP-DM.html#recopilación-de-datos-iniciales",
+    "href": "CRISP-DM.html#recopilación-de-datos-iniciales",
+    "title": "Título del Proyecto",
+    "section": "Recopilación de datos iniciales",
+    "text": "Recopilación de datos iniciales\nAdquirir los datos (o acceso a los datos) listados en los recursos del proyecto. Esta recopilación inicial incluye la carga de datos, si es necesario para el análisis. Por ejemplo, si tiene la intención de utilizar una herramienta específica para el análisis de datos, es lógico cargarlos en esta herramienta.\n\nInforme inicial de recopilación de datos\nDescriba todos los datos utilizados para el proyecto e incluya cualquier requisito de selección para obtener datos más detallados. El informe de recopilación de datos también debe definir si algunos atributos son relativamente más importantes que otros.\nRecuerde que cualquier evaluación de la calidad de los datos debe hacerse no sólo de las fuentes de datos individuales, sino también de cualquier dato que resulte de la fusión entre fuentes de datos. Debido a las inconsistencias entre las fuentes, los datos fusionados pueden presentar problemas que no existen en las fuentes de datos individuales.\n\nRequisitos de datos\n\nPlanificar qué información se necesita (por ejemplo, sólo determinados atributos o información adicional específica).\nComprobar si toda la información necesaria (para resolver los objetivos de la minería de datos) está disponible.\n\n\n\nCriterios de selección\n\nEspecificar los criterios de selección (por ejemplo, ¿Qué atributos son necesarios para los objetivos de minería de datos especificados? ¿Qué atributos se han identificado como irrelevantes? ¿Cuántos atributos podemos manejar con las técnicas elegidas?)\nSeleccionar tablas/archivos de interés\nSeleccionar datos dentro de una tabla/archivo\nPiense en cuánto tiempo se debe utilizar un historial (por ejemplo, aunque se disponga de 18 meses de datos, es posible que sólo se necesiten 12 meses para el ejercicio).\n\nTenga en cuenta que los datos recopilados de diferentes fuentes pueden dar lugar a problemas de calidad cuando se fusionan (por ejemplo, los archivos de direcciones fusionados con una base de datos de clientes pueden mostrar inconsistencias de formato, invalidez de los datos, etc.).\n\n\nInserción de datos\n\nSi los datos contienen campos de ‘free text’, ¿necesitamos codificarlos para el modelado o queremos agrupar entradas específicas?\n¿Cómo se pueden adquirir los atributos faltantes?\n¿Cómo podemos extraer mejor los datos?\n\nRecuerde que algunos conocimientos sobre los datos pueden provenir de fuentes no electrónicas (por ejemplo, de personas, texto impreso, etc.).\nRecuerde que puede ser necesario preprocesar los datos (datos de series temporales, promedios ponderados, etc.)."
+  },
+  {
+    "objectID": "CRISP-DM.html#describir-los-datos",
+    "href": "CRISP-DM.html#describir-los-datos",
+    "title": "Título del Proyecto",
+    "section": "Describir los datos",
+    "text": "Describir los datos\nExaminar las propiedades “brutas” de los datos adquiridos e informar sobre los resultados.\n\nInforme de descripción de datos\nDescriba los datos que se han adquirido, incluyendo el formato de los datos, la cantidad de datos (por ejemplo, el número de registros y campos dentro de cada tabla), las identidades de los campos y cualquier otra característica que se haya descubierto.\n\nAnálisis volumétrico de datos\n\nIdentificar los datos y el método de captura\nAcceso a fuentes de datos\nUsar análisis estadísticos si es necesario\nReportar las tablas y sus relaciones\nComprobar el volumen de datos, el número de múltiplos, la complejidad\nTenga en cuenta si los datos contienen campos ‘free text’\n\n\n\nTipos de atributos y valores\n\nComprobar la accesibilidad y disponibilidad de los atributos\nComprobar los tipos de atributos (numéricos, simbólicos, taxonómicos, etc.)\nVerificar los rangos de valores de los atributos\nAnalizar las correlaciones de atributos\nComprender el significado de cada atributo y valor del atributo en términos de negocio.\nPara cada atributo, calcular estadísticas básicas (por ejemplo, distribución, promedio, máximo, mínimo, desviación estándar, varianza, moda, asimetría, etc.).\nAnalizar las estadísticas básicas y relacionar los resultados con su significado en términos de negocio.\nDecidir si el atributo es relevante para el objetivo específico de la minería de datos.\nDeterminar si el significado del atributo se usa consistentemente\nEntrevistar a los expertos de dominio para obtener su opinión sobre la importancia de los atributos.\nDecidir si es necesario balancear los datos (en base a las técnicas de modelado).\n\n\n\nClaves\n\nAnalizar las relaciones claves\nComprobar la cantidad de solapamientos de los atributos clave en las tablas.\n\n\n\nRevisar los supuestos/objetivos\n\nActualizar la lista de supuestos, si es necesario"
+  },
+  {
+    "objectID": "CRISP-DM.html#explorar-los-datos",
+    "href": "CRISP-DM.html#explorar-los-datos",
+    "title": "Título del Proyecto",
+    "section": "Explorar los datos",
+    "text": "Explorar los datos\nEsta tarea aborda las preguntas de la minería de datos que pueden abordarse mediante técnicas de consulta, visualización y generación de informes. Estos análisis pueden abordar directamente los objetivos de la minería de datos. Sin embargo, también pueden contribuir a la descripción de los datos y los informes de calidad, o perfeccionarlos, y contribuir a la transformación y a otras medidas de preparación de los datos necesarias antes de que puedan realizarse análisis adicionales.\n\nInforme de exploración de datos\nDescribir los resultados de esta tarea, incluyendo los hallazgos o hipótesis iniciales y su impacto en el resto del proyecto. El informe también puede incluir gráficos que indican las características de los datos o apuntan a subconjuntos de datos interesantes que merecen un examen más detallado.\n\nExploración de datos\n\nAnalizar propiedades de atributos interesantes en detalle (por ejemplo, estadísticas básicas, subpoblaciones interesantes).\nIdentificar las características de las subpoblaciones\n\n\n\nFormar suposiciones para análisis futuros\n\nEvaluar la información y los hallazgos en el informe de descripción de datos.\nFormular una hipótesis e identificar acciones\nTransformar la hipótesis en una meta de minería de datos, si es posible.\nAclarar los objetivos de la minería de datos o hacerlos más precisos. Una búsqueda “ciega” no es necesariamente inútil, pero es preferible una búsqueda más dirigida hacia los objetivos del negocio.\nRealizar análisis básicos para verificar la hipótesis"
+  },
+  {
+    "objectID": "CRISP-DM.html#verificar-la-calidad-de-los-datos",
+    "href": "CRISP-DM.html#verificar-la-calidad-de-los-datos",
+    "title": "Título del Proyecto",
+    "section": "Verificar la calidad de los datos",
+    "text": "Verificar la calidad de los datos\nExaminar la calidad de los datos, abordando preguntas como: ¿Están completos los datos (cubre todos los casos requeridos)? ¿Están correctos o contienen errores? Si hay errores, ¿qué tan comunes son? ¿Hay valores faltantes en los datos? Si es así, ¿cómo se representan, dónde ocurren y qué tan comunes son?\n\nInforme de calidad de datos\nListar los resultados de la verificación de calidad de los datos; si hay problemas de calidad, enumerar las posibles soluciones.\n\nIdentificar valores especiales y catalogar su significado\n\n\nRevisar claves, atributos\n\nVerificar la cobertura (por ejemplo, si se representan todos los valores posibles)\nVerificar claves\nVerificar que los significados de los atributos y los valores contenidos encajan entre sí\nIdentificar atributos faltantes y campos en blanco\nEstablecer el significado de los datos faltantes\nCompruebe si hay atributos con valores diferentes que tengan significados similares (por ejemplo, bajo en grasa, dieta).\nRevisar la ortografía y el formato de los valores (por ejemplo, el mismo valor, pero a veces comenzando con una letra minúscula, a veces con una mayúscula).\nComprobar si hay desviaciones y decidir si una desviación es “ruido” o puede indicar un fenómeno interesante.\nVerificar la plausibilidad de los valores (por ejemplo, todos los campos que tienen los mismos o casi los mismos valores).\n\nRevise cualquier atributo que entre en conflicto con el sentido común (por ejemplo, adolescentes con altos niveles de ingresos).\nUtilice gráficas de visualización, histogramas, etc. para revelar inconsistencias en los datos.\n\n\nCalidad de datos en archivos planos\n\nSi los datos se almacenan en archivos planos, compruebe qué delimitador se utiliza y si se utiliza de forma coherente dentro de todos los atributos.\nSi los datos se almacenan en archivos planos, compruebe el número de campos de cada registro para ver si coinciden.\n\n\n\nRuido e inconsistencias entre las fuentes\n\nVerificar consistencias y redundancias entre diferentes fuentes.\nPlan para lidiar con el ruido\nDetectar el tipo de ruido y qué atributos se ven afectados\n\nRecuerde que puede ser necesario excluir algunos datos que no muestran un comportamiento positivo o negativo (por ejemplo, para comprobar el comportamiento de los clientes en materia de préstamos, excluir a todos aquellos que nunca han pedido prestado, ni financiado una hipoteca de vivienda, aquellos cuya hipoteca está a punto de vencer, etc.).\nRevisar si los supuestos son válidos o no, dada la información actual sobre los datos y el conocimiento del negocio."
+  },
+  {
+    "objectID": "CRISP-DM.html#seleccionar-datos",
+    "href": "CRISP-DM.html#seleccionar-datos",
+    "title": "Título del Proyecto",
+    "section": "Seleccionar datos",
+    "text": "Seleccionar datos\nDecidir qué datos se utilizarán para el análisis. Los criterios incluyen la relevancia para los objetivos de la minería de datos, la calidad y las restricciones técnicas, como los límites en el volumen de datos o los tipos de datos.\n\nJustificación de la inclusión/exclusión\nEnumere los datos que deben utilizarse/excluirse y las razones de estas decisiones.\n\nRecopilar datos adicionales (de diferentes fuentes internas y externas).\nRealizar pruebas de significancia y correlación para decidir si los campos deben ser incluidos.\nReconsiderar los criterios de selección de datos a la luz de las experiencias de calidad de datos y exploración de datos (es decir, tal vez desee incluir o excluir otros conjuntos de datos).\nReconsiderar los criterios de selección de datos a la luz de la experiencia del modelado (es decir, la evaluación del modelo puede mostrar que se necesitan otros conjuntos de datos).\nSeleccionar diferentes subconjuntos de datos (por ejemplo, diferentes atributos, sólo datos que cumplan ciertas condiciones).\nConsidere el uso de técnicas de muestreo (por ejemplo, una solución rápida puede implicar la división del conjunto de datos en datos de prueba y entrenamiento o la reducción del tamaño del conjunto de datos, si la herramienta no puede manejar el conjunto de datos completo. También puede ser útil tener muestras ponderadas para dar diferente importancia a diferentes atributos o a diferentes valores del mismo atributo.)\nDocumentar las razones de la inclusión/exclusión\nComprobar las técnicas disponibles para el muestreo de datos\n\nEn función de los criterios de selección de datos, decida si uno o más atributos son más importantes que otros y pondere los atributos en consecuencia. Decidir, basándose en el contexto (es decir, la aplicación, la herramienta, etc.), cómo manejar la ponderación."
+  },
+  {
+    "objectID": "CRISP-DM.html#limpieza-de-datos",
+    "href": "CRISP-DM.html#limpieza-de-datos",
+    "title": "Título del Proyecto",
+    "section": "Limpieza de datos",
+    "text": "Limpieza de datos\nElevar la calidad de los datos al nivel requerido por las técnicas de análisis seleccionadas. Esto puede implicar la selección de subconjuntos limpios de datos, la inserción de valores predeterminados adecuados, o técnicas más ambiciosas como la estimación de los datos que faltan mediante modelización.\n\nInforme de limpieza de datos\nDescriba las decisiones y acciones que se tomaron para abordar los problemas de calidad de datos reportados durante la tarea de verificación de la calidad de datos. Si los datos se van a utilizar en el ejercicio de extracción de datos, el informe debe abordar las cuestiones pendientes relativas a la calidad de los datos y el posible efecto que esto podría tener en los resultados.\n\nConsiderar cómo lidiar con cualquier tipo de ruido observado.\nCorregir, eliminar o ignorar el ruido\nDecidir cómo tratar con valores especiales y su significado. Los valores especiales pueden dar lugar a muchos resultados extraños y deben ser examinados cuidadosamente. Ejemplos de valores especiales podrían surgir al tomar los resultados de una encuesta donde algunas preguntas no fueron hechas o no fueron contestadas. Esto podría resultar en un valor de 99 para datos desconocidos. Por ejemplo, 99 por estado civil o afiliación política. También pueden surgir valores especiales cuando los datos están truncados, por ejemplo, 00 para personas de 100 años o todos los coches con 100.000 km en el cuentakilómetros.\nReconsiderar los criterios de selección de datos a la luz de las experiencias de limpieza de datos (es decir, puede que desee incluir o excluir otros conjuntos de datos).\n\nRecuerde que algunos campos pueden ser irrelevantes para los objetivos de la minería de datos y, por lo tanto, el ruido en esos campos no tiene importancia. Sin embargo, si el ruido se ignora por estas razones, debe documentarse completamente, ya que las circunstancias pueden cambiar más tarde."
+  },
+  {
+    "objectID": "CRISP-DM.html#construcción-de-datos",
+    "href": "CRISP-DM.html#construcción-de-datos",
+    "title": "Título del Proyecto",
+    "section": "Construcción de datos",
+    "text": "Construcción de datos\nEsta tarea incluye operaciones constructivas de preparación como la producción de atributos derivados, registros nuevos o valores transformados para atributos existentes.\n\nRevisar los mecanismos de construcción disponibles con la lista de herramientas sugeridas para el proyecto.\nDecidir si es mejor realizar la construcción dentro o fuera de la herramienta (es decir, cuál es más eficiente, exacta, repetible).\nReconsiderar los criterios de selección de datos a la luz de las experiencias de construcción de datos (es decir, puede incluir o excluir otros conjuntos de datos).\n\n\nAtributos derivados\nLos atributos derivados son atributos nuevos que se construyen a partir de uno o más atributos existentes en el mismo registro. Un ejemplo podría ser: área = longitud * anchura.\n¿Por qué debemos construir atributos derivados durante el curso de una investigación de minería de datos? No se debe pensar que sólo se deben utilizar datos de bases de datos u otras fuentes en la construcción de un modelo. Los atributos derivados pueden ser construidos porque:\n\nEl conocimiento de negocio nos convence de que algún hecho es importante y debe ser representado, aunque actualmente no tenemos ningún atributo que lo represente.\nEl algoritmo de modelado maneja sólo ciertos tipos de datos - por ejemplo, estamos usando regresión lineal y sospechamos que hay ciertas no linealidades que no se incluirán en el modelo.\nEl resultado de la fase de modelado sugiere que ciertos hechos no están siendo cubiertos.\n\n\nAtributos derivados\n\nDecidir si algún atributo debe ser normalizado (por ejemplo, cuando se utiliza un algoritmo de agrupación con edad e ingresos, en ciertas monedas, los ingresos dominarán).\nConsider adding new information on the relevant importance of attributes by adding new attributes (for example, attribute weights, weighted normalization)\n¿Cómo pueden construirse o imputarse los atributos que faltan? Decida el tipo de construcción (por ejemplo, agregado, promedio, inducción).\nAgregar nuevos atributos a los datos accedidos\n\nAntes de agregar Atributos Derivados, trate de determinar si y cómo facilitan el proceso del modelo o facilitan el algoritmo de modelado. Tal vez “ingresos por persona” sea un atributo mejor y más fácil de usar que “ingresos por hogar”. No derive atributos simplemente para reducir el número de atributos de entrada.\nOtro tipo de atributo derivado es la transformación de un solo atributo, que normalmente se realiza para adaptarse a las necesidades de las herramientas de modelado.\n\n\nTransformaciones de un solo atributo\n\nEspecificar los pasos de transformación necesarios (por ejemplo, cambiar un campo de un atributo numérico).\nRealizar pasos de transformación\n\nLas transformaciones pueden ser necesarias para cambiar rangos a campos simbólicos (por ejemplo, edades a rangos de edad) o campos simbólicos (“definitivamente sí”, “sí”, “no sé”, “no sé”) a valores numéricos. Las herramientas de modelado o los algoritmos a menudo las requieren.\n\n\n\nRegistros generados\nLos registros generados son registros completamente nuevos, que añaden nuevos conocimientos o representan nuevos datos que no están representados de otra manera (por ejemplo, habiendo segmentado los datos, puede ser útil generar un registro para representar al miembro prototípico de cada segmento para su posterior procesamiento).\nVerificar las técnicas disponibles si es necesario (por ejemplo, mecanismos para construir prototipos para cada segmento de datos)."
+  },
+  {
+    "objectID": "CRISP-DM.html#integración-de-datos",
+    "href": "CRISP-DM.html#integración-de-datos",
+    "title": "Título del Proyecto",
+    "section": "Integración de datos",
+    "text": "Integración de datos\nEstos son métodos para combinar información de múltiples tablas u otras fuentes para crear nuevos registros o valores.\n\nFusionar datos\nLa fusión de tablas se refiere a la unión de dos o más tablas que tienen información diferente sobre los mismos objetos. En esta etapa, también puede ser aconsejable generar nuevos registros. También se puede recomendar generar valores agregados.\nLa agregación se refiere a las operaciones en las que se calculan nuevos valores resumiendo la información de varios registros y/o tablas.\n\nComprobar si las herramientas de integración son capaces de integrar las fuentes de entrada según sea necesario.\nIntegrar fuentes y almacenar resultados\nReconsiderar los criterios de selección de datos a la luz de las experiencias de integración de datos (es decir, es posible que desee incluir o excluir otros conjuntos de datos).\n\nRecuerde que algunos datos pueden estar contenidos en un formato no electrónico."
+  },
+  {
+    "objectID": "CRISP-DM.html#formato-de-datos",
+    "href": "CRISP-DM.html#formato-de-datos",
+    "title": "Título del Proyecto",
+    "section": "Formato de datos",
+    "text": "Formato de datos\nLas transformaciones de formato se refieren principalmente a modificaciones sintácticas hechas a los datos que no cambian su significado, pero que pueden ser requeridas por la herramienta de modelado.\n\nDatos reformateados\nAlgunas herramientas tienen requisitos sobre el orden de los atributos, como que el primer campo sea un identificador único para cada registro o que el último campo sea el campo de resultados que el modelo debe predecir.\n\nReorganizando atributos\nAlgunas herramientas tienen requisitos sobre el orden de los atributos, como que el primer campo sea un identificador único para cada registro o que el último campo sea el campo de resultados que el modelo debe predecir.\n\n\nReordenar los registros\nPuede ser importante cambiar el orden de los registros en el conjunto de datos. Tal vez la herramienta de modelado requiera que los registros se ordenen de acuerdo con el valor del atributo de resultado.\n\n\nReformateado dentro del valor\n\nEstos son cambios puramente sintácticos realizados para satisfacer los requisitos de la herramienta de modelado específica.\nReconsiderar los criterios de selección de datos a la luz de las experiencias de limpieza de datos (es decir, puede que desee incluir o excluir otros conjuntos de datos)."
+  },
+  {
+    "objectID": "CRISP-DM.html#conjunto-de-datos",
+    "href": "CRISP-DM.html#conjunto-de-datos",
+    "title": "Título del Proyecto",
+    "section": "Conjunto de datos",
+    "text": "Conjunto de datos\nEstos son los conjuntos de datos producidos por la fase de preparación de datos, utilizados para la modelización o para los principales trabajos de análisis del proyecto.\n\nDescripción del conjunto de datos\nEsta es la descripción de los conjuntos de datos utilizados para el modelado o para el trabajo de análisis principal del proyecto."
+  },
+  {
+    "objectID": "CRISP-DM.html#selección-de-técnicas-de-modelado",
+    "href": "CRISP-DM.html#selección-de-técnicas-de-modelado",
+    "title": "Título del Proyecto",
+    "section": "Selección de técnicas de modelado",
+    "text": "Selección de técnicas de modelado\nComo primer paso en el modelado, seleccione la técnica de modelado inicial. Si se van a aplicar múltiples técnicas, realice esta tarea por separado para cada técnica.\nRecuerde que no todas las herramientas y técnicas son aplicables a todas y cada una de las tareas. Para ciertos problemas, sólo algunas técnicas son apropiadas (véase el Apéndice 2, donde se discuten con más detalle las técnicas apropiadas para ciertos tipos de problemas de minería de datos). Los “requisitos políticos” y otras restricciones limitan aún más las opciones disponibles para el ingeniero de minería de datos. Puede ser que sólo se disponga de una herramienta o técnica para resolver el problema, y que la herramienta no sea la mejor, desde un punto de vista técnico.\n\nTécnica de modelado\nRegistre la técnica de modelado real que se utiliza.\nElegir la técnica adecuada, teniendo en cuenta la herramienta seleccionada.\n\n\nModelando Suposiciones\nMuchas técnicas de modelado hacen suposiciones sobre los datos.\n\nDefinir los supuestos que la técnica ha incorporado sobre los datos (por ejemplo, calidad, formato, distribución).\nComparar estos supuestos con los del Informe de Descripción de Datos.\nAsegurarse de que estos supuestos se mantienen y volver a la fase de preparación de datos, si es necesario."
+  },
+  {
+    "objectID": "CRISP-DM.html#generar-el-diseño-de-pruebas",
+    "href": "CRISP-DM.html#generar-el-diseño-de-pruebas",
+    "title": "Título del Proyecto",
+    "section": "Generar el diseño de pruebas",
+    "text": "Generar el diseño de pruebas\nAntes de construir un modelo, es necesario definir un procedimiento para probar la calidad y validez del mismo. Por ejemplo, en tareas supervisadas de minería de datos como la clasificación, es común utilizar porcentajes de error como medidas de calidad para los modelos de minería. Por lo tanto, el diseño de las pruebas especifica que el conjunto de datos debe separarse en conjuntos de entrenamiento y pruebas. El modelo se construye sobre el equipo de entrenamiento y su calidad se estima sobre el equipo de prueba.\n\nDiseño de pruebas\nDescriba el plan previsto para el entrenamiento, prueba y validación de los modelos. Un componente principal del plan es decidir cómo dividir el conjunto de datos disponible en datos de entrenamiento, datos de prueba y datos de validación.\n\nComprobar los diseños de prueba existentes para cada objetivo de minería de datos por separado.\nDecidir los pasos necesarios (número de iteraciones, número de pliegues, etc.)\nPreparar los datos necesarios para la prueba"
+  },
+  {
+    "objectID": "CRISP-DM.html#construcción-del-modelo",
+    "href": "CRISP-DM.html#construcción-del-modelo",
+    "title": "Título del Proyecto",
+    "section": "Construcción del modelo",
+    "text": "Construcción del modelo\nEjecutar la herramienta de modelado en el conjunto de datos preparado para crear uno o más modelos.\n\nAjustes de parámetros\nCon cualquier herramienta de modelado, a menudo hay un gran número de parámetros que pueden ser ajustados. Enumere los parámetros y sus valores elegidos, junto con la justificación de la elección.\n\nAjustar los parámetros iniciales\nDocumentar las razones para elegir esos valores\n\n\n\nModelos\nEjecutar la herramienta de modelado en el conjunto de datos preparado para crear uno o más modelos.\n\nEjecutar la técnica seleccionada en el conjunto de datos de entrada para producir el modelo.\nResultados de la minería de datos después del proceso (por ejemplo, reglas de edición, árboles de visualización)\n\n\n\nDescripción del modelo\nDescribir el modelo resultante y evaluar su precisión, robustez y posibles deficiencias. Informe sobre la interpretación de los modelos y las dificultades encontradas.\n\nDescribir cualquier característica del modelo actual que pueda ser útil para el futuro.\nGrabar los ajustes de los parámetros utilizados para producir el modelo\nDescriba detalladamente el modelo y sus características especiales.\nPara los modelos basados en reglas, enumerar las reglas producidas, más cualquier evaluación de la precisión y cobertura por regla o por modelo general.\nPara modelos opacos, enumerar cualquier información técnica sobre el modelo (como la topología de la red neuronal) y cualquier descripción de comportamiento producida por el proceso de modelado (como la precisión o la sensibilidad).\nDescribir el comportamiento y la interpretación del modelo\nEstablecer conclusiones con respecto a los patrones en los datos (si los hay); a veces el modelo revela hechos importantes acerca de los datos sin un proceso de evaluación separado (por ejemplo, que el resultado o la conclusión se duplica en uno de los insumos)."
+  },
+  {
+    "objectID": "CRISP-DM.html#evaluación",
+    "href": "CRISP-DM.html#evaluación",
+    "title": "Título del Proyecto",
+    "section": "Evaluación",
+    "text": "Evaluación\nEl modelo debe ser evaluado ahora para asegurar que cumple con los criterios de éxito de la minería de datos y pasa los criterios de prueba deseados. Esta es una evaluación puramente técnica basada en el resultado de las tareas de modelado.\n\nEvaluación del modelo\nResuma los resultados de esta tarea, enumere las cualidades de los modelos generados (por ejemplo, en términos de precisión) y clasifique su calidad en relación entre sí.\n\nEvaluar los resultados con respecto a los criterios de evaluación\nResultados de la prueba con respecto a una estrategia de prueba (por ejemplo: entrenamiento y prueba, validación cruzada, bootstrapping, etc.).\nComparar los resultados de la evaluación y la interpretación\nCrear un ranking de resultados con respecto al éxito y a los criterios de evaluación.\nSeleccione los mejores modelos\nInterpretar los resultados en términos de negocio (en la medida de lo posible en esta fase).\nObtener comentarios de los expertos de dominio sobre los modelos\nComprobar la viabilidad del modelo\nComprobar el efecto sobre el objetivo de la minería de datos\nVerificar el modelo contra la base de conocimiento dada para ver si la información descubierta es novedosa y útil.\nComprobar la fiabilidad del resultado\nAnalizar el potencial de despliegue de cada resultado\nSi hay una descripción verbal del modelo generado (por ejemplo, mediante reglas), evalúe las reglas: ¿Son lógicos, son factibles, hay demasiados o muy pocos, ofenden el sentido común?\nEvaluar los resultados\nObtener información sobre por qué una determinada técnica de modelado y ciertos ajustes de parámetros conducen a buenos/malos resultados.\n\nSe pueden construir “Tablas de elevación” y “Tablas de ganancia” para determinar qué tan bien está prediciendo el modelo.\n\n\nAjuste revisado de parámetros\nDe acuerdo con la evaluación del modelo, revise los ajustes de los parámetros y ajústelos para la siguiente ejecución.\nAjuste los parámetros para producir mejores modelos."
+  },
+  {
+    "objectID": "CRISP-DM.html#evaluar-resultados",
+    "href": "CRISP-DM.html#evaluar-resultados",
+    "title": "Título del Proyecto",
+    "section": "Evaluar resultados",
+    "text": "Evaluar resultados\nEste paso evalúa el grado en que el modelo cumple con los objetivos de negocio, y busca determinar si hay alguna razón comercial por la cual este modelo es deficiente. Otra opción es probar los modelos en aplicaciones de prueba en la aplicación real, si las limitaciones de tiempo y presupuesto lo permiten.\nAdemás, la evaluación también valora otros resultados generados por la minería de datos. Los resultados de la minería de datos cubren modelos que están relacionados con los objetivos comerciales originales y todos los demás hallazgos. Algunos están relacionados con los objetivos comerciales originales, mientras que otros pueden revelar desafíos, información o pistas adicionales para futuros proyectos.\n\nEvaluación de los resultados de la minería de datos con respecto a los criterios de éxito del negocio\nResuma los resultados de la evaluación en términos de criterios de éxito comercial, incluyendo una declaración final relacionada con si el proyecto ya cumple con los objetivos comerciales iniciales.\n\nComprender los resultados de la minería de datos\nInterpretar los resultados en términos de la aplicación\nComprobar el efecto sobre el objetivo de la minería de datos\nRevisar el resultado de la minería de datos contra la base de conocimiento dada para ver si la información descubierta es novedosa y útil.\nEvaluar y valorar los resultados con respecto a los criterios de éxito empresarial (es decir, si el proyecto ha alcanzado los objetivos empresariales originales).\nComparar los resultados de la evaluación y la interpretación\nClasificar los resultados con respecto a los criterios de éxito del negocio\nComprobar el efecto del resultado en el objetivo de la aplicación inicial\nDeterminar si hay nuevos objetivos de negocio a ser abordados más adelante en el proyecto, o en nuevos proyectos.\nRecomendaciones de los estados para futuros proyectos de minería de datos\n\n\n\nModelos aprobados\nDespués de tener evaluados a los modelos con respecto a los criterios de éxito del negocio, seleccione y apruebe los modelos generados que cumplan con los criterios seleccionados."
+  },
+  {
+    "objectID": "CRISP-DM.html#proceso-de-revisión",
+    "href": "CRISP-DM.html#proceso-de-revisión",
+    "title": "Título del Proyecto",
+    "section": "Proceso de revisión",
+    "text": "Proceso de revisión\nEn este punto, el modelo resultante parece ser satisfactorio y satisfacer las necesidades del negocio. Ahora es apropiado hacer una revisión más completa de la participación en la minería de datos para determinar si hay algún factor o tarea importante que de alguna manera se haya pasado por alto. En esta etapa del ejercicio de minería de datos, la Revisión del Proceso toma la forma de una Revisión de Garantía de Calidad.\n\nRevisión del proceso\nResuma el proceso de revisión y haga una lista de las actividades que se han omitido y/o que deben repetirse.\n\nProporcionar una visión general del proceso de minería de datos utilizado\nAnalizar el proceso de minería de datos. Para cada etapa del proceso pregunte:\n\n¿Era necesario?\n¿Fue ejecutado de manera óptima?\n¿De qué manera podría mejorarse?\n\nIdentificar las fallas\nIdentificar los pasos engañosos\nIdentificar posibles acciones alternativas y/o caminos inesperados en el proceso\nRevisar los resultados de la minería de datos con respecto a los criterios de éxito del negocio"
+  },
+  {
+    "objectID": "CRISP-DM.html#determinar-los-siguientes-pasos",
+    "href": "CRISP-DM.html#determinar-los-siguientes-pasos",
+    "title": "Título del Proyecto",
+    "section": "Determinar los siguientes pasos",
+    "text": "Determinar los siguientes pasos\nBasándose en los resultados de la evaluación y en la revisión del proceso, el equipo del proyecto decide cómo proceder. Las decisiones que se deben tomar incluyen si se debe terminar este proyecto y pasar al despliegue, iniciar nuevas iteraciones o establecer nuevos proyectos de minería de datos.\n\nLista de posibles acciones\nEnumere las posibles acciones adicionales junto con las razones a favor y en contra de cada opción.\n\nAnalizar el potencial de despliegue de cada resultado\nEstimar el potencial de mejora del proceso actual\nRevisar los recursos restantes para determinar si permiten iteraciones de proceso adicionales (o si se pueden hacer disponibles recursos adicionales).\nRecomendar iteraciones alternativas\nRefinar el plan de proceso\n\n\n\nDecisiones\nDescriba las decisiones tomadas, junto con la justificación de las mismas.\n\nClasificar las posibles acciones\nSeleccione una de las acciones posibles\nDocumentar las razones de la elección"
+  },
+  {
+    "objectID": "CRISP-DM.html#planear-la-implementación",
+    "href": "CRISP-DM.html#planear-la-implementación",
+    "title": "Título del Proyecto",
+    "section": "Planear la implementación",
+    "text": "Planear la implementación\nEsta tarea comienza con los resultados de la evaluación y concluye con una estrategia para la implementación de los resultados de la minería de datos en el negocio.\n\nPlan de implementación\nResuma la estrategia de implementación, incluyendo los pasos necesarios y cómo llevarlos a cabo.\n\nResumir resultados que se pueden implementar\nDesarrollar y evaluar planes alternativos de despliegue\nDeterminar cómo se trasladará el conocimiento o la información a los usuarios.\nDecidir cómo se va a rastrear el uso del resultado y cómo se medirán sus beneficios (cuando corresponda).\nDecidir para cada modelo desplegable o resultado de software\nEstablecer cómo se desplegará el modelo o el resultado del software dentro de los sistemas de la organización.\nDeterminar cómo se va a monitorear su uso y cómo se medirán sus beneficios (cuando corresponda).\nIdentificar posibles problemas durante la implementación (trampas que deben evitarse)"
+  },
+  {
+    "objectID": "CRISP-DM.html#planear-el-monitoreo-y-mantenimiento",
+    "href": "CRISP-DM.html#planear-el-monitoreo-y-mantenimiento",
+    "title": "Título del Proyecto",
+    "section": "Planear el monitoreo y mantenimiento",
+    "text": "Planear el monitoreo y mantenimiento\nLa supervisión y el mantenimiento son cuestiones importantes si los resultados de la minería de datos se convierten en parte del negocio diario y de su entorno. . Para poder monitorear el despliegue de los resultados de la minería de datos, el proyecto necesita un plan detallado de monitoreo y mantenimiento. Este plan tiene en cuenta el tipo específico de despliegue.\n\nPlan de Monitoreo y Mantenimiento\nResuma la estrategia de monitoreo y mantenimiento, incluyendo los pasos necesarios y cómo llevarlos a cabo.\n\nCompruebe los aspectos dinámicos (es decir, ¿qué cosas podrían cambiar en el entorno?).\nDecidir cómo se monitoreará la precisión\nDeterminar cuando el resultado de la minería de datos o el modelo no debe ser utilizado más. Identificar los criterios (validez, umbral de precisión, nuevos datos, cambio en el dominio de la aplicación, etc.), y lo que debería suceder si el modelo o resultado ya no pudiera utilizarse. (actualizar el modelo, crear un nuevo proyecto de minería de datos, etc.).\n¿Los objetivos de negocio del uso del modelo cambiarán con el tiempo? Documentar completamente el problema inicial que el modelo intentaba resolver.\nDesarrollar un plan de monitoreo y mantenimiento."
+  },
+  {
+    "objectID": "CRISP-DM.html#producir-el-reporte-final",
+    "href": "CRISP-DM.html#producir-el-reporte-final",
+    "title": "Título del Proyecto",
+    "section": "Producir el reporte final",
+    "text": "Producir el reporte final\nAl final del proyecto, el equipo del proyecto redacta un informe final. Dependiendo del plan de implementación, este informe puede ser sólo un resumen del proyecto y su experiencia, o una presentación final de los resultados de la minería de datos.\n\nReporte final\nAl final del proyecto, habrá al menos un informe final en el que se reunirán todos los hilos conductores. Además de identificar los resultados obtenidos, el informe también debe describir el proceso, mostrar los costos incurridos, definir cualquier desviación del plan original, describir los planes de implementación y hacer recomendaciones para trabajos futuros. El contenido del informe depende en gran medida de la audiencia a la que se dirige.\n\nIdentificar qué informes son necesarios (presentación de diapositivas, resumen de la gestión, conclusiones detalladas, explicación de los modelos, etc.).\nAnalizar hasta qué punto se han cumplido los objetivos iniciales de la minería de datos\nIdentificar los grupos objetivo para el informe\nEsquema de la estructura y el contenido de los informes\nSeleccionar los hallazgos que se incluirán en los informes\nEscribir un informe\n\n\n\nPresentación final\nAdemás de un informe final, puede ser necesario hacer una presentación final para resumir el proyecto, por ejemplo, ante el patrocinador. La presentación normalmente contiene un subconjunto de la información contenida en el informe final, estructurada de manera diferente.\n\nDecidir el grupo objetivo para la presentación final y determinar si ya han recibido el informe final.\nSeleccionar qué elementos del informe final deben incluirse en la presentación final."
+  },
+  {
+    "objectID": "CRISP-DM.html#revisión-del-proyecto",
+    "href": "CRISP-DM.html#revisión-del-proyecto",
+    "title": "Título del Proyecto",
+    "section": "Revisión del proyecto",
+    "text": "Revisión del proyecto\nEvaluar lo que salió bien y lo que salió mal, lo que se hizo bien y lo que necesita ser mejorado.\n\nDocumentación de experiencias\nResuma la experiencia importante adquirida durante el proyecto. Por ejemplo, las trampas, los enfoques engañosos o los consejos para seleccionar las técnicas de minería de datos más adecuadas en situaciones similares podrían formar parte de esta documentación. En muchos proyectos, la documentación de la experiencia también cubre cualquier informe que haya sido escrito por miembros individuales del proyecto durante el proyecto.\n\nEntrevistar a todas las personas importantes involucradas en el proyecto y preguntarles sobre su experiencia durante el proyecto.\nSi los usuarios finales de la empresa trabajan con los resultados de la minería de datos, entrevistarlos: ¿Están satisfechos? ¿Qué podría haberse hecho mejor? ¿Necesitan apoyo adicional?\nResumir los comentarios y escribir la documentación de la experiencia.\nAnalizar el proceso (cosas que funcionaron bien, errores cometidos, lecciones aprendidas, etc.)\nDocumentar el proceso específico de minería de datos (¿Cómo pueden los resultados y la experiencia de la aplicación del modelo ser retroalimentados en el proceso?)\nGeneralizar a partir de los detalles para que la experiencia sea útil para futuros proyectos."
   }
 ]
