@@ -753,7 +753,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Lenguajes de programación sencillos.\n\n\n\nAltamente utilizados en la investigación y el sectores de la innovación.\n\n\n\n\nDe carácter abierto y colaborativo."
+    "text": "Lenguajes de programación sencillos.\n\n. . .\n\nAltamente utilizados en la investigación y el sectores de la innovación.\n\n. . .\n\nDe carácter abierto y colaborativo."
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-1",
@@ -788,7 +788,7 @@
     "href": "Presentacion/presentación_ejemplo.html#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "¿Qué podemos hacer con ellos en el campo de la sanidad?",
-    "text": "¿Qué podemos hacer con ellos en el campo de la sanidad?\n\n\nInvestigación sanitaria\n\n\n\n\nGestión y análisis de las Bases de datos\n\n\n\n\nGestión óptima de los recursos sanitarios\n\n\n\n\nDifusión óptima del conocimiento"
+    "text": "¿Qué podemos hacer con ellos en el campo de la sanidad?\n. . .\n\nInvestigación sanitaria\n\n. . .\n\nGestión y análisis de las Bases de datos\n\n. . .\n\nGestión óptima de los recursos sanitarios\n\n. . .\n\nDifusión óptima del conocimiento\n\n. . ."
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-5",
@@ -1040,21 +1040,21 @@
     "href": "Presentacion/presentación_ejemplo.html#section-26",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Ejemplo\n\n# Cargar librerías necesarias\nlibrary(dplyr)\nlibrary(caret)  # Para matriz de confusión\nlibrary(pROC)   # Para curva ROC\n\n# Descargar los datos del Titanic directamente desde un repositorio\nurl &lt;- \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\ntitanic_data &lt;- read.csv(url)\n\n# Seleccionar las variables relevantes y eliminar valores faltantes\ntitanic_clean &lt;- titanic_data %&gt;%\n  select(Survived, Sex, Age) %&gt;%\n  na.omit()\n\n# Convertir las variables categóricas en factores\ntitanic_clean$Survived &lt;- as.factor(titanic_clean$Survived)\ntitanic_clean$Sex &lt;- as.factor(titanic_clean$Sex)\n\n# Ajustar el modelo de regresión logística\nmodel &lt;- glm(Survived ~ Sex + Age, data = titanic_clean, family = binomial)\n\n# Generar probabilidades predichas\nprobabilities &lt;- predict(model, type = \"response\")\n\n# Clasificar según un umbral (por ejemplo, 0.5)\npredicted_classes &lt;- ifelse(probabilities &gt; 0.5, 1, 0)\n\n# Crear una matriz de confusión\nconf_matrix &lt;- confusionMatrix(as.factor(predicted_classes), titanic_clean$Survived)\n\n# Extraer sensibilidad y especificidad\nsummary(model)\nsensitivity &lt;- conf_matrix$byClass[\"Sensitivity\"]\nspecificity &lt;- conf_matrix$byClass[\"Specificity\"]\n\n# Mostrar resultados de sensibilidad y especificidad\ncat(\"Sensibilidad:\", sensitivity, \"\\n\")\ncat(\"Especificidad:\", specificity, \"\\n\")\n\n# Calcular la curva ROC\nroc_curve &lt;- roc(titanic_clean$Survived, probabilities)\n\n# Graficar la curva ROC\nplot(roc_curve, col = \"blue\", main = \"Curva ROC - Modelo Titanic\")\nabline(a = 0, b = 1, col = \"red\", lty = 2)  # Línea de referencia (clasificador aleatorio)\ntext(0.6, 0.4, paste(\"AUC =\", round(auc(roc_curve), 2)), col = \"blue\")"
+    "text": "Modelos típico: Regresión Lógistica.\n\\[\ny=\\frac{1}{1+e^{-(\\beta_{0}+\\beta_{1}*x_{1}+...+\\beta_{n}*x_{n})}}\n\\]"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-27",
     "href": "Presentacion/presentación_ejemplo.html#section-27",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Resultado\n\n\nCargando paquete requerido: lattice\n\n\n\nAdjuntando el paquete: 'caret'\n\n\nThe following objects are masked from 'package:DescTools':\n\n    MAE, RMSE\n\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAdjuntando el paquete: 'pROC'\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\n\n\nCall:\nglm(formula = Survived ~ Sex + Age, family = binomial, data = titanic_clean)\n\nCoefficients:\n             Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  1.277273   0.230169   5.549 2.87e-08 ***\nSexmale     -2.465920   0.185384 -13.302  &lt; 2e-16 ***\nAge         -0.005426   0.006310  -0.860     0.39    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 964.52  on 713  degrees of freedom\nResidual deviance: 749.96  on 711  degrees of freedom\nAIC: 755.96\n\nNumber of Fisher Scoring iterations: 4\n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
+    "text": "Ejemplo\n\n# Cargar librerías necesarias\nlibrary(dplyr)\nlibrary(caret)  # Para matriz de confusión\nlibrary(pROC)   # Para curva ROC\n\n# Descargar los datos del Titanic directamente desde un repositorio\nurl &lt;- \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\ntitanic_data &lt;- read.csv(url)\n\n# Seleccionar las variables relevantes y eliminar valores faltantes\ntitanic_clean &lt;- titanic_data %&gt;%\n  select(Survived, Sex, Age) %&gt;%\n  na.omit()\n\n# Convertir las variables categóricas en factores\ntitanic_clean$Survived &lt;- as.factor(titanic_clean$Survived)\ntitanic_clean$Sex &lt;- as.factor(titanic_clean$Sex)\n\n# Ajustar el modelo de regresión logística\nmodel &lt;- glm(Survived ~ Sex + Age, data = titanic_clean, family = binomial)\n\n# Generar probabilidades predichas\nprobabilities &lt;- predict(model, type = \"response\")\n\n# Clasificar según un umbral (por ejemplo, 0.5)\npredicted_classes &lt;- ifelse(probabilities &gt; 0.5, 1, 0)\n\n# Crear una matriz de confusión\nconf_matrix &lt;- confusionMatrix(as.factor(predicted_classes), titanic_clean$Survived)\n\n# Extraer sensibilidad y especificidad\nsummary(model)\nsensitivity &lt;- conf_matrix$byClass[\"Sensitivity\"]\nspecificity &lt;- conf_matrix$byClass[\"Specificity\"]\n\n# Mostrar resultados de sensibilidad y especificidad\ncat(\"Sensibilidad:\", sensitivity, \"\\n\")\ncat(\"Especificidad:\", specificity, \"\\n\")\n\n# Calcular la curva ROC\nroc_curve &lt;- roc(titanic_clean$Survived, probabilities)\n\n# Graficar la curva ROC\nplot(roc_curve, col = \"blue\", main = \"Curva ROC - Modelo Titanic\")\nabline(a = 0, b = 1, col = \"red\", lty = 2)  # Línea de referencia (clasificador aleatorio)\ntext(0.6, 0.4, paste(\"AUC =\", round(auc(roc_curve), 2)), col = \"blue\")"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-28",
     "href": "Presentacion/presentación_ejemplo.html#section-28",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Resultado: evaluación\n\n\nSensibilidad: 0.8490566 \n\n\nEspecificidad: 0.6793103 \n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
+    "text": "Resultado\n\n\nCargando paquete requerido: lattice\n\n\n\nAdjuntando el paquete: 'caret'\n\n\nThe following objects are masked from 'package:DescTools':\n\n    MAE, RMSE\n\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAdjuntando el paquete: 'pROC'\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\n\n\nCall:\nglm(formula = Survived ~ Sex + Age, family = binomial, data = titanic_clean)\n\nCoefficients:\n             Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  1.277273   0.230169   5.549 2.87e-08 ***\nSexmale     -2.465920   0.185384 -13.302  &lt; 2e-16 ***\nAge         -0.005426   0.006310  -0.860     0.39    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 964.52  on 713  degrees of freedom\nResidual deviance: 749.96  on 711  degrees of freedom\nAIC: 755.96\n\nNumber of Fisher Scoring iterations: 4\n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#otros-tipos-de-análisis",
@@ -1068,7 +1068,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-29",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Mineria de texto.\n\n\n\nAnálisis geoespaciales.\n\n\n\n\nEcuaciones diferenciales.\n\n\n\n\nProblemas de optimización.\n\n\n\n\nTeoría de juegos."
+    "text": "Resultado: evaluación\n\n\nSensibilidad: 0.8490566 \n\n\nEspecificidad: 0.6793103 \n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#fin-de-la-tercera-parte.",
@@ -1089,7 +1089,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-30",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Texto escrito (Revistas científicas).\n\n\n\nPonencias (Congresos y conferencias).\n\n\n\n\nInterna (Cuadro de mando).\n\n\n\n\nGlobal (Páginas web)."
+    "text": "Redes neuronales en Python\n\nUna red neuronal consiste en entrelazar nodos entre los datos de entrada y de salida, que aumenta la complejidad potencial de la regresión\nLa redes neuronales artificiales se utilizan para el PLN, para tratamiento de imágenes, etc"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#otros-usos",
@@ -1117,14 +1117,14 @@
     "href": "Presentacion/presentación_ejemplo.html#section-35",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Sólo el conocimiento nos dará libertad\n\nSólo la libertad nos dará la capacidad de cuidar\n\n\nConocimiento➡️ Libertad➡️ Cuidar"
+    "text": "Teoría de juegos\n\n\n\n\n\n\n\n\n\nbackward induction: [(Entrar), (Entrar, No entrar)]"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-36",
     "href": "Presentacion/presentación_ejemplo.html#section-36",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Conocimiento➡️ Libertad➡️ Cuidar\n\n\n\n\n\n9 de abril de 2025. Descubriendo R y Python en Osakidetza"
+    "text": "Texto escrito (Revistas científicas).\n\n. . .\n\nPonencias (Congresos y conferencias).\n\n. . .\n\nInterna (Cuadro de mando).\n\n. . .\n\nGlobal (Páginas web)."
   },
   {
     "objectID": "CRISP-DM.html",
@@ -1314,5 +1314,278 @@
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "En el café del turno..",
     "text": "En el café del turno..\n\n¡Comenzamos!"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section",
+    "href": "Presentacion/Presentacion UPP.html#section",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Las úlceras por presión son áreas de piel lesionada por permanecer en una misma posición durante demasiado tiempo\n. . .\n¿Cual es el origen?"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-1",
+    "href": "Presentacion/Presentacion UPP.html#section-1",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "¿Cual es el origen?"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-2",
+    "href": "Presentacion/Presentacion UPP.html#section-2",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": ". . .\n¿Qué podría ocurrir en la piel (cuerpo) con la presión?"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#clasificación-de-las-upp",
+    "href": "Presentacion/Presentacion UPP.html#clasificación-de-las-upp",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Clasificación de las UPP",
+    "text": "Clasificación de las UPP\n\n\nGrado I: Piel intacta pero enrojecida.\nGrado II: Piel NO intacta, afecta de forma superficial.\nGrado III: Piel NO intacta, afecta de forma profunda.\nGrado IV: Piel y músculo NO intactos, afecta a hueso.\n\n\n. . .\nCuestionario"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-5",
+    "href": "Presentacion/Presentacion UPP.html#section-5",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Cuestionario"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#que-más-le-puede-ocurrir-a-una-upp",
+    "href": "Presentacion/Presentacion UPP.html#que-más-le-puede-ocurrir-a-una-upp",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "¿Que más le puede ocurrir a una UPP?",
+    "text": "¿Que más le puede ocurrir a una UPP?\n\n\nExtienda por la zona\n\n\n\n\nNecrosis\n\n\n\n\n\nInfección"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#infecciones-de-las-upp",
+    "href": "Presentacion/Presentacion UPP.html#infecciones-de-las-upp",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Infecciones de las UPP",
+    "text": "Infecciones de las UPP\n\nColonizaciónBio-films\n\n\nDefinición: Presencia de microorganismos en el lecho de la herida.\n\n\nDefinición: Capa gruesa de microorganismos que generan una matriz extracelular y adheridas a un soporte solido."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#resumiendo-los-conceptos",
+    "href": "Presentacion/Presentacion UPP.html#resumiendo-los-conceptos",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Resumiendo los conceptos",
+    "text": "Resumiendo los conceptos"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-8",
+    "href": "Presentacion/Presentacion UPP.html#section-8",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Las UPP son lesiones de la piel producidas por la isquemia generada por la presión contra superficies duras.\n\n\n\n\nLas UPP ocurren generalmente en lugares donde hay menor “Cantidad” de piel.\n\n\n\n\nLas UPP ocurren generalmente cuando nos encontramos inmóviles."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-9",
+    "href": "Presentacion/Presentacion UPP.html#section-9",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Las UPP tienen distintos grados en función de su profundidad.\n\n\n\n\nLas UPP pueden evolucionar: Extenderse, hacerse mas profundas o infectarse"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#lo-primero-de-todo-la-herida",
+    "href": "Presentacion/Presentacion UPP.html#lo-primero-de-todo-la-herida",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Lo primero de todo: “La herida”",
+    "text": "Lo primero de todo: “La herida”"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-11",
+    "href": "Presentacion/Presentacion UPP.html#section-11",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "¿Dónde se encuentra ubicada la UPP?\n\n\n\n\n¿Cual es el grado de la UPP?\n\n\n\n\n¿Cual es la extensión de la UPP?\n\n\n\n\n¿Está infectada?\n\n\n\n\n¿Tiene exuado?"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-12",
+    "href": "Presentacion/Presentacion UPP.html#section-12",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Sacro\n\n\n\n\nII\n\n\n\n\n5cm * 5cm = 25 cm^2\n\n\n\n\nAparentemente No\n\n\n\n\nAparentemente No"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#lo-segundo-la-piel-perilesional",
+    "href": "Presentacion/Presentacion UPP.html#lo-segundo-la-piel-perilesional",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Lo segundo: “La piel perilesional”",
+    "text": "Lo segundo: “La piel perilesional”"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-14",
+    "href": "Presentacion/Presentacion UPP.html#section-14",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "¿Se encuentra íntegra?\n\n\n\nAparentemente Sí"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#lo-tercero-la-persona",
+    "href": "Presentacion/Presentacion UPP.html#lo-tercero-la-persona",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Lo tercero: “La persona”",
+    "text": "Lo tercero: “La persona”\n¿Que creéis que realizaremos en este apartado?\n. . ."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-15",
+    "href": "Presentacion/Presentacion UPP.html#section-15",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "¿Cuantos años tiene la persona?\n\n\n\n\n¿Cual es su grado de movilidad?\n\n\n\n\n¿Que enfermedades tiene?\n\n\n\n\n¿Que medicamentos toma?\n\n\n\n\n¿Que alimentación tiene?\n\n\n\n\n¿Que cuidados tiene?"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#descripción-general-de-la-upp",
+    "href": "Presentacion/Presentacion UPP.html#descripción-general-de-la-upp",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Descripción general de la UPP",
+    "text": "Descripción general de la UPP\n\nLa heridaLa piel perilesionalLa persona\n\n\n\nUPP de segundo grado (II) en zona sacra de 25 cm de área sin exudado aparente y sin infección aparente.\n\n\n\n\nZona perilesional integra.\n\n\n\n\nMujer de 95 años con un deterioro cognitivo avanzado, totalmente aparente e inmóvil. No controla esfinteres. Tiene problemas vasculares y toma Sintrom. Su alimentación es muy limitada. Se encuentra encamada con una cuidadora diurna."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#resumiendo-conceptos",
+    "href": "Presentacion/Presentacion UPP.html#resumiendo-conceptos",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Resumiendo conceptos",
+    "text": "Resumiendo conceptos"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-16",
+    "href": "Presentacion/Presentacion UPP.html#section-16",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Debemos describir la herida, la piel perilesional y a la persona.\n\n\n\n\nLa herida la describiremos indicando la ubicación, el grado de profundidad, el lecho de la herida, el exudado y la posible infección.\n\n\n\n\nLa piel periolesional la describiremos indicando si se encuentra íntegra, infectada y si se encuentra seca.\n\n\n\n\nLa personal al describiremos indicando las enfermedades, el tratamiento la nutrición y los tipos de cuidados que tiene."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#continuamos-con-nuestra-herida",
+    "href": "Presentacion/Presentacion UPP.html#continuamos-con-nuestra-herida",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Continuamos con nuestra herida",
+    "text": "Continuamos con nuestra herida"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#paso-0-conocer-el-dogma-de-las-heridas.",
+    "href": "Presentacion/Presentacion UPP.html#paso-0-conocer-el-dogma-de-las-heridas.",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Paso 0: Conocer el “Dogma” de las heridas.",
+    "text": "Paso 0: Conocer el “Dogma” de las heridas.\n. . .\nNosotros NO CURAMOS la herida, solamente le damos el mejor “ambiente” para que se cure.\n\n\n¿Como tratamos la herida?\n\n\n\n\n¿Como tratamos la piel perilesional?\n\n\n\n\n¿Como tratamos a la persona?"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#tratando-la-herida",
+    "href": "Presentacion/Presentacion UPP.html#tratando-la-herida",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "1. Tratando la herida",
+    "text": "1. Tratando la herida\n\nTipo de lechoLa infecciónEl exudadoLa presión\n\n\nEl lecho de la herida tiene que estar “limpio”.\n\n\nEl lecho de la herida tiene que estar libre de infección.\n\n\nNi mucho ni poco.\n\n\nNo tiene que haber presión."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#tratando-la-piel-perilesional",
+    "href": "Presentacion/Presentacion UPP.html#tratando-la-piel-perilesional",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "2. Tratando la piel perilesional",
+    "text": "2. Tratando la piel perilesional\nLa piel tiene que estar seca e integra."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#tratando-a-la-persona",
+    "href": "Presentacion/Presentacion UPP.html#tratando-a-la-persona",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "3. Tratando a la persona",
+    "text": "3. Tratando a la persona\nCambios posturales.\nMuy hidratación.\nBuena alimentación."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#caso-2",
+    "href": "Presentacion/Presentacion UPP.html#caso-2",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Caso 2",
+    "text": "Caso 2\n\n\n\n\n\nMujer de 67 años.\nDemencia cognitiva avanzada.\nBuena alimentación.\nNo toma medicación.\nTiene cuidadora por las noches."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#caso-3",
+    "href": "Presentacion/Presentacion UPP.html#caso-3",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Caso 3",
+    "text": "Caso 3\n\n\n\n\n\nHombre de 80 años.\nDemencia cognitiva avanzada.\nMalnutrición.\nNo tiene cuidador.\nToma Sintrom."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#resumiendo-conceptos-1",
+    "href": "Presentacion/Presentacion UPP.html#resumiendo-conceptos-1",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Resumiendo conceptos",
+    "text": "Resumiendo conceptos"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-19",
+    "href": "Presentacion/Presentacion UPP.html#section-19",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "No curamos solo ayudamos a mejorar las condiciones.\n\n\n\n\nTrataremos el lecho de la herida. Controlaremos la infección y el tejido desvitalizado. Aportaremos y controlaremos el exudado. Controlaremos el olor. Controlaremos la presión.\n\n\n\n\nNo limpiaremos de forma continua.\n\n\n\n\nMantendremos la piel perilesional limpiea y seca.\n\n\n\n\nAplicaremos cambios posturales, vigilaremos la nutrición."
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#limitaciones",
+    "href": "Presentacion/Presentacion UPP.html#limitaciones",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "Limitaciones",
+    "text": "Limitaciones\n\nConsecuencias físicas\n\nDolor.\nInfecciones graves.\nAmputaciones.\n…\n\n\n\nConsecuencias psicológicas\n\nDepresiones.\nAnsiedad.\n…\n\n\n\nConsecuencias sociales\n\nAislamiento.\nEstigma.\n…"
+  },
+  {
+    "objectID": "Presentacion/Presentacion UPP.html#section-20",
+    "href": "Presentacion/Presentacion UPP.html#section-20",
+    "title": "Úlceras por Presión en Centros Socio Sanitarios",
+    "section": "",
+    "text": "Social\n\n\nPersona\n\n\nPiel perilesional\n\n\nHerida"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-32",
+    "href": "Presentacion/presentación_ejemplo.html#section-32",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Modelos de epidemiología (SIR)\n\\[\\begin{equation}\n\\frac{\\textit{d}S}{\\textit{dt}} =-\\lambda \\cdot S \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\frac{\\textit{d}I}{\\textit{dt}} =\\lambda \\cdot S - \\gamma \\cdot I \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\frac{\\textit{d}R}{\\textit{dt}} =\\gamma \\cdot I \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\lambda= \\beta \\cdot \\frac{I}{N} \\nonumber\n\\end{equation}\\]"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-34",
+    "href": "Presentacion/presentación_ejemplo.html#section-34",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Mineria de texto.\n\n. . .\n\nAnálisis geoespaciales.\n\n. . .\n\nProblemas de optimización."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#más-usos",
+    "href": "Presentacion/presentación_ejemplo.html#más-usos",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Más usos",
+    "text": "Más usos"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#creación-de-programas-informáticos",
+    "href": "Presentacion/presentación_ejemplo.html#creación-de-programas-informáticos",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Creación de programas informáticos",
+    "text": "Creación de programas informáticos\n\nInformaciónEjemplos\n\n\n\nTanto Python como R son muy útiles para la creación de aplicaciones web, a través de frameworks\nPython soporta frameworks como Django o Flask, y R, Shiny\nApps como Spotify o Instagram se han programado usando estos frameworks"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#fin-de-la-cuarta-parte.",
+    "href": "Presentacion/presentación_ejemplo.html#fin-de-la-cuarta-parte.",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "Fin de la cuarta parte.",
+    "text": "Fin de la cuarta parte.\n(Sorbo de café)"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-38",
+    "href": "Presentacion/presentación_ejemplo.html#section-38",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Revisión de la literatura\n\n\nRecogida de datos\n\n\nAnálisis de datos\n\n\nDifusión"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-40",
+    "href": "Presentacion/presentación_ejemplo.html#section-40",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Sólo el conocimiento nos dará libertad\n. . .\nSólo la libertad nos dará la capacidad de cuidar\n. . .\nConocimiento➡️ Libertad➡️ Cuidar"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-41",
+    "href": "Presentacion/presentación_ejemplo.html#section-41",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Conocimiento➡️ Libertad➡️ Cuidar"
   }
 ]
