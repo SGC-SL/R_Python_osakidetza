@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Autor">
+
+<title>Título del Proyecto – R y Python en Osakidetza</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Logo_2.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./imagenes/Logo_2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">R y Python en Osakidetza</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-primeros-pasos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Primeros pasos</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-primeros-pasos">    
+        <li>
+    <a class="dropdown-item" href="./flujo_trabajo.html">
+ <span class="dropdown-text">Flujo de trabajo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./interfaz_trabajo.html">
+ <span class="dropdown-text">Interfaces</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gestión-y-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gestión y Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gestión-y-análisis">    
+        <li>
+    <a class="dropdown-item" href="./Gestion_dato.html">
+ <span class="dropdown-text">Obtención y gestión Datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./estadistica.html">
+ <span class="dropdown-text">Análisis estadísticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./mas_usos.html">
+ <span class="dropdown-text">Más usos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-difusión-resultados" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Difusión resultados</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-difusión-resultados">    
+        <li>
+    <a class="dropdown-item" href="./difusion_propia.html">
+ <span class="dropdown-text">Difusión propia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./difusion_externa.html">
+ <span class="dropdown-text">Difusión de conocimientos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.osakidetza.euskadi.eus/portada-hospital-santa-marina/"> <i class="bi bi-globe2" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#comprensión-del-negocio" id="toc-comprensión-del-negocio" class="nav-link active" data-scroll-target="#comprensión-del-negocio">Comprensión del negocio</a>
+  <ul class="collapse">
+  <li><a href="#establecimiento-de-los-objetivos-del-negocio" id="toc-establecimiento-de-los-objetivos-del-negocio" class="nav-link" data-scroll-target="#establecimiento-de-los-objetivos-del-negocio">Establecimiento de los objetivos del negocio</a>
+  <ul class="collapse">
+  <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto">Contexto</a></li>
+  <li><a href="#objetivos-del-negocio" id="toc-objetivos-del-negocio" class="nav-link" data-scroll-target="#objetivos-del-negocio">Objetivos del negocio</a></li>
+  <li><a href="#criterios-de-éxito-del-negocio" id="toc-criterios-de-éxito-del-negocio" class="nav-link" data-scroll-target="#criterios-de-éxito-del-negocio">Criterios de éxito del negocio</a></li>
+  </ul></li>
+  <li><a href="#evaluación-de-la-situación" id="toc-evaluación-de-la-situación" class="nav-link" data-scroll-target="#evaluación-de-la-situación">Evaluación de la situación</a>
+  <ul class="collapse">
+  <li><a href="#inventario-de-recursos" id="toc-inventario-de-recursos" class="nav-link" data-scroll-target="#inventario-de-recursos">Inventario de recursos</a></li>
+  <li><a href="#requisitos-suposiciones-y-restricciones" id="toc-requisitos-suposiciones-y-restricciones" class="nav-link" data-scroll-target="#requisitos-suposiciones-y-restricciones">Requisitos, suposiciones y restricciones</a></li>
+  <li><a href="#riesgos-y-contingencias" id="toc-riesgos-y-contingencias" class="nav-link" data-scroll-target="#riesgos-y-contingencias">Riesgos y Contingencias</a></li>
+  <li><a href="#terminología" id="toc-terminología" class="nav-link" data-scroll-target="#terminología">Terminología</a></li>
+  <li><a href="#beneficios-y-costos" id="toc-beneficios-y-costos" class="nav-link" data-scroll-target="#beneficios-y-costos">Beneficios y costos</a></li>
+  </ul></li>
+  <li><a href="#determinar-los-objetivos-de-la-minería-de-datos" id="toc-determinar-los-objetivos-de-la-minería-de-datos" class="nav-link" data-scroll-target="#determinar-los-objetivos-de-la-minería-de-datos">Determinar los objetivos de la minería de datos</a>
+  <ul class="collapse">
+  <li><a href="#objetivos-de-la-minería-de-datos" id="toc-objetivos-de-la-minería-de-datos" class="nav-link" data-scroll-target="#objetivos-de-la-minería-de-datos">Objetivos de la minería de datos</a></li>
+  <li><a href="#criterios-de-éxito-para-la-minería-de-datos" id="toc-criterios-de-éxito-para-la-minería-de-datos" class="nav-link" data-scroll-target="#criterios-de-éxito-para-la-minería-de-datos">Criterios de éxito para la minería de datos</a></li>
+  </ul></li>
+  <li><a href="#generación-del-plan-de-proyecto" id="toc-generación-del-plan-de-proyecto" class="nav-link" data-scroll-target="#generación-del-plan-de-proyecto">Generación del plan de proyecto</a>
+  <ul class="collapse">
+  <li><a href="#plan-de-proyecto" id="toc-plan-de-proyecto" class="nav-link" data-scroll-target="#plan-de-proyecto">Plan de proyecto</a></li>
+  <li><a href="#evaluación-inicial-de-herramientas-y-técnicas" id="toc-evaluación-inicial-de-herramientas-y-técnicas" class="nav-link" data-scroll-target="#evaluación-inicial-de-herramientas-y-técnicas">Evaluación inicial de herramientas y técnicas</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#comprensión-de-los-datos" id="toc-comprensión-de-los-datos" class="nav-link" data-scroll-target="#comprensión-de-los-datos">Comprensión de los datos</a>
+  <ul class="collapse">
+  <li><a href="#recopilación-de-datos-iniciales" id="toc-recopilación-de-datos-iniciales" class="nav-link" data-scroll-target="#recopilación-de-datos-iniciales">Recopilación de datos iniciales</a>
+  <ul class="collapse">
+  <li><a href="#informe-inicial-de-recopilación-de-datos" id="toc-informe-inicial-de-recopilación-de-datos" class="nav-link" data-scroll-target="#informe-inicial-de-recopilación-de-datos">Informe inicial de recopilación de datos</a></li>
+  </ul></li>
+  <li><a href="#describir-los-datos" id="toc-describir-los-datos" class="nav-link" data-scroll-target="#describir-los-datos">Describir los datos</a>
+  <ul class="collapse">
+  <li><a href="#informe-de-descripción-de-datos" id="toc-informe-de-descripción-de-datos" class="nav-link" data-scroll-target="#informe-de-descripción-de-datos">Informe de descripción de datos</a></li>
+  </ul></li>
+  <li><a href="#explorar-los-datos" id="toc-explorar-los-datos" class="nav-link" data-scroll-target="#explorar-los-datos">Explorar los datos</a>
+  <ul class="collapse">
+  <li><a href="#informe-de-exploración-de-datos" id="toc-informe-de-exploración-de-datos" class="nav-link" data-scroll-target="#informe-de-exploración-de-datos">Informe de exploración de datos</a></li>
+  </ul></li>
+  <li><a href="#verificar-la-calidad-de-los-datos" id="toc-verificar-la-calidad-de-los-datos" class="nav-link" data-scroll-target="#verificar-la-calidad-de-los-datos">Verificar la calidad de los datos</a>
+  <ul class="collapse">
+  <li><a href="#informe-de-calidad-de-datos" id="toc-informe-de-calidad-de-datos" class="nav-link" data-scroll-target="#informe-de-calidad-de-datos">Informe de calidad de datos</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#preparación-de-datos" id="toc-preparación-de-datos" class="nav-link" data-scroll-target="#preparación-de-datos">Preparación de datos</a>
+  <ul class="collapse">
+  <li><a href="#seleccionar-datos" id="toc-seleccionar-datos" class="nav-link" data-scroll-target="#seleccionar-datos">Seleccionar datos</a>
+  <ul class="collapse">
+  <li><a href="#justificación-de-la-inclusiónexclusión" id="toc-justificación-de-la-inclusiónexclusión" class="nav-link" data-scroll-target="#justificación-de-la-inclusiónexclusión">Justificación de la inclusión/exclusión</a></li>
+  </ul></li>
+  <li><a href="#limpieza-de-datos" id="toc-limpieza-de-datos" class="nav-link" data-scroll-target="#limpieza-de-datos">Limpieza de datos</a>
+  <ul class="collapse">
+  <li><a href="#informe-de-limpieza-de-datos" id="toc-informe-de-limpieza-de-datos" class="nav-link" data-scroll-target="#informe-de-limpieza-de-datos">Informe de limpieza de datos</a></li>
+  </ul></li>
+  <li><a href="#construcción-de-datos" id="toc-construcción-de-datos" class="nav-link" data-scroll-target="#construcción-de-datos">Construcción de datos</a>
+  <ul class="collapse">
+  <li><a href="#atributos-derivados" id="toc-atributos-derivados" class="nav-link" data-scroll-target="#atributos-derivados">Atributos derivados</a></li>
+  <li><a href="#registros-generados" id="toc-registros-generados" class="nav-link" data-scroll-target="#registros-generados">Registros generados</a></li>
+  </ul></li>
+  <li><a href="#integración-de-datos" id="toc-integración-de-datos" class="nav-link" data-scroll-target="#integración-de-datos">Integración de datos</a>
+  <ul class="collapse">
+  <li><a href="#fusionar-datos" id="toc-fusionar-datos" class="nav-link" data-scroll-target="#fusionar-datos">Fusionar datos</a></li>
+  </ul></li>
+  <li><a href="#formato-de-datos" id="toc-formato-de-datos" class="nav-link" data-scroll-target="#formato-de-datos">Formato de datos</a>
+  <ul class="collapse">
+  <li><a href="#datos-reformateados" id="toc-datos-reformateados" class="nav-link" data-scroll-target="#datos-reformateados">Datos reformateados</a></li>
+  </ul></li>
+  <li><a href="#conjunto-de-datos" id="toc-conjunto-de-datos" class="nav-link" data-scroll-target="#conjunto-de-datos">Conjunto de datos</a></li>
+  </ul></li>
+  <li><a href="#modelado" id="toc-modelado" class="nav-link" data-scroll-target="#modelado">Modelado</a>
+  <ul class="collapse">
+  <li><a href="#selección-de-técnicas-de-modelado" id="toc-selección-de-técnicas-de-modelado" class="nav-link" data-scroll-target="#selección-de-técnicas-de-modelado">Selección de técnicas de modelado</a>
+  <ul class="collapse">
+  <li><a href="#técnica-de-modelado" id="toc-técnica-de-modelado" class="nav-link" data-scroll-target="#técnica-de-modelado">Técnica de modelado</a></li>
+  <li><a href="#modelando-suposiciones" id="toc-modelando-suposiciones" class="nav-link" data-scroll-target="#modelando-suposiciones">Modelando Suposiciones</a></li>
+  </ul></li>
+  <li><a href="#generar-el-diseño-de-pruebas" id="toc-generar-el-diseño-de-pruebas" class="nav-link" data-scroll-target="#generar-el-diseño-de-pruebas">Generar el diseño de pruebas</a>
+  <ul class="collapse">
+  <li><a href="#diseño-de-pruebas" id="toc-diseño-de-pruebas" class="nav-link" data-scroll-target="#diseño-de-pruebas">Diseño de pruebas</a></li>
+  </ul></li>
+  <li><a href="#construcción-del-modelo" id="toc-construcción-del-modelo" class="nav-link" data-scroll-target="#construcción-del-modelo">Construcción del modelo</a>
+  <ul class="collapse">
+  <li><a href="#ajustes-de-parámetros" id="toc-ajustes-de-parámetros" class="nav-link" data-scroll-target="#ajustes-de-parámetros">Ajustes de parámetros</a></li>
+  <li><a href="#modelos" id="toc-modelos" class="nav-link" data-scroll-target="#modelos">Modelos</a></li>
+  <li><a href="#descripción-del-modelo" id="toc-descripción-del-modelo" class="nav-link" data-scroll-target="#descripción-del-modelo">Descripción del modelo</a></li>
+  </ul></li>
+  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación">Evaluación</a>
+  <ul class="collapse">
+  <li><a href="#evaluación-del-modelo" id="toc-evaluación-del-modelo" class="nav-link" data-scroll-target="#evaluación-del-modelo">Evaluación del modelo</a></li>
+  <li><a href="#ajuste-revisado-de-parámetros" id="toc-ajuste-revisado-de-parámetros" class="nav-link" data-scroll-target="#ajuste-revisado-de-parámetros">Ajuste revisado de parámetros</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#evaluación-1" id="toc-evaluación-1" class="nav-link" data-scroll-target="#evaluación-1">Evaluación</a>
+  <ul class="collapse">
+  <li><a href="#evaluar-resultados" id="toc-evaluar-resultados" class="nav-link" data-scroll-target="#evaluar-resultados">Evaluar resultados</a>
+  <ul class="collapse">
+  <li><a href="#evaluación-de-los-resultados-de-la-minería-de-datos-con-respecto-a-los-criterios-de-éxito-del-negocio" id="toc-evaluación-de-los-resultados-de-la-minería-de-datos-con-respecto-a-los-criterios-de-éxito-del-negocio" class="nav-link" data-scroll-target="#evaluación-de-los-resultados-de-la-minería-de-datos-con-respecto-a-los-criterios-de-éxito-del-negocio">Evaluación de los resultados de la minería de datos con respecto a los criterios de éxito del negocio</a></li>
+  <li><a href="#modelos-aprobados" id="toc-modelos-aprobados" class="nav-link" data-scroll-target="#modelos-aprobados">Modelos aprobados</a></li>
+  </ul></li>
+  <li><a href="#proceso-de-revisión" id="toc-proceso-de-revisión" class="nav-link" data-scroll-target="#proceso-de-revisión">Proceso de revisión</a>
+  <ul class="collapse">
+  <li><a href="#revisión-del-proceso" id="toc-revisión-del-proceso" class="nav-link" data-scroll-target="#revisión-del-proceso">Revisión del proceso</a></li>
+  </ul></li>
+  <li><a href="#determinar-los-siguientes-pasos" id="toc-determinar-los-siguientes-pasos" class="nav-link" data-scroll-target="#determinar-los-siguientes-pasos">Determinar los siguientes pasos</a>
+  <ul class="collapse">
+  <li><a href="#lista-de-posibles-acciones" id="toc-lista-de-posibles-acciones" class="nav-link" data-scroll-target="#lista-de-posibles-acciones">Lista de posibles acciones</a></li>
+  <li><a href="#decisiones" id="toc-decisiones" class="nav-link" data-scroll-target="#decisiones">Decisiones</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#implementación" id="toc-implementación" class="nav-link" data-scroll-target="#implementación">Implementación</a>
+  <ul class="collapse">
+  <li><a href="#planear-la-implementación" id="toc-planear-la-implementación" class="nav-link" data-scroll-target="#planear-la-implementación">Planear la implementación</a>
+  <ul class="collapse">
+  <li><a href="#plan-de-implementación" id="toc-plan-de-implementación" class="nav-link" data-scroll-target="#plan-de-implementación">Plan de implementación</a></li>
+  </ul></li>
+  <li><a href="#planear-el-monitoreo-y-mantenimiento" id="toc-planear-el-monitoreo-y-mantenimiento" class="nav-link" data-scroll-target="#planear-el-monitoreo-y-mantenimiento">Planear el monitoreo y mantenimiento</a>
+  <ul class="collapse">
+  <li><a href="#plan-de-monitoreo-y-mantenimiento" id="toc-plan-de-monitoreo-y-mantenimiento" class="nav-link" data-scroll-target="#plan-de-monitoreo-y-mantenimiento">Plan de Monitoreo y Mantenimiento</a></li>
+  </ul></li>
+  <li><a href="#producir-el-reporte-final" id="toc-producir-el-reporte-final" class="nav-link" data-scroll-target="#producir-el-reporte-final">Producir el reporte final</a>
+  <ul class="collapse">
+  <li><a href="#reporte-final" id="toc-reporte-final" class="nav-link" data-scroll-target="#reporte-final">Reporte final</a></li>
+  <li><a href="#presentación-final" id="toc-presentación-final" class="nav-link" data-scroll-target="#presentación-final">Presentación final</a></li>
+  </ul></li>
+  <li><a href="#revisión-del-proyecto" id="toc-revisión-del-proyecto" class="nav-link" data-scroll-target="#revisión-del-proyecto">Revisión del proyecto</a>
+  <ul class="collapse">
+  <li><a href="#documentación-de-experiencias" id="toc-documentación-de-experiencias" class="nav-link" data-scroll-target="#documentación-de-experiencias">Documentación de experiencias</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Título del Proyecto</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Autor </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="comprensión-del-negocio" class="level1">
+<h1>Comprensión del negocio</h1>
+<section id="establecimiento-de-los-objetivos-del-negocio" class="level2">
+<h2 class="anchored" data-anchor-id="establecimiento-de-los-objetivos-del-negocio">Establecimiento de los objetivos del negocio</h2>
+<p>El primer objetivo del analista es comprender a fondo, desde una perspectiva de negocio, lo que el cliente realmente quiere lograr. A menudo, el cliente tiene muchos objetivos y limitaciones que compiten entre sí y que deben ser equilibrados adecuadamente. El objetivo del analista es descubrir factores importantes al principio del proyecto que pueden influir en el resultado final. Una consecuencia probable de descuidar este paso sería gastar mucho esfuerzo en producir las respuestas correctas a las preguntas equivocadas.</p>
+<section id="contexto" class="level3">
+<h3 class="anchored" data-anchor-id="contexto">Contexto</h3>
+<p>Recopilar la información que se conoce sobre la situación empresarial de la organización al inicio del proyecto. Estos detalles no sólo sirven para identificar más de cerca los objetivos de negocio a alcanzar, sino también para identificar los recursos, tanto humanos como materiales, que pueden ser utilizados o necesarios durante el transcurso del proyecto.</p>
+<section id="organización" class="level4">
+<h4 class="anchored" data-anchor-id="organización">Organización</h4>
+<ul>
+<li>Desarrollar organigramas que identifiquen las divisiones, departamentos y grupos de proyectos. El organigrama también debe identificar los nombres y responsabilidades de los gerentes</li>
+<li>Identificar a las personas claves y sus roles</li>
+<li>Identificar un patrocinador interno (patrocinador financiero y usuario principal/experto en el dominio)</li>
+<li>Indicar si existe un comité directivo y hacer una lista de sus miembros</li>
+<li>Identificar las unidades de negocio afectadas por el proyecto de minería de datos (por ejemplo, marketing, ventas, finanzas)</li>
+</ul>
+</section>
+<section id="problemática" class="level4">
+<h4 class="anchored" data-anchor-id="problemática">Problemática</h4>
+<ul>
+<li>Identificar el área del problema (por ejemplo, marketing, atención al cliente, desarrollo de negocios, etc.)</li>
+<li>Describir el problema en términos generales</li>
+<li>Comprobar el estado actual del proyecto (por ejemplo, comprobar si ya está claro dentro de la unidad de negocio que se va a realizar un proyecto de minería de datos, o si es necesario promover la minería de datos como una tecnología clave en el negocio).</li>
+<li>Aclarar los requisitos previos del proyecto (por ejemplo, ¿cuál es la motivación del proyecto? ¿El negocio ya utiliza la minería de datos?)</li>
+<li>Si es necesario, preparar presentaciones sobre la minería de datos a la empresa</li>
+<li>Identificar el grupo objetivo para el producto final (por ejemplo, ¿Se espera que entreguemos un informe para la alta gerencia o un sistema para ser utilizado por usuarios inexpertos?)</li>
+<li>Identificar las necesidades y expectativas de los usuarios</li>
+</ul>
+</section>
+<section id="soluciones-existentes" class="level4">
+<h4 class="anchored" data-anchor-id="soluciones-existentes">Soluciones existentes</h4>
+<ul>
+<li>Describir cualquier solución que se utilice actualmente para tratar el problema</li>
+<li>Describir las ventajas y desventajas de la solución actual y el nivel de aceptación por parte de los usuarios.</li>
+</ul>
+</section>
+</section>
+<section id="objetivos-del-negocio" class="level3">
+<h3 class="anchored" data-anchor-id="objetivos-del-negocio">Objetivos del negocio</h3>
+<p>Describir el objetivo principal del cliente, desde una perspectiva de negocio. Además del objetivo principal del negocio, normalmente hay un gran número de preguntas comerciales relacionadas que el cliente desea abordar. Por ejemplo, el objetivo principal del negocio podría ser mantener a los clientes actuales mediante la predicción de cuándo son propensos a pasarse a la competencia, mientras que un objetivo secundario del negocio podría ser determinar si las tarifas más bajas afectan sólo a un segmento particular de clientes.</p>
+<ul>
+<li>Describir brevemente el problema a resolver</li>
+<li>Especificar todas las preguntas de negocio con la mayor precisión posible</li>
+<li>Especificar cualquier otro requisito del negocio (por ejemplo, el negocio no quiere perder ningún cliente).</li>
+<li>Especificar los beneficios esperados en términos de negocio</li>
+<li><strong>Tenga cuidado en fijar metas inalcanzables, hágalas lo más realistas posible</strong></li>
+</ul>
+</section>
+<section id="criterios-de-éxito-del-negocio" class="level3">
+<h3 class="anchored" data-anchor-id="criterios-de-éxito-del-negocio">Criterios de éxito del negocio</h3>
+<p>Describir los criterios para un resultado exitoso o útil del proyecto desde el punto de vista empresarial. Esto podría ser bastante específico y fácilmente medible, como la reducción de la rotación de clientes a un cierto nivel, o general y subjetivo, como “dar una visión útil de las relaciones”. En este último caso, asegúrese de indicar quién haría el juicio subjetivo.</p>
+<ul>
+<li>Especificar los criterios de éxito del negocio (por ejemplo, mejorar la tasa de respuesta en una campaña de correo en un 10 por ciento y la tasa de registro en un 20 por ciento).</li>
+<li>Identificar quién evalúa los criterios de éxito</li>
+</ul>
+<p><strong>Cada uno de los criterios de éxito debe estar relacionado con al menos uno de los objetivos de negocio especificados</strong></p>
+<p>Antes de comenzar la evaluación de la situación, usted podría analizar experiencias previas de este problema, ya sea internamente, usando CRISP-DM, o externamente, usando soluciones pre-empaquetadas.</p>
+</section>
+</section>
+<section id="evaluación-de-la-situación" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación-de-la-situación">Evaluación de la situación</h2>
+<p>Esta tarea implica una investigación más detallada sobre todos los recursos, limitaciones, suposiciones y otros factores que deben ser considerados al determinar la meta del análisis de datos y al desarrollar el plan del proyecto.</p>
+<section id="inventario-de-recursos" class="level3">
+<h3 class="anchored" data-anchor-id="inventario-de-recursos">Inventario de recursos</h3>
+<p>Enumere los recursos disponibles para el proyecto, incluyendo el personal (expertos en negocios y datos, apoyo técnico, expertos en minería de datos), datos (acceso a datos operativos o almacenados), recursos informáticos (plataformas de hardware) y software (herramientas de minería de datos, otro software relevante).</p>
+<section id="recursos-de-hardware" class="level4">
+<h4 class="anchored" data-anchor-id="recursos-de-hardware">Recursos de hardware</h4>
+<ul>
+<li>Identificar el hardware base</li>
+<li>Establecer la disponibilidad del hardware para el proyecto de minería de datos.</li>
+<li>Comprobar si el cronograma de mantenimiento del hardware entra en conflicto con la disponibilidad para el proyecto de minería de datos.</li>
+</ul>
+</section>
+<section id="fuentes-de-datos-y-conocimientos" class="level4">
+<h4 class="anchored" data-anchor-id="fuentes-de-datos-y-conocimientos">Fuentes de datos y conocimientos</h4>
+<ul>
+<li>Identificar las fuentes de datos</li>
+<li>Identificar el tipo de fuentes de datos (fuentes en línea, expertos, documentación escrita, etc.)</li>
+<li>Identificar las fuentes de conocimientos</li>
+<li>Identificar el tipo de fuentes de conocimiento (fuentes en línea, expertos, documentación escrita, etc.)</li>
+<li>Revisar las herramientas y técnicas disponibles</li>
+<li>Describir los conocimientos previos (de manera formal o informal)</li>
+</ul>
+</section>
+<section id="recursos-humanos" class="level4">
+<h4 class="anchored" data-anchor-id="recursos-humanos">Recursos humanos</h4>
+<ul>
+<li>Identificar el patrocinador del proyecto (si es diferente del patrocinador interno como en <a href="#organización">Organización</a>)</li>
+<li>Identificar al administrador del sistema, al administrador de la base de datos y al personal de soporte técnico para preguntas adicionales.</li>
+<li>Identificar a los analistas de mercado, expertos en minería de datos y estadísticos, y verificar su disponibilidad.</li>
+<li>Comprobar la disponibilidad de los expertos de dominio para las fases siguientes.</li>
+</ul>
+<p>Recuerde que se puede necesitar personal técnico en momentos puntuales durante todo el proyecto, por ejemplo, durante la transformación de datos.</p>
+</section>
+</section>
+<section id="requisitos-suposiciones-y-restricciones" class="level3">
+<h3 class="anchored" data-anchor-id="requisitos-suposiciones-y-restricciones">Requisitos, suposiciones y restricciones</h3>
+<p>Enumerar todos los requisitos del proyecto, incluyendo el cronograma de finalización, la comprensibilidad, la calidad de los resultados y la seguridad, así como los aspectos legales</p>
+<p>Listar las suposiciones hechas por el proyecto. Estos pueden ser supuestos sobre los datos, que pueden ser verificados durante la minería de datos, pero también pueden incluir supuestos no verificables relacionados con el proyecto. Es particularmente importante enumerar estos últimos si afectan a la validez de los resultados.</p>
+<p>Enumerar las limitaciones del proyecto. Estas limitaciones pueden incluir la falta de recursos para llevar a cabo algunas de las tareas del proyecto en el tiempo requerido, o pueden existir limitaciones legales o éticas en el uso de los datos o de la solución necesaria para llevar a cabo la tarea de minería de datos.</p>
+<section id="requisitos" class="level4">
+<h4 class="anchored" data-anchor-id="requisitos">Requisitos</h4>
+<ul>
+<li>Especificar el perfil del grupo objetivo</li>
+<li>Capturar todos los requisitos</li>
+<li>Capturar los requisitos de comprensibilidad, precisión, despliegue, mantenimiento y reproducibilidad del proyecto de minería de datos y de los modelos resultantes.</li>
+<li>Capturar los requisitos de seguridad, restricciones legales, privacidad, informes y calendario del proyecto.</li>
+</ul>
+</section>
+<section id="suposiciones" class="level4">
+<h4 class="anchored" data-anchor-id="suposiciones">Suposiciones</h4>
+<ul>
+<li>Aclarar todas las suposiciones (incluidas las implícitas) y hacerlas explícitas (por ejemplo, para abordar la cuestión empresarial, es necesario un número mínimo de clientes con más de 50 años de edad).</li>
+<li>Listar las suposiciones sobre la calidad de los datos (por ejemplo, exactitud, disponibilidad)</li>
+<li>Listar las suposiciones sobre factores externos (por ejemplo, cuestiones económicas, productos de la competencia)</li>
+<li>Aclarar las suposiciones que conducen a cualquier estimación (por ejemplo, se supone que el precio de una herramienta específica es inferior a 1.000 dólares).</li>
+<li>Listar todas las suposiciones con respecto a si es necesario entender, describir o explicar el modelo (por ejemplo, cómo se debe presentar el modelo y los resultados a la alta gerencia/patrocinador).</li>
+</ul>
+<p><strong>La lista de suposiciones también incluye las suposiciones iniciales del proyecto</strong></p>
+</section>
+<section id="restricciones" class="level4">
+<h4 class="anchored" data-anchor-id="restricciones">Restricciones</h4>
+<ul>
+<li>Revisar las restricciones generales (por ejemplo, cuestiones legales, presupuesto, plazos y recursos).</li>
+<li>Revisar el acceso a las fuentes de datos (por ejemplo, restricciones de acceso, contraseña requerida).</li>
+<li>Revisar la accesibilidad técnica de los datos (sistemas operativos, sistema de gestión de datos, formato de archivo o base de datos).</li>
+<li>Comprobar las restricciones de presupuesto (costes fijos, costes de ejecución, etc.)</li>
+</ul>
+</section>
+</section>
+<section id="riesgos-y-contingencias" class="level3">
+<h3 class="anchored" data-anchor-id="riesgos-y-contingencias">Riesgos y Contingencias</h3>
+<p>Enumere los riesgos, es decir, los eventos que pueden ocurrir, que impactan el cronograma, el costo o el resultado. Enumerar los correspondientes planes de contingencia.</p>
+<section id="identificar-los-riesgos" class="level4">
+<h4 class="anchored" data-anchor-id="identificar-los-riesgos">Identificar los riesgos</h4>
+<ul>
+<li>Identificar los riesgos del negocio (por ejemplo, la competencia obtiene primero mejores resultados).</li>
+<li>Identificar los riesgos organizacionales (por ejemplo, el departamento que solicita el proyecto no tiene fondos para el proyecto).</li>
+<li>Identificar los riesgos financieros (por ejemplo, el financiamiento de las siguientes etapas depende de los resultados iniciales de la minería de datos).</li>
+<li>Identificar los riesgos técnicos</li>
+<li>Identificar los riesgos que dependen de los datos y de las fuentes de datos (por ejemplo, mala calidad).</li>
+</ul>
+</section>
+<section id="desarrollar-planes-de-contingencia" class="level4">
+<h4 class="anchored" data-anchor-id="desarrollar-planes-de-contingencia">Desarrollar planes de contingencia</h4>
+<ul>
+<li>Determinar las condiciones bajo las cuales cada riesgo puede ocurrir</li>
+<li>Desarrollar planes de contingencia</li>
+</ul>
+</section>
+</section>
+<section id="terminología" class="level3">
+<h3 class="anchored" data-anchor-id="terminología">Terminología</h3>
+<p>Elaborar un glosario de terminología relevante para el proyecto. Esto debe incluir al menos dos componentes:</p>
+<ol type="1">
+<li>Un glosario de terminología empresarial relevante, que forma parte del entendimiento empresarial disponible para el proyecto.</li>
+<li>Un glosario de terminología de minería de datos, ilustrado con ejemplos relevantes para el problema empresarial en cuestión.</li>
+</ol>
+<ul>
+<li>Verificar la existencia de glosarios previos; de lo contrario, comenzar a redactarlos.</li>
+<li>Hablar con los expertos de dominio para entender su terminología</li>
+<li>Familiarizarse con la terminología del negocio</li>
+</ul>
+</section>
+<section id="beneficios-y-costos" class="level3">
+<h3 class="anchored" data-anchor-id="beneficios-y-costos">Beneficios y costos</h3>
+<p>Preparar un análisis de costo-beneficio para el proyecto, comparando los costos del proyecto con los beneficios potenciales para el negocio si es exitoso.</p>
+<ul>
+<li>Estimar los costos de la recolección de datos</li>
+<li>Estimar los costos de desarrollo e implementación de una solución</li>
+<li>Identificar los beneficios (por ejemplo, la mejora de la satisfacción del cliente, el retorno de la inversión y el aumento de los ingresos).</li>
+<li>Estimar los costos operativos</li>
+</ul>
+<p>La comparación debe ser lo más específica posible, ya que esto permite presentar una mejor propuesta de negocio.</p>
+<p><strong>Recuerde identificar los costos ocultos, tales como la extracción y preparación repetida de datos, los cambios en los flujos de trabajo y el tiempo requerido para la capacitación.</strong></p>
+</section>
+</section>
+<section id="determinar-los-objetivos-de-la-minería-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="determinar-los-objetivos-de-la-minería-de-datos">Determinar los objetivos de la minería de datos</h2>
+<p>Una meta empresarial establece los objetivos en la terminología empresarial; una meta de minería de datos establece los objetivos del proyecto en términos técnicos. Por ejemplo, el objetivo empresarial podría ser, “Aumentar las ventas de catálogos a clientes existentes”, mientras que el objetivo de la minería de datos podría ser, “Predecir cuántos productos comprará un cliente, dadas sus compras en los últimos tres años, la información demográfica relevante y el precio del artículo”.</p>
+<section id="objetivos-de-la-minería-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="objetivos-de-la-minería-de-datos">Objetivos de la minería de datos</h3>
+<p>Describe los resultados previstos del proyecto que permitan alcanzar los objetivos de negocio. Tenga en cuenta que normalmente se trata de mensajes técnicos.</p>
+<ul>
+<li>Traducir las preguntas de negocio a objetivos de minería de datos (por ejemplo, una campaña de marketing requiere la segmentación de los clientes para decidir a quién dirigirse en esta campaña; se debe especificar el nivel/tamaño de los segmentos).</li>
+<li>Especificar el tipo de problema de minería de datos (por ejemplo, clasificación, descripción, predicción y agrupación). Para más detalles sobre los tipos de problemas de minería de datos, véase el Apéndice 2.</li>
+</ul>
+</section>
+<section id="criterios-de-éxito-para-la-minería-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="criterios-de-éxito-para-la-minería-de-datos">Criterios de éxito para la minería de datos</h3>
+<p>Definir los criterios para un resultado exitoso del proyecto en términos técnicos, por ejemplo, un cierto nivel de precisión predictiva o un perfil de propensión a la compra con un determinado grado de “elevación”. Al igual que con los criterios de éxito empresarial, puede ser necesario describirlos en términos subjetivos, en cuyo caso se debe identificar a la persona o personas que hacen el juicio subjetivo.</p>
+<ul>
+<li>Especificar los criterios para la evaluación del modelo (por ejemplo, la precisión, el rendimiento y la complejidad del modelo).</li>
+<li>Definir ‘benchmarks’ para los criterios de evaluación</li>
+<li>Especificar los criterios que se refieren a los criterios de evaluación subjetivos (por ejemplo, el modelo explica la capacidad y los datos y los conocimientos de marketing proporcionados por el modelo).</li>
+</ul>
+<p><strong>Recuerde que los criterios de éxito de la minería de datos son diferentes a los criterios de éxito del negocio definidos anteriormente.</strong></p>
+<p>Recuerde que es prudente planificar la implementación desde el inicio del proyecto.</p>
+</section>
+</section>
+<section id="generación-del-plan-de-proyecto" class="level2">
+<h2 class="anchored" data-anchor-id="generación-del-plan-de-proyecto">Generación del plan de proyecto</h2>
+<p>Describa el plan previsto para alcanzar los objetivos de la minería de datos y, por lo tanto, para alcanzar los objetivos del negocio.</p>
+<section id="plan-de-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="plan-de-proyecto">Plan de proyecto</h3>
+<p>Enumerar las etapas a ejecutar en el proyecto, junto con su duración, recursos requeridos, entradas, salidas y dependencias. Siempre que sea posible, explicite las iteraciones a gran escala en el proceso de minería de datos, por ejemplo, las repeticiones de las fases de modelado y evaluación. Como parte del plan del proyecto, también es importante analizar las dependencias entre el cronograma y los riesgos. Marque los resultados de estos análisis explícitamente en el plan del proyecto, idealmente con acciones y recomendaciones de acciones si los riesgos se manifiestan.</p>
+<p>Aunque esta es la única tarea en la que se menciona directamente el plan del proyecto, debe ser consultado continuamente y revisado a lo largo de todo el proyecto. El plan de proyecto debe ser consultado como mínimo cada vez que se inicie una nueva tarea o se inicie una nueva iteración de una tarea o actividad.</p>
+<ul>
+<li>Definir el plan de proceso inicial y discutir la viabilidad con todo el personal involucrado.</li>
+<li>Combinar todos los objetivos identificados y las técnicas seleccionadas en un procedimiento coherente que resuelva las cuestiones de negocio y cumpla con los criterios de éxito del negocio.</li>
+<li>Estimar el esfuerzo y los recursos necesarios para lograr y desplegar la solución. (Es útil tener en cuenta la experiencia de otras personas al estimar las escalas de tiempo para los proyectos de minería de datos. Por ejemplo, a menudo se postula que entre el 50 y el 70 por ciento del tiempo y el esfuerzo de un proyecto de minería de datos se utiliza en la fase de preparación de datos y entre el 20 y el 30 por ciento en la fase de comprensión de datos, mientras que sólo entre el 10 y el 20 por ciento se gasta en cada una de las fases de modelado, evaluación y comprensión de negocios, y entre el 5 y el 10 por ciento en la fase de implementación).</li>
+<li>Identificar los pasos críticos</li>
+<li>Identificar los puntos de decisión</li>
+<li>Identificar los puntos de revisión</li>
+<li>Identificar las principales iteraciones</li>
+</ul>
+</section>
+<section id="evaluación-inicial-de-herramientas-y-técnicas" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-inicial-de-herramientas-y-técnicas">Evaluación inicial de herramientas y técnicas</h3>
+<p>Al final de la primera fase, el equipo del proyecto realiza una evaluación inicial de las herramientas y técnicas. Aquí, es importante seleccionar una herramienta de minería de datos que soporte varios métodos para diferentes etapas del proceso, ya que la selección de herramientas y técnicas puede influir en todo el proyecto.</p>
+<ul>
+<li>Crear una lista de criterios de selección de herramientas y técnicas (o utilizar uno existente si está disponible).</li>
+<li>Elegir herramientas y técnicas potenciales</li>
+<li>Evaluar la idoneidad de las técnicas</li>
+<li>Revisar y priorizar las técnicas aplicables de acuerdo a la evaluación de soluciones alternativas.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="comprensión-de-los-datos" class="level1">
+<h1>Comprensión de los datos</h1>
+<section id="recopilación-de-datos-iniciales" class="level2">
+<h2 class="anchored" data-anchor-id="recopilación-de-datos-iniciales">Recopilación de datos iniciales</h2>
+<p>Adquirir los datos (o acceso a los datos) listados en los recursos del proyecto. Esta recopilación inicial incluye la carga de datos, si es necesario para el análisis. Por ejemplo, si tiene la intención de utilizar una herramienta específica para el análisis de datos, es lógico cargarlos en esta herramienta.</p>
+<section id="informe-inicial-de-recopilación-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="informe-inicial-de-recopilación-de-datos">Informe inicial de recopilación de datos</h3>
+<p>Describa todos los datos utilizados para el proyecto e incluya cualquier requisito de selección para obtener datos más detallados. El informe de recopilación de datos también debe definir si algunos atributos son relativamente más importantes que otros.</p>
+<p>Recuerde que cualquier evaluación de la calidad de los datos debe hacerse no sólo de las fuentes de datos individuales, sino también de cualquier dato que resulte de la fusión entre fuentes de datos. Debido a las inconsistencias entre las fuentes, los datos fusionados pueden presentar problemas que no existen en las fuentes de datos individuales.</p>
+<section id="requisitos-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="requisitos-de-datos">Requisitos de datos</h4>
+<ul>
+<li>Planificar qué información se necesita (por ejemplo, sólo determinados atributos o información adicional específica).</li>
+<li>Comprobar si toda la información necesaria (para resolver los objetivos de la minería de datos) está disponible.</li>
+</ul>
+</section>
+<section id="criterios-de-selección" class="level4">
+<h4 class="anchored" data-anchor-id="criterios-de-selección">Criterios de selección</h4>
+<ul>
+<li>Especificar los criterios de selección (por ejemplo, ¿Qué atributos son necesarios para los objetivos de minería de datos especificados? ¿Qué atributos se han identificado como irrelevantes? ¿Cuántos atributos podemos manejar con las técnicas elegidas?)</li>
+<li>Seleccionar tablas/archivos de interés</li>
+<li>Seleccionar datos dentro de una tabla/archivo</li>
+<li>Piense en cuánto tiempo se debe utilizar un historial (por ejemplo, aunque se disponga de 18 meses de datos, es posible que sólo se necesiten 12 meses para el ejercicio).</li>
+</ul>
+<p><strong>Tenga en cuenta que los datos recopilados de diferentes fuentes pueden dar lugar a problemas de calidad cuando se fusionan (por ejemplo, los archivos de direcciones fusionados con una base de datos de clientes pueden mostrar inconsistencias de formato, invalidez de los datos, etc.)</strong>.</p>
+</section>
+<section id="inserción-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="inserción-de-datos">Inserción de datos</h4>
+<ul>
+<li>Si los datos contienen campos de ‘free text’, ¿necesitamos codificarlos para el modelado o queremos agrupar entradas específicas?</li>
+<li>¿Cómo se pueden adquirir los atributos faltantes?</li>
+<li>¿Cómo podemos extraer mejor los datos?</li>
+</ul>
+<p>Recuerde que algunos conocimientos sobre los datos pueden provenir de fuentes no electrónicas (por ejemplo, de personas, texto impreso, etc.).</p>
+<p>Recuerde que puede ser necesario preprocesar los datos (datos de series temporales, promedios ponderados, etc.).</p>
+</section>
+</section>
+</section>
+<section id="describir-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="describir-los-datos">Describir los datos</h2>
+<p>Examinar las propiedades “brutas” de los datos adquiridos e informar sobre los resultados.</p>
+<section id="informe-de-descripción-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="informe-de-descripción-de-datos">Informe de descripción de datos</h3>
+<p>Describa los datos que se han adquirido, incluyendo el formato de los datos, la cantidad de datos (por ejemplo, el número de registros y campos dentro de cada tabla), las identidades de los campos y cualquier otra característica que se haya descubierto.</p>
+<section id="análisis-volumétrico-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="análisis-volumétrico-de-datos">Análisis volumétrico de datos</h4>
+<ul>
+<li>Identificar los datos y el método de captura</li>
+<li>Acceso a fuentes de datos</li>
+<li>Usar análisis estadísticos si es necesario</li>
+<li>Reportar las tablas y sus relaciones</li>
+<li>Comprobar el volumen de datos, el número de múltiplos, la complejidad</li>
+<li>Tenga en cuenta si los datos contienen campos ‘free text’</li>
+</ul>
+</section>
+<section id="tipos-de-atributos-y-valores" class="level4">
+<h4 class="anchored" data-anchor-id="tipos-de-atributos-y-valores">Tipos de atributos y valores</h4>
+<ul>
+<li>Comprobar la accesibilidad y disponibilidad de los atributos</li>
+<li>Comprobar los tipos de atributos (numéricos, simbólicos, taxonómicos, etc.)</li>
+<li>Verificar los rangos de valores de los atributos</li>
+<li>Analizar las correlaciones de atributos</li>
+<li>Comprender el significado de cada atributo y valor del atributo en términos de negocio.</li>
+<li>Para cada atributo, calcular estadísticas básicas (por ejemplo, distribución, promedio, máximo, mínimo, desviación estándar, varianza, moda, asimetría, etc.).</li>
+<li>Analizar las estadísticas básicas y relacionar los resultados con su significado en términos de negocio.</li>
+<li>Decidir si el atributo es relevante para el objetivo específico de la minería de datos.</li>
+<li>Determinar si el significado del atributo se usa consistentemente</li>
+<li>Entrevistar a los expertos de dominio para obtener su opinión sobre la importancia de los atributos.</li>
+<li>Decidir si es necesario balancear los datos (en base a las técnicas de modelado).</li>
+</ul>
+</section>
+<section id="claves" class="level4">
+<h4 class="anchored" data-anchor-id="claves">Claves</h4>
+<ul>
+<li>Analizar las relaciones claves</li>
+<li>Comprobar la cantidad de solapamientos de los atributos clave en las tablas.</li>
+</ul>
+</section>
+<section id="revisar-los-supuestosobjetivos" class="level4">
+<h4 class="anchored" data-anchor-id="revisar-los-supuestosobjetivos">Revisar los supuestos/objetivos</h4>
+<ul>
+<li>Actualizar la lista de supuestos, si es necesario</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="explorar-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="explorar-los-datos">Explorar los datos</h2>
+<p>Esta tarea aborda las preguntas de la minería de datos que pueden abordarse mediante técnicas de consulta, visualización y generación de informes. Estos análisis pueden abordar directamente los objetivos de la minería de datos. Sin embargo, también pueden contribuir a la descripción de los datos y los informes de calidad, o perfeccionarlos, y contribuir a la transformación y a otras medidas de preparación de los datos necesarias antes de que puedan realizarse análisis adicionales.</p>
+<section id="informe-de-exploración-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="informe-de-exploración-de-datos">Informe de exploración de datos</h3>
+<p>Describir los resultados de esta tarea, incluyendo los hallazgos o hipótesis iniciales y su impacto en el resto del proyecto. El informe también puede incluir gráficos que indican las características de los datos o apuntan a subconjuntos de datos interesantes que merecen un examen más detallado.</p>
+<section id="exploración-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="exploración-de-datos">Exploración de datos</h4>
+<ul>
+<li>Analizar propiedades de atributos interesantes en detalle (por ejemplo, estadísticas básicas, subpoblaciones interesantes).</li>
+<li>Identificar las características de las subpoblaciones</li>
+</ul>
+</section>
+<section id="formar-suposiciones-para-análisis-futuros" class="level4">
+<h4 class="anchored" data-anchor-id="formar-suposiciones-para-análisis-futuros">Formar suposiciones para análisis futuros</h4>
+<ul>
+<li>Evaluar la información y los hallazgos en el informe de descripción de datos.</li>
+<li>Formular una hipótesis e identificar acciones</li>
+<li>Transformar la hipótesis en una meta de minería de datos, si es posible.</li>
+<li>Aclarar los objetivos de la minería de datos o hacerlos más precisos. Una búsqueda “ciega” no es necesariamente inútil, pero es preferible una búsqueda más dirigida hacia los objetivos del negocio.</li>
+<li>Realizar análisis básicos para verificar la hipótesis</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="verificar-la-calidad-de-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="verificar-la-calidad-de-los-datos">Verificar la calidad de los datos</h2>
+<p>Examinar la calidad de los datos, abordando preguntas como: ¿Están completos los datos (cubre todos los casos requeridos)? ¿Están correctos o contienen errores? Si hay errores, ¿qué tan comunes son? ¿Hay valores faltantes en los datos? Si es así, ¿cómo se representan, dónde ocurren y qué tan comunes son?</p>
+<section id="informe-de-calidad-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="informe-de-calidad-de-datos">Informe de calidad de datos</h3>
+<p>Listar los resultados de la verificación de calidad de los datos; si hay problemas de calidad, enumerar las posibles soluciones.</p>
+<ul>
+<li>Identificar valores especiales y catalogar su significado</li>
+</ul>
+<section id="revisar-claves-atributos" class="level4">
+<h4 class="anchored" data-anchor-id="revisar-claves-atributos">Revisar claves, atributos</h4>
+<ul>
+<li>Verificar la cobertura (por ejemplo, si se representan todos los valores posibles)</li>
+<li>Verificar claves</li>
+<li>Verificar que los significados de los atributos y los valores contenidos encajan entre sí</li>
+<li>Identificar atributos faltantes y campos en blanco</li>
+<li>Establecer el significado de los datos faltantes</li>
+<li>Compruebe si hay atributos con valores diferentes que tengan significados similares (por ejemplo, bajo en grasa, dieta).</li>
+<li>Revisar la ortografía y el formato de los valores (por ejemplo, el mismo valor, pero a veces comenzando con una letra minúscula, a veces con una mayúscula).</li>
+<li>Comprobar si hay desviaciones y decidir si una desviación es “ruido” o puede indicar un fenómeno interesante.</li>
+<li>Verificar la plausibilidad de los valores (por ejemplo, todos los campos que tienen los mismos o casi los mismos valores).</li>
+</ul>
+<p>Revise cualquier atributo que entre en conflicto con el sentido común (por ejemplo, adolescentes con altos niveles de ingresos).</p>
+<p>Utilice gráficas de visualización, histogramas, etc. para revelar inconsistencias en los datos.</p>
+</section>
+<section id="calidad-de-datos-en-archivos-planos" class="level4">
+<h4 class="anchored" data-anchor-id="calidad-de-datos-en-archivos-planos">Calidad de datos en archivos planos</h4>
+<ul>
+<li>Si los datos se almacenan en archivos planos, compruebe qué delimitador se utiliza y si se utiliza de forma coherente dentro de todos los atributos.</li>
+<li>Si los datos se almacenan en archivos planos, compruebe el número de campos de cada registro para ver si coinciden.</li>
+</ul>
+</section>
+<section id="ruido-e-inconsistencias-entre-las-fuentes" class="level4">
+<h4 class="anchored" data-anchor-id="ruido-e-inconsistencias-entre-las-fuentes">Ruido e inconsistencias entre las fuentes</h4>
+<ul>
+<li>Verificar consistencias y redundancias entre diferentes fuentes.</li>
+<li>Plan para lidiar con el ruido</li>
+<li>Detectar el tipo de ruido y qué atributos se ven afectados</li>
+</ul>
+<p>Recuerde que puede ser necesario excluir algunos datos que no muestran un comportamiento positivo o negativo (por ejemplo, para comprobar el comportamiento de los clientes en materia de préstamos, excluir a todos aquellos que nunca han pedido prestado, ni financiado una hipoteca de vivienda, aquellos cuya hipoteca está a punto de vencer, etc.).</p>
+<p>Revisar si los supuestos son válidos o no, dada la información actual sobre los datos y el conocimiento del negocio.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="preparación-de-datos" class="level1">
+<h1>Preparación de datos</h1>
+<p><strong>Conjunto de datos</strong>: Estos son los conjuntos de datos producidos por la fase de preparación de los datos, utilizados para el modelado o para el trabajo de análisis principal del proyecto.</p>
+<p><strong>Descripción del conjunto de datos:</strong> Esta es la descripción de los conjuntos de datos utilizados para el modelado o para el trabajo de análisis principal del proyecto.</p>
+<section id="seleccionar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="seleccionar-datos">Seleccionar datos</h2>
+<p>Decidir qué datos se utilizarán para el análisis. Los criterios incluyen la relevancia para los objetivos de la minería de datos, la calidad y las restricciones técnicas, como los límites en el volumen de datos o los tipos de datos.</p>
+<section id="justificación-de-la-inclusiónexclusión" class="level3">
+<h3 class="anchored" data-anchor-id="justificación-de-la-inclusiónexclusión">Justificación de la inclusión/exclusión</h3>
+<p>Enumere los datos que deben utilizarse/excluirse y las razones de estas decisiones.</p>
+<ul>
+<li>Recopilar datos adicionales (de diferentes fuentes internas y externas).</li>
+<li>Realizar pruebas de significancia y correlación para decidir si los campos deben ser incluidos.</li>
+<li>Reconsiderar los criterios de selección de datos a la luz de las experiencias de calidad de datos y exploración de datos (es decir, tal vez desee incluir o excluir otros conjuntos de datos).</li>
+<li>Reconsiderar los criterios de selección de datos a la luz de la experiencia del modelado (es decir, la evaluación del modelo puede mostrar que se necesitan otros conjuntos de datos).</li>
+<li>Seleccionar diferentes subconjuntos de datos (por ejemplo, diferentes atributos, sólo datos que cumplan ciertas condiciones).</li>
+<li>Considere el uso de técnicas de muestreo (por ejemplo, una solución rápida puede implicar la división del conjunto de datos en datos de prueba y entrenamiento o la reducción del tamaño del conjunto de datos, si la herramienta no puede manejar el conjunto de datos completo. También puede ser útil tener muestras ponderadas para dar diferente importancia a diferentes atributos o a diferentes valores del mismo atributo.)</li>
+<li>Documentar las razones de la inclusión/exclusión</li>
+<li>Comprobar las técnicas disponibles para el muestreo de datos</li>
+</ul>
+<p>En función de los criterios de selección de datos, decida si uno o más atributos son más importantes que otros y pondere los atributos en consecuencia. Decidir, basándose en el contexto (es decir, la aplicación, la herramienta, etc.), cómo manejar la ponderación.</p>
+</section>
+</section>
+<section id="limpieza-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="limpieza-de-datos">Limpieza de datos</h2>
+<p>Elevar la calidad de los datos al nivel requerido por las técnicas de análisis seleccionadas. Esto puede implicar la selección de subconjuntos limpios de datos, la inserción de valores predeterminados adecuados, o técnicas más ambiciosas como la estimación de los datos que faltan mediante modelización.</p>
+<section id="informe-de-limpieza-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="informe-de-limpieza-de-datos">Informe de limpieza de datos</h3>
+<p>Describa las decisiones y acciones que se tomaron para abordar los problemas de calidad de datos reportados durante la tarea de verificación de la calidad de datos. Si los datos se van a utilizar en el ejercicio de extracción de datos, el informe debe abordar las cuestiones pendientes relativas a la calidad de los datos y el posible efecto que esto podría tener en los resultados.</p>
+<ul>
+<li>Considerar cómo lidiar con cualquier tipo de ruido observado.</li>
+<li>Corregir, eliminar o ignorar el ruido</li>
+<li>Decidir cómo tratar con valores especiales y su significado. Los valores especiales pueden dar lugar a muchos resultados extraños y deben ser examinados cuidadosamente. Ejemplos de valores especiales podrían surgir al tomar los resultados de una encuesta donde algunas preguntas no fueron hechas o no fueron contestadas. Esto podría resultar en un valor de 99 para datos desconocidos. Por ejemplo, 99 por estado civil o afiliación política. También pueden surgir valores especiales cuando los datos están truncados, por ejemplo, 00 para personas de 100 años o todos los coches con 100.000 km en el cuentakilómetros.</li>
+<li>Reconsiderar los criterios de selección de datos a la luz de las experiencias de limpieza de datos (es decir, puede que desee incluir o excluir otros conjuntos de datos).</li>
+</ul>
+<p>Recuerde que algunos campos pueden ser irrelevantes para los objetivos de la minería de datos y, por lo tanto, el ruido en esos campos no tiene importancia. Sin embargo, si el ruido se ignora por estas razones, debe documentarse completamente, ya que las circunstancias pueden cambiar más tarde.</p>
+</section>
+</section>
+<section id="construcción-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-de-datos">Construcción de datos</h2>
+<p>Esta tarea incluye operaciones constructivas de preparación como la producción de atributos derivados, registros nuevos o valores transformados para atributos existentes.</p>
+<ul>
+<li>Revisar los mecanismos de construcción disponibles con la lista de herramientas sugeridas para el proyecto.</li>
+<li>Decidir si es mejor realizar la construcción dentro o fuera de la herramienta (es decir, cuál es más eficiente, exacta, repetible).</li>
+<li>Reconsiderar los criterios de selección de datos a la luz de las experiencias de construcción de datos (es decir, puede incluir o excluir otros conjuntos de datos).</li>
+</ul>
+<section id="atributos-derivados" class="level3">
+<h3 class="anchored" data-anchor-id="atributos-derivados">Atributos derivados</h3>
+<p>Los atributos derivados son atributos nuevos que se construyen a partir de uno o más atributos existentes en el mismo registro. Un ejemplo podría ser: área = longitud * anchura.</p>
+<p>¿Por qué debemos construir atributos derivados durante el curso de una investigación de minería de datos? No se debe pensar que sólo se deben utilizar datos de bases de datos u otras fuentes en la construcción de un modelo. Los atributos derivados pueden ser construidos porque:</p>
+<ul>
+<li>El conocimiento de negocio nos convence de que algún hecho es importante y debe ser representado, aunque actualmente no tenemos ningún atributo que lo represente.</li>
+<li>El algoritmo de modelado maneja sólo ciertos tipos de datos - por ejemplo, estamos usando regresión lineal y sospechamos que hay ciertas no linealidades que no se incluirán en el modelo.</li>
+<li>El resultado de la fase de modelado sugiere que ciertos hechos no están siendo cubiertos.</li>
+</ul>
+<section id="atributos-derivados-1" class="level4">
+<h4 class="anchored" data-anchor-id="atributos-derivados-1">Atributos derivados</h4>
+<ul>
+<li>Decidir si algún atributo debe ser normalizado (por ejemplo, cuando se utiliza un algoritmo de agrupación con edad e ingresos, en ciertas monedas, los ingresos dominarán).</li>
+<li>Consider adding new information on the relevant importance of attributes by adding new attributes (for example, attribute weights, weighted normalization)</li>
+<li>¿Cómo pueden construirse o imputarse los atributos que faltan? Decida el tipo de construcción (por ejemplo, agregado, promedio, inducción).</li>
+<li>Agregar nuevos atributos a los datos accedidos</li>
+</ul>
+<p>Antes de agregar Atributos Derivados, trate de determinar si y cómo facilitan el proceso del modelo o facilitan el algoritmo de modelado. Tal vez “ingresos por persona” sea un atributo mejor y más fácil de usar que “ingresos por hogar”. No derive atributos simplemente para reducir el número de atributos de entrada.</p>
+<p>Otro tipo de atributo derivado es la transformación de un solo atributo, que normalmente se realiza para adaptarse a las necesidades de las herramientas de modelado.</p>
+</section>
+<section id="transformaciones-de-un-solo-atributo" class="level4">
+<h4 class="anchored" data-anchor-id="transformaciones-de-un-solo-atributo">Transformaciones de un solo atributo</h4>
+<ul>
+<li>Especificar los pasos de transformación necesarios (por ejemplo, cambiar un campo de un atributo numérico).</li>
+<li>Realizar pasos de transformación</li>
+</ul>
+<p>Las transformaciones pueden ser necesarias para cambiar rangos a campos simbólicos (por ejemplo, edades a rangos de edad) o campos simbólicos (“definitivamente sí”, “sí”, “no sé”, “no sé”) a valores numéricos. Las herramientas de modelado o los algoritmos a menudo las requieren.</p>
+</section>
+</section>
+<section id="registros-generados" class="level3">
+<h3 class="anchored" data-anchor-id="registros-generados">Registros generados</h3>
+<p>Los registros generados son registros completamente nuevos, que añaden nuevos conocimientos o representan nuevos datos que no están representados de otra manera (por ejemplo, habiendo segmentado los datos, puede ser útil generar un registro para representar al miembro prototípico de cada segmento para su posterior procesamiento).</p>
+<p>Verificar las técnicas disponibles si es necesario (por ejemplo, mecanismos para construir prototipos para cada segmento de datos).</p>
+</section>
+</section>
+<section id="integración-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="integración-de-datos">Integración de datos</h2>
+<p>Estos son métodos para combinar información de múltiples tablas u otras fuentes para crear nuevos registros o valores.</p>
+<section id="fusionar-datos" class="level3">
+<h3 class="anchored" data-anchor-id="fusionar-datos">Fusionar datos</h3>
+<p>La fusión de tablas se refiere a la unión de dos o más tablas que tienen información diferente sobre los mismos objetos. En esta etapa, también puede ser aconsejable generar nuevos registros. También se puede recomendar generar valores agregados.</p>
+<p>La agregación se refiere a las operaciones en las que se calculan nuevos valores resumiendo la información de varios registros y/o tablas.</p>
+<ul>
+<li>Comprobar si las herramientas de integración son capaces de integrar las fuentes de entrada según sea necesario.</li>
+<li>Integrar fuentes y almacenar resultados</li>
+<li>Reconsiderar los criterios de selección de datos a la luz de las experiencias de integración de datos (es decir, es posible que desee incluir o excluir otros conjuntos de datos).</li>
+</ul>
+<p>Recuerde que algunos datos pueden estar contenidos en un formato no electrónico.</p>
+</section>
+</section>
+<section id="formato-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="formato-de-datos">Formato de datos</h2>
+<p>Las transformaciones de formato se refieren principalmente a modificaciones sintácticas hechas a los datos que no cambian su significado, pero que pueden ser requeridas por la herramienta de modelado.</p>
+<section id="datos-reformateados" class="level3">
+<h3 class="anchored" data-anchor-id="datos-reformateados">Datos reformateados</h3>
+<p>Algunas herramientas tienen requisitos sobre el orden de los atributos, como que el primer campo sea un identificador único para cada registro o que el último campo sea el campo de resultados que el modelo debe predecir.</p>
+<section id="reorganizando-atributos" class="level4">
+<h4 class="anchored" data-anchor-id="reorganizando-atributos">Reorganizando atributos</h4>
+<p>Algunas herramientas tienen requisitos sobre el orden de los atributos, como que el primer campo sea un identificador único para cada registro o que el último campo sea el campo de resultados que el modelo debe predecir.</p>
+</section>
+<section id="reordenar-los-registros" class="level4">
+<h4 class="anchored" data-anchor-id="reordenar-los-registros">Reordenar los registros</h4>
+<p>Puede ser importante cambiar el orden de los registros en el conjunto de datos. Tal vez la herramienta de modelado requiera que los registros se ordenen de acuerdo con el valor del atributo de resultado.</p>
+</section>
+<section id="reformateado-dentro-del-valor" class="level4">
+<h4 class="anchored" data-anchor-id="reformateado-dentro-del-valor">Reformateado dentro del valor</h4>
+<ul>
+<li>Estos son cambios puramente sintácticos realizados para satisfacer los requisitos de la herramienta de modelado específica.</li>
+<li>Reconsiderar los criterios de selección de datos a la luz de las experiencias de limpieza de datos (es decir, puede que desee incluir o excluir otros conjuntos de datos).</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="conjunto-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="conjunto-de-datos">Conjunto de datos</h2>
+<p>Estos son los conjuntos de datos producidos por la fase de preparación de datos, utilizados para la modelización o para los principales trabajos de análisis del proyecto.</p>
+<section id="descripción-del-conjunto-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="descripción-del-conjunto-de-datos">Descripción del conjunto de datos</h4>
+<p>Esta es la descripción de los conjuntos de datos utilizados para el modelado o para el trabajo de análisis principal del proyecto.</p>
+</section>
+</section>
+</section>
+<section id="modelado" class="level1">
+<h1>Modelado</h1>
+<section id="selección-de-técnicas-de-modelado" class="level2">
+<h2 class="anchored" data-anchor-id="selección-de-técnicas-de-modelado">Selección de técnicas de modelado</h2>
+<p>Como primer paso en el modelado, seleccione la técnica de modelado inicial. Si se van a aplicar múltiples técnicas, realice esta tarea por separado para cada técnica.</p>
+<p>Recuerde que no todas las herramientas y técnicas son aplicables a todas y cada una de las tareas. Para ciertos problemas, sólo algunas técnicas son apropiadas (véase el Apéndice 2, donde se discuten con más detalle las técnicas apropiadas para ciertos tipos de problemas de minería de datos). Los “requisitos políticos” y otras restricciones limitan aún más las opciones disponibles para el ingeniero de minería de datos. Puede ser que sólo se disponga de una herramienta o técnica para resolver el problema, y que la herramienta no sea la mejor, desde un punto de vista técnico.</p>
+<section id="técnica-de-modelado" class="level3">
+<h3 class="anchored" data-anchor-id="técnica-de-modelado">Técnica de modelado</h3>
+<p>Registre la técnica de modelado real que se utiliza.</p>
+<p>Elegir la técnica adecuada, teniendo en cuenta la herramienta seleccionada.</p>
+</section>
+<section id="modelando-suposiciones" class="level3">
+<h3 class="anchored" data-anchor-id="modelando-suposiciones">Modelando Suposiciones</h3>
+<p>Muchas técnicas de modelado hacen suposiciones sobre los datos.</p>
+<ul>
+<li>Definir los supuestos que la técnica ha incorporado sobre los datos (por ejemplo, calidad, formato, distribución).</li>
+<li>Comparar estos supuestos con los del Informe de Descripción de Datos.</li>
+<li>Asegurarse de que estos supuestos se mantienen y volver a la fase de preparación de datos, si es necesario.</li>
+</ul>
+</section>
+</section>
+<section id="generar-el-diseño-de-pruebas" class="level2">
+<h2 class="anchored" data-anchor-id="generar-el-diseño-de-pruebas">Generar el diseño de pruebas</h2>
+<p>Antes de construir un modelo, es necesario definir un procedimiento para probar la calidad y validez del mismo. Por ejemplo, en tareas supervisadas de minería de datos como la clasificación, es común utilizar porcentajes de error como medidas de calidad para los modelos de minería. Por lo tanto, el diseño de las pruebas especifica que el conjunto de datos debe separarse en conjuntos de entrenamiento y pruebas. El modelo se construye sobre el equipo de entrenamiento y su calidad se estima sobre el equipo de prueba.</p>
+<section id="diseño-de-pruebas" class="level3">
+<h3 class="anchored" data-anchor-id="diseño-de-pruebas">Diseño de pruebas</h3>
+<p>Describa el plan previsto para el entrenamiento, prueba y validación de los modelos. Un componente principal del plan es decidir cómo dividir el conjunto de datos disponible en datos de entrenamiento, datos de prueba y datos de validación.</p>
+<ul>
+<li>Comprobar los diseños de prueba existentes para cada objetivo de minería de datos por separado.</li>
+<li>Decidir los pasos necesarios (número de iteraciones, número de pliegues, etc.)</li>
+<li>Preparar los datos necesarios para la prueba</li>
+</ul>
+</section>
+</section>
+<section id="construcción-del-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="construcción-del-modelo">Construcción del modelo</h2>
+<p>Ejecutar la herramienta de modelado en el conjunto de datos preparado para crear uno o más modelos.</p>
+<section id="ajustes-de-parámetros" class="level3">
+<h3 class="anchored" data-anchor-id="ajustes-de-parámetros">Ajustes de parámetros</h3>
+<p>Con cualquier herramienta de modelado, a menudo hay un gran número de parámetros que pueden ser ajustados. Enumere los parámetros y sus valores elegidos, junto con la justificación de la elección.</p>
+<ul>
+<li>Ajustar los parámetros iniciales</li>
+<li>Documentar las razones para elegir esos valores</li>
+</ul>
+</section>
+<section id="modelos" class="level3">
+<h3 class="anchored" data-anchor-id="modelos">Modelos</h3>
+<p>Ejecutar la herramienta de modelado en el conjunto de datos preparado para crear uno o más modelos.</p>
+<ul>
+<li>Ejecutar la técnica seleccionada en el conjunto de datos de entrada para producir el modelo.</li>
+<li>Resultados de la minería de datos después del proceso (por ejemplo, reglas de edición, árboles de visualización)</li>
+</ul>
+</section>
+<section id="descripción-del-modelo" class="level3">
+<h3 class="anchored" data-anchor-id="descripción-del-modelo">Descripción del modelo</h3>
+<p>Describir el modelo resultante y evaluar su precisión, robustez y posibles deficiencias. Informe sobre la interpretación de los modelos y las dificultades encontradas.</p>
+<ul>
+<li>Describir cualquier característica del modelo actual que pueda ser útil para el futuro.</li>
+<li>Grabar los ajustes de los parámetros utilizados para producir el modelo</li>
+<li>Describa detalladamente el modelo y sus características especiales.</li>
+<li>Para los modelos basados en reglas, enumerar las reglas producidas, más cualquier evaluación de la precisión y cobertura por regla o por modelo general.</li>
+<li>Para modelos opacos, enumerar cualquier información técnica sobre el modelo (como la topología de la red neuronal) y cualquier descripción de comportamiento producida por el proceso de modelado (como la precisión o la sensibilidad).</li>
+<li>Describir el comportamiento y la interpretación del modelo</li>
+<li>Establecer conclusiones con respecto a los patrones en los datos (si los hay); a veces el modelo revela hechos importantes acerca de los datos sin un proceso de evaluación separado (por ejemplo, que el resultado o la conclusión se duplica en uno de los insumos).</li>
+</ul>
+</section>
+</section>
+<section id="evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación">Evaluación</h2>
+<p>El modelo debe ser evaluado ahora para asegurar que cumple con los criterios de éxito de la minería de datos y pasa los criterios de prueba deseados. Esta es una evaluación puramente técnica basada en el resultado de las tareas de modelado.</p>
+<section id="evaluación-del-modelo" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-del-modelo">Evaluación del modelo</h3>
+<p>Resuma los resultados de esta tarea, enumere las cualidades de los modelos generados (por ejemplo, en términos de precisión) y clasifique su calidad en relación entre sí.</p>
+<ul>
+<li>Evaluar los resultados con respecto a los criterios de evaluación</li>
+<li>Resultados de la prueba con respecto a una estrategia de prueba (por ejemplo: entrenamiento y prueba, validación cruzada, bootstrapping, etc.).</li>
+<li>Comparar los resultados de la evaluación y la interpretación</li>
+<li>Crear un ranking de resultados con respecto al éxito y a los criterios de evaluación.</li>
+<li>Seleccione los mejores modelos</li>
+<li>Interpretar los resultados en términos de negocio (en la medida de lo posible en esta fase).</li>
+<li>Obtener comentarios de los expertos de dominio sobre los modelos</li>
+<li>Comprobar la viabilidad del modelo</li>
+<li>Comprobar el efecto sobre el objetivo de la minería de datos</li>
+<li>Verificar el modelo contra la base de conocimiento dada para ver si la información descubierta es novedosa y útil.</li>
+<li>Comprobar la fiabilidad del resultado</li>
+<li>Analizar el potencial de despliegue de cada resultado</li>
+<li>Si hay una descripción verbal del modelo generado (por ejemplo, mediante reglas), evalúe las reglas: ¿Son lógicos, son factibles, hay demasiados o muy pocos, ofenden el sentido común?</li>
+<li>Evaluar los resultados</li>
+<li>Obtener información sobre por qué una determinada técnica de modelado y ciertos ajustes de parámetros conducen a buenos/malos resultados.</li>
+</ul>
+<p>Se pueden construir “Tablas de elevación” y “Tablas de ganancia” para determinar qué tan bien está prediciendo el modelo.</p>
+</section>
+<section id="ajuste-revisado-de-parámetros" class="level3">
+<h3 class="anchored" data-anchor-id="ajuste-revisado-de-parámetros">Ajuste revisado de parámetros</h3>
+<p>De acuerdo con la evaluación del modelo, revise los ajustes de los parámetros y ajústelos para la siguiente ejecución.</p>
+<p>Ajuste los parámetros para producir mejores modelos.</p>
+</section>
+</section>
+</section>
+<section id="evaluación-1" class="level1">
+<h1>Evaluación</h1>
+<p>Los pasos anteriores de la evaluación trataron factores tales como la precisión y generalidad del modelo. Este paso evalúa el grado en que el modelo cumple con los objetivos de negocio, y busca determinar si hay alguna razón comercial por la cual este modelo es deficiente. Compara los resultados con los criterios de evaluación definidos al inicio del proyecto.</p>
+<p>Una buena manera de definir los resultados totales de un proyecto de minería de datos es utilizar la ecuación: <span class="math display">\[RESULTADOS = MODELOS + RESULTADOS\]</span>$</p>
+<p>En esta ecuación, estamos definiendo que el producto total del proyecto de minería de datos no son sólo los modelos (aunque, por supuesto, son importantes), sino también los hallazgos, que definimos como cualquier cosa (aparte del modelo) que sea importante para cumplir con los objetivos del negocio o que conduzca a nuevas preguntas, líneas de enfoque o efectos secundarios (por ejemplo, problemas de calidad de datos descubiertos por la minería de datos). Nota: Aunque el modelo está directamente relacionado con las preguntas del negocio, los hallazgos no necesitan estar relacionados con ninguna pregunta u objetivo, siempre y cuando sean importantes para el promotor del proyecto.</p>
+<section id="evaluar-resultados" class="level2">
+<h2 class="anchored" data-anchor-id="evaluar-resultados">Evaluar resultados</h2>
+<p>Este paso evalúa el grado en que el modelo cumple con los objetivos de negocio, y busca determinar si hay alguna razón comercial por la cual este modelo es deficiente. Otra opción es probar los modelos en aplicaciones de prueba en la aplicación real, si las limitaciones de tiempo y presupuesto lo permiten.</p>
+<p>Además, la evaluación también valora otros resultados generados por la minería de datos. Los resultados de la minería de datos cubren modelos que están relacionados con los objetivos comerciales originales y todos los demás hallazgos. Algunos están relacionados con los objetivos comerciales originales, mientras que otros pueden revelar desafíos, información o pistas adicionales para futuros proyectos.</p>
+<section id="evaluación-de-los-resultados-de-la-minería-de-datos-con-respecto-a-los-criterios-de-éxito-del-negocio" class="level3">
+<h3 class="anchored" data-anchor-id="evaluación-de-los-resultados-de-la-minería-de-datos-con-respecto-a-los-criterios-de-éxito-del-negocio">Evaluación de los resultados de la minería de datos con respecto a los criterios de éxito del negocio</h3>
+<p>Resuma los resultados de la evaluación en términos de criterios de éxito comercial, incluyendo una declaración final relacionada con si el proyecto ya cumple con los objetivos comerciales iniciales.</p>
+<ul>
+<li>Comprender los resultados de la minería de datos</li>
+<li>Interpretar los resultados en términos de la aplicación</li>
+<li>Comprobar el efecto sobre el objetivo de la minería de datos</li>
+<li>Revisar el resultado de la minería de datos contra la base de conocimiento dada para ver si la información descubierta es novedosa y útil.</li>
+<li>Evaluar y valorar los resultados con respecto a los criterios de éxito empresarial (es decir, si el proyecto ha alcanzado los objetivos empresariales originales).</li>
+<li>Comparar los resultados de la evaluación y la interpretación</li>
+<li>Clasificar los resultados con respecto a los criterios de éxito del negocio</li>
+<li>Comprobar el efecto del resultado en el objetivo de la aplicación inicial</li>
+<li>Determinar si hay nuevos objetivos de negocio a ser abordados más adelante en el proyecto, o en nuevos proyectos.</li>
+<li>Recomendaciones de los estados para futuros proyectos de minería de datos</li>
+</ul>
+</section>
+<section id="modelos-aprobados" class="level3">
+<h3 class="anchored" data-anchor-id="modelos-aprobados">Modelos aprobados</h3>
+<p>Después de tener evaluados a los modelos con respecto a los criterios de éxito del negocio, seleccione y apruebe los modelos generados que cumplan con los criterios seleccionados.</p>
+</section>
+</section>
+<section id="proceso-de-revisión" class="level2">
+<h2 class="anchored" data-anchor-id="proceso-de-revisión">Proceso de revisión</h2>
+<p>En este punto, el modelo resultante parece ser satisfactorio y satisfacer las necesidades del negocio. Ahora es apropiado hacer una revisión más completa de la participación en la minería de datos para determinar si hay algún factor o tarea importante que de alguna manera se haya pasado por alto. En esta etapa del ejercicio de minería de datos, la Revisión del Proceso toma la forma de una Revisión de Garantía de Calidad.</p>
+<section id="revisión-del-proceso" class="level3">
+<h3 class="anchored" data-anchor-id="revisión-del-proceso">Revisión del proceso</h3>
+<p>Resuma el proceso de revisión y haga una lista de las actividades que se han omitido y/o que deben repetirse.</p>
+<ul>
+<li>Proporcionar una visión general del proceso de minería de datos utilizado</li>
+<li>Analizar el proceso de minería de datos. Para cada etapa del proceso pregunte:
+<ul>
+<li>¿Era necesario?</li>
+<li>¿Fue ejecutado de manera óptima?</li>
+<li>¿De qué manera podría mejorarse?</li>
+</ul></li>
+<li>Identificar las fallas</li>
+<li>Identificar los pasos engañosos</li>
+<li>Identificar posibles acciones alternativas y/o caminos inesperados en el proceso</li>
+<li>Revisar los resultados de la minería de datos con respecto a los criterios de éxito del negocio</li>
+</ul>
+</section>
+</section>
+<section id="determinar-los-siguientes-pasos" class="level2">
+<h2 class="anchored" data-anchor-id="determinar-los-siguientes-pasos">Determinar los siguientes pasos</h2>
+<p>Basándose en los resultados de la evaluación y en la revisión del proceso, el equipo del proyecto decide cómo proceder. Las decisiones que se deben tomar incluyen si se debe terminar este proyecto y pasar al despliegue, iniciar nuevas iteraciones o establecer nuevos proyectos de minería de datos.</p>
+<section id="lista-de-posibles-acciones" class="level3">
+<h3 class="anchored" data-anchor-id="lista-de-posibles-acciones">Lista de posibles acciones</h3>
+<p>Enumere las posibles acciones adicionales junto con las razones a favor y en contra de cada opción.</p>
+<ul>
+<li>Analizar el potencial de despliegue de cada resultado</li>
+<li>Estimar el potencial de mejora del proceso actual</li>
+<li>Revisar los recursos restantes para determinar si permiten iteraciones de proceso adicionales (o si se pueden hacer disponibles recursos adicionales).</li>
+<li>Recomendar iteraciones alternativas</li>
+<li>Refinar el plan de proceso</li>
+</ul>
+</section>
+<section id="decisiones" class="level3">
+<h3 class="anchored" data-anchor-id="decisiones">Decisiones</h3>
+<p>Describa las decisiones tomadas, junto con la justificación de las mismas.</p>
+<ul>
+<li>Clasificar las posibles acciones</li>
+<li>Seleccione una de las acciones posibles</li>
+<li>Documentar las razones de la elección</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="implementación" class="level1">
+<h1>Implementación</h1>
+<section id="planear-la-implementación" class="level2">
+<h2 class="anchored" data-anchor-id="planear-la-implementación">Planear la implementación</h2>
+<p>Esta tarea comienza con los resultados de la evaluación y concluye con una estrategia para la implementación de los resultados de la minería de datos en el negocio.</p>
+<section id="plan-de-implementación" class="level3">
+<h3 class="anchored" data-anchor-id="plan-de-implementación">Plan de implementación</h3>
+<p>Resuma la estrategia de implementación, incluyendo los pasos necesarios y cómo llevarlos a cabo.</p>
+<ul>
+<li>Resumir resultados que se pueden implementar</li>
+<li>Desarrollar y evaluar planes alternativos de despliegue</li>
+<li>Determinar cómo se trasladará el conocimiento o la información a los usuarios.</li>
+<li>Decidir cómo se va a rastrear el uso del resultado y cómo se medirán sus beneficios (cuando corresponda).</li>
+<li>Decidir para cada modelo desplegable o resultado de software</li>
+<li>Establecer cómo se desplegará el modelo o el resultado del software dentro de los sistemas de la organización.</li>
+<li>Determinar cómo se va a monitorear su uso y cómo se medirán sus beneficios (cuando corresponda).</li>
+<li>Identificar posibles problemas durante la implementación (trampas que deben evitarse)</li>
+</ul>
+</section>
+</section>
+<section id="planear-el-monitoreo-y-mantenimiento" class="level2">
+<h2 class="anchored" data-anchor-id="planear-el-monitoreo-y-mantenimiento">Planear el monitoreo y mantenimiento</h2>
+<p>La supervisión y el mantenimiento son cuestiones importantes si los resultados de la minería de datos se convierten en parte del negocio diario y de su entorno. . Para poder monitorear el despliegue de los resultados de la minería de datos, el proyecto necesita un plan detallado de monitoreo y mantenimiento. Este plan tiene en cuenta el tipo específico de despliegue.</p>
+<section id="plan-de-monitoreo-y-mantenimiento" class="level3">
+<h3 class="anchored" data-anchor-id="plan-de-monitoreo-y-mantenimiento">Plan de Monitoreo y Mantenimiento</h3>
+<p>Resuma la estrategia de monitoreo y mantenimiento, incluyendo los pasos necesarios y cómo llevarlos a cabo.</p>
+<ul>
+<li>Compruebe los aspectos dinámicos (es decir, ¿qué cosas podrían cambiar en el entorno?).</li>
+<li>Decidir cómo se monitoreará la precisión</li>
+<li>Determinar cuando el resultado de la minería de datos o el modelo no debe ser utilizado más. Identificar los criterios (validez, umbral de precisión, nuevos datos, cambio en el dominio de la aplicación, etc.), y lo que debería suceder si el modelo o resultado ya no pudiera utilizarse. (actualizar el modelo, crear un nuevo proyecto de minería de datos, etc.).</li>
+<li>¿Los objetivos de negocio del uso del modelo cambiarán con el tiempo? Documentar completamente el problema inicial que el modelo intentaba resolver.</li>
+<li>Desarrollar un plan de monitoreo y mantenimiento.</li>
+</ul>
+</section>
+</section>
+<section id="producir-el-reporte-final" class="level2">
+<h2 class="anchored" data-anchor-id="producir-el-reporte-final">Producir el reporte final</h2>
+<p>Al final del proyecto, el equipo del proyecto redacta un informe final. Dependiendo del plan de implementación, este informe puede ser sólo un resumen del proyecto y su experiencia, o una presentación final de los resultados de la minería de datos.</p>
+<section id="reporte-final" class="level3">
+<h3 class="anchored" data-anchor-id="reporte-final">Reporte final</h3>
+<p>Al final del proyecto, habrá al menos un informe final en el que se reunirán todos los hilos conductores. Además de identificar los resultados obtenidos, el informe también debe describir el proceso, mostrar los costos incurridos, definir cualquier desviación del plan original, describir los planes de implementación y hacer recomendaciones para trabajos futuros. El contenido del informe depende en gran medida de la audiencia a la que se dirige.</p>
+<ul>
+<li>Identificar qué informes son necesarios (presentación de diapositivas, resumen de la gestión, conclusiones detalladas, explicación de los modelos, etc.).</li>
+<li>Analizar hasta qué punto se han cumplido los objetivos iniciales de la minería de datos</li>
+<li>Identificar los grupos objetivo para el informe</li>
+<li>Esquema de la estructura y el contenido de los informes</li>
+<li>Seleccionar los hallazgos que se incluirán en los informes</li>
+<li>Escribir un informe</li>
+</ul>
+</section>
+<section id="presentación-final" class="level3">
+<h3 class="anchored" data-anchor-id="presentación-final">Presentación final</h3>
+<p>Además de un informe final, puede ser necesario hacer una presentación final para resumir el proyecto, por ejemplo, ante el patrocinador. La presentación normalmente contiene un subconjunto de la información contenida en el informe final, estructurada de manera diferente.</p>
+<ul>
+<li>Decidir el grupo objetivo para la presentación final y determinar si ya han recibido el informe final.</li>
+<li>Seleccionar qué elementos del informe final deben incluirse en la presentación final.</li>
+</ul>
+</section>
+</section>
+<section id="revisión-del-proyecto" class="level2">
+<h2 class="anchored" data-anchor-id="revisión-del-proyecto">Revisión del proyecto</h2>
+<p>Evaluar lo que salió bien y lo que salió mal, lo que se hizo bien y lo que necesita ser mejorado.</p>
+<section id="documentación-de-experiencias" class="level3">
+<h3 class="anchored" data-anchor-id="documentación-de-experiencias">Documentación de experiencias</h3>
+<p>Resuma la experiencia importante adquirida durante el proyecto. Por ejemplo, las trampas, los enfoques engañosos o los consejos para seleccionar las técnicas de minería de datos más adecuadas en situaciones similares podrían formar parte de esta documentación. En muchos proyectos, la documentación de la experiencia también cubre cualquier informe que haya sido escrito por miembros individuales del proyecto durante el proyecto.</p>
+<ul>
+<li>Entrevistar a todas las personas importantes involucradas en el proyecto y preguntarles sobre su experiencia durante el proyecto.</li>
+<li>Si los usuarios finales de la empresa trabajan con los resultados de la minería de datos, entrevistarlos: ¿Están satisfechos? ¿Qué podría haberse hecho mejor? ¿Necesitan apoyo adicional?</li>
+<li>Resumir los comentarios y escribir la documentación de la experiencia.</li>
+<li>Analizar el proceso (cosas que funcionaron bien, errores cometidos, lecciones aprendidas, etc.)</li>
+<li>Documentar el proceso específico de minería de datos (¿Cómo pueden los resultados y la experiencia de la aplicación del modelo ser retroalimentados en el proceso?)</li>
+<li>Generalizar a partir de los detalles para que la experiencia sea útil para futuros proyectos.</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Osakidetza, Hospital Santa Marina. 2025. I Apraiz; S Ballesteros; R Blanco.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>

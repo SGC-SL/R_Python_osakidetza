@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Descubriendo R y Python en Osakidetza – R y Python en Osakidetza</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../Logo_2.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="mermaid-theme" content="forest">
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../imagenes/Logo_2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">R y Python en Osakidetza</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-primeros-pasos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Primeros pasos</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-primeros-pasos">    
+        <li>
+    <a class="dropdown-item" href="../flujo_trabajo.html">
+ <span class="dropdown-text">Flujo de trabajo</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../interfaz_trabajo.html">
+ <span class="dropdown-text">Interfaces</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-gestión-y-análisis" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Gestión y Análisis</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-gestión-y-análisis">    
+        <li>
+    <a class="dropdown-item" href="../Gestion_dato.html">
+ <span class="dropdown-text">Obtención y gestión Datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../estadistica.html">
+ <span class="dropdown-text">Análisis estadísticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../mas_usos.html">
+ <span class="dropdown-text">Más usos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-difusión-resultados" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Difusión resultados</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-difusión-resultados">    
+        <li>
+    <a class="dropdown-item" href="../difusion_propia.html">
+ <span class="dropdown-text">Difusión propia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../difusion_externa.html">
+ <span class="dropdown-text">Difusión de conocimientos</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.osakidetza.euskadi.eus/portada-hospital-santa-marina/"> <i class="bi bi-globe2" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#en-el-café-del-turno.." id="toc-en-el-café-del-turno.." class="nav-link active" data-scroll-target="#en-el-café-del-turno..">En el café del turno..</a>
+  <ul class="collapse">
+  <li><a href="#comenzamos" id="toc-comenzamos" class="nav-link" data-scroll-target="#comenzamos">¡Comenzamos!</a></li>
+  </ul></li>
+  <li><a href="#qué-es-r-qué-es-python" id="toc-qué-es-r-qué-es-python" class="nav-link" data-scroll-target="#qué-es-r-qué-es-python">¿Qué es R? ¿Qué es Python?</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#cuales-son-sus-similitudes-y-diferencias" id="toc-cuales-son-sus-similitudes-y-diferencias" class="nav-link" data-scroll-target="#cuales-son-sus-similitudes-y-diferencias">¿Cuales son sus similitudes y diferencias?</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"></a></li>
+  <li><a href="#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad" id="toc-qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad" class="nav-link" data-scroll-target="#qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad">¿Qué podemos hacer con ellos en el campo de la sanidad?</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"></a></li>
+  <li><a href="#fin-de-la-primera-parte." id="toc-fin-de-la-primera-parte." class="nav-link" data-scroll-target="#fin-de-la-primera-parte.">Fin de la primera parte.</a></li>
+  </ul></li>
+  <li><a href="#cómo-funcionan-estos-lenguajes" id="toc-cómo-funcionan-estos-lenguajes" class="nav-link" data-scroll-target="#cómo-funcionan-estos-lenguajes">¿Cómo funcionan estos lenguajes?</a>
+  <ul class="collapse">
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"></a></li>
+  <li><a href="#la-escritura-de-los-lenguajes-de-programación" id="toc-la-escritura-de-los-lenguajes-de-programación" class="nav-link" data-scroll-target="#la-escritura-de-los-lenguajes-de-programación">La escritura de los lenguajes de programación</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#importando-órdenes-de-librerias" id="toc-importando-órdenes-de-librerias" class="nav-link" data-scroll-target="#importando-órdenes-de-librerias">Importando órdenes de librerias</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9"></a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10"></a></li>
+  <li><a href="#creando-órdenes-propias" id="toc-creando-órdenes-propias" class="nav-link" data-scroll-target="#creando-órdenes-propias">Creando órdenes propias</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11"></a></li>
+  <li><a href="#dónde-podemos-trabajar" id="toc-dónde-podemos-trabajar" class="nav-link" data-scroll-target="#dónde-podemos-trabajar">¿Dónde podemos trabajar?</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12"></a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13"></a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14"></a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#fin-de-la-segunda-parte." id="toc-fin-de-la-segunda-parte." class="nav-link" data-scroll-target="#fin-de-la-segunda-parte.">Fin de la segunda parte.</a></li>
+  </ul></li>
+  <li><a href="#qué-podemos-trabajar" id="toc-qué-podemos-trabajar" class="nav-link" data-scroll-target="#qué-podemos-trabajar">¿Qué podemos trabajar?</a>
+  <ul class="collapse">
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15"></a></li>
+  <li><a href="#el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm" id="toc-el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm" class="nav-link" data-scroll-target="#el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm">El modelo <strong>Cross Industry Standard Process for Data Minning (CRISP-DM)</strong></a></li>
+  <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16"></a></li>
+  <li><a href="#revisión-de-la-literatura" id="toc-revisión-de-la-literatura" class="nav-link" data-scroll-target="#revisión-de-la-literatura">1. Revisión de la literatura</a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17"></a></li>
+  <li><a href="#recogida-de-datos" id="toc-recogida-de-datos" class="nav-link" data-scroll-target="#recogida-de-datos">2. Recogida de datos</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18"></a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19"></a></li>
+  <li><a href="#procesamiento-estadístico" id="toc-procesamiento-estadístico" class="nav-link" data-scroll-target="#procesamiento-estadístico">3. Procesamiento estadístico</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20"></a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21"></a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22"></a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23"></a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24"></a></li>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25"></a></li>
+  <li><a href="#section-26" id="toc-section-26" class="nav-link" data-scroll-target="#section-26"></a></li>
+  <li><a href="#section-27" id="toc-section-27" class="nav-link" data-scroll-target="#section-27"></a></li>
+  <li><a href="#section-28" id="toc-section-28" class="nav-link" data-scroll-target="#section-28"></a></li>
+  <li><a href="#section-29" id="toc-section-29" class="nav-link" data-scroll-target="#section-29"></a></li>
+  <li><a href="#otros-tipos-de-análisis" id="toc-otros-tipos-de-análisis" class="nav-link" data-scroll-target="#otros-tipos-de-análisis">Otros tipos de análisis</a></li>
+  <li><a href="#section-30" id="toc-section-30" class="nav-link" data-scroll-target="#section-30"></a></li>
+  <li><a href="#section-31" id="toc-section-31" class="nav-link" data-scroll-target="#section-31"></a></li>
+  <li><a href="#section-32" id="toc-section-32" class="nav-link" data-scroll-target="#section-32"></a></li>
+  <li><a href="#section-33" id="toc-section-33" class="nav-link" data-scroll-target="#section-33"></a></li>
+  <li><a href="#section-34" id="toc-section-34" class="nav-link" data-scroll-target="#section-34"></a></li>
+  <li><a href="#más-usos" id="toc-más-usos" class="nav-link" data-scroll-target="#más-usos">Más usos</a></li>
+  <li><a href="#section-35" id="toc-section-35" class="nav-link" data-scroll-target="#section-35"></a></li>
+  <li><a href="#fin-de-la-tercera-parte." id="toc-fin-de-la-tercera-parte." class="nav-link" data-scroll-target="#fin-de-la-tercera-parte.">Fin de la tercera parte.</a></li>
+  </ul></li>
+  <li><a href="#cómo-podemos-difundir-nuestra-información" id="toc-cómo-podemos-difundir-nuestra-información" class="nav-link" data-scroll-target="#cómo-podemos-difundir-nuestra-información">¿Cómo podemos difundir nuestra información?</a>
+  <ul class="collapse">
+  <li><a href="#tipos-de-difusión" id="toc-tipos-de-difusión" class="nav-link" data-scroll-target="#tipos-de-difusión">Tipos de difusión</a></li>
+  <li><a href="#section-36" id="toc-section-36" class="nav-link" data-scroll-target="#section-36"></a></li>
+  <li><a href="#otros-usos" id="toc-otros-usos" class="nav-link" data-scroll-target="#otros-usos">Otros usos</a></li>
+  <li><a href="#creación-de-programas-informáticos" id="toc-creación-de-programas-informáticos" class="nav-link" data-scroll-target="#creación-de-programas-informáticos">Creación de programas informáticos</a></li>
+  <li><a href="#section-37" id="toc-section-37" class="nav-link" data-scroll-target="#section-37"></a></li>
+  <li><a href="#fin-de-la-cuarta-parte." id="toc-fin-de-la-cuarta-parte." class="nav-link" data-scroll-target="#fin-de-la-cuarta-parte.">Fin de la cuarta parte.</a></li>
+  <li><a href="#section-38" id="toc-section-38" class="nav-link" data-scroll-target="#section-38"></a></li>
+  <li><a href="#section-39" id="toc-section-39" class="nav-link" data-scroll-target="#section-39"></a></li>
+  <li><a href="#section-40" id="toc-section-40" class="nav-link" data-scroll-target="#section-40"></a></li>
+  <li><a href="#section-41" id="toc-section-41" class="nav-link" data-scroll-target="#section-41"></a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="presentación_ejemplo.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Descubriendo R y Python en Osakidetza</h1>
+<p class="subtitle lead">Plan formativo corporativo</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="en-el-café-del-turno.." class="level2" data-state="hide-menubar">
+<h2 data-state="hide-menubar" class="anchored" data-anchor-id="en-el-café-del-turno..">En el café del turno..</h2>
+<section id="comenzamos" class="level3">
+<h3 class="anchored" data-anchor-id="comenzamos">¡Comenzamos!</h3>
+<ul class="menu">
+<ul>
+</ul></ul></section>
+</section>
+<section id="qué-es-r-qué-es-python" class="level1" data-stack-name="¿Qué es R y Python?">
+<h1 data-stack-name="¿Qué es R y Python?">¿Qué es R? ¿Qué es Python?</h1>
+<section id="section" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section"></h2>
+<ul>
+<li>Lenguajes de programación <strong>sencillos.</strong></li>
+</ul>
+<p>. . .</p>
+<ul>
+<li><strong>Altamente utilizados</strong> en la investigación y el sectores de la innovación.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>De carácter <strong>abierto y colaborativo.</strong></li>
+</ul>
+</section>
+<section id="section-1" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-1"></h2>
+<div style="margin-top: 100px; font-size: 2em; color: red;">
+<ul>
+<li>De carácter abierto y colaborativo.</li>
+</ul>
+</div>
+</section>
+<section id="cuales-son-sus-similitudes-y-diferencias" class="level2">
+<h2 class="anchored" data-anchor-id="cuales-son-sus-similitudes-y-diferencias">¿Cuales son sus similitudes y diferencias?</h2>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<div class="table" style="height: 50px; weight: 5px; font-size: 10;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>R</th>
+<th>Python</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diseñado para análisis estadístico</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Multipropósito (desarrollo web, etc.)</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Código abierto</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Gran cantidad de paquetes disponibles</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Facilidad de aprendizaje inicial</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Potente visualización de datos</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Soporte para múltiples formatos de datos</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Velocidad de ejecución</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Ideal para principiantes</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Amplia comunidad y ecosistema</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Integración con sistemas de producción</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Uso en desarrollo web</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3"></h2>
+<p>Su principal diferencia es la <strong>Programación orientada a objetos.</strong></p>
+<p>Python es un lenguaje orientado a objetos (muchos tipos de datos). Mientras que R trabaja fundamentalmente con números, vectores y datos.</p>
+</section>
+<section id="qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad" class="level2">
+<h2 class="anchored" data-anchor-id="qué-podemos-hacer-con-ellos-en-el-campo-de-la-sanidad">¿Qué podemos hacer con ellos en el campo de la sanidad?</h2>
+<p>. . .</p>
+<ul>
+<li>Investigación sanitaria</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Gestión y análisis de las Bases de datos</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Gestión óptima de los recursos sanitarios</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Difusión óptima del conocimiento</li>
+</ul>
+<p>. . .</p>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4"></h2>
+<p><img src="Imagenes/chat.png" class="fragment" width="16000" height="400"></p>
+</section>
+<section id="fin-de-la-primera-parte." class="level2">
+<h2 class="anchored" data-anchor-id="fin-de-la-primera-parte.">Fin de la primera parte.</h2>
+<p>(Sorbo de café)</p>
+</section>
+</section>
+<section id="cómo-funcionan-estos-lenguajes" class="level1" data-stack-name="¿Cómo funcionan?">
+<h1 data-stack-name="¿Cómo funcionan?">¿Cómo funcionan estos lenguajes?</h1>
+<section id="section-5" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-5"></h2>
+<p><strong>Concepto clave:</strong></p>
+<p><em>Los lenguajes de programación <strong>trabajan con texto.</strong></em> <em>Es decir, debemos escribir las órdenes que le queremos dar al ordenado</em></p>
+</section>
+<section id="la-escritura-de-los-lenguajes-de-programación" class="level2">
+<h2 class="anchored" data-anchor-id="la-escritura-de-los-lenguajes-de-programación">La escritura de los lenguajes de programación</h2>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6"></h2>
+<p>Ejemplo básico</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Sueldo <span class="ot">&lt;-</span> <span class="dv">2600</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>Extra <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>Sueldo_total <span class="ot">&lt;-</span> Sueldo <span class="sc">+</span> Extra</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">print</span>(<span class="fu">cat</span>(<span class="st">"Mi sueldo es de:"</span>, Sueldo_total, <span class="st">"euros."</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Mi sueldo es de: 2900 euros.NULL</code></pre>
+</div>
+</div>
+</section>
+<section id="importando-órdenes-de-librerias" class="level2">
+<h2 class="anchored" data-anchor-id="importando-órdenes-de-librerias">Importando órdenes de librerias</h2>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7"></h2>
+<p>Ejemplo en R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(DescTools)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>n_exitos <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>n_total <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Utilizamos la orden BinomCI() de la librería</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>resultado <span class="ot">&lt;-</span> <span class="fu">BinomCI</span>(<span class="at">x =</span> n_exitos, </span>
+<span id="cb3-9"><a href="#cb3-9"></a>                     <span class="at">n =</span> n_total, </span>
+<span id="cb3-10"><a href="#cb3-10"></a>                     <span class="at">conf.level =</span> <span class="fl">0.95</span>, </span>
+<span id="cb3-11"><a href="#cb3-11"></a>                     <span class="at">method =</span> <span class="st">"wilson"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># Mostramos el resultado</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="fu">print</span>(resultado)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>     est    lwr.ci    upr.ci
+[1,] 0.5 0.4038315 0.5961685</code></pre>
+</div>
+</div>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8"></h2>
+<p>Instalar librerias en R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"DescTools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9"></h2>
+<p>Ejemplo en Python</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co"># Definimos los parámetros</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>n_exitos <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>n_total <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># Calculamos el intervalo de confianza binomial con método Wilson</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>intervalo <span class="op">=</span> sm.stats.proportion_confint(count<span class="op">=</span>n_exitos, </span>
+<span id="cb6-9"><a href="#cb6-9"></a>                                      nobs<span class="op">=</span>n_total, </span>
+<span id="cb6-10"><a href="#cb6-10"></a>                                      alpha<span class="op">=</span><span class="fl">0.05</span>, </span>
+<span id="cb6-11"><a href="#cb6-11"></a>                                      method<span class="op">=</span><span class="st">'wilson'</span>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># Formateamos el resultado similar al output de R</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>resultado <span class="op">=</span> [[n_exitos<span class="op">/</span>n_total, intervalo[<span class="dv">0</span>], intervalo[<span class="dv">1</span>]]]</span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="bu">print</span>(<span class="ss">f"resultado </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">   </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">   </span><span class="sc">{</span>resultado[<span class="dv">0</span>][<span class="dv">2</span>]<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>resultado 0.5000   0.4038   0.5962</code></pre>
+</div>
+</div>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10"></h2>
+<p>Instalar librerias en Python</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pip install statsmodels.api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creando-órdenes-propias" class="level2">
+<h2 class="anchored" data-anchor-id="creando-órdenes-propias">Creando órdenes propias</h2>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11"></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función casera para la prueba chi-cuadrado</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>chi_cuadrado_casera <span class="ot">&lt;-</span> <span class="cf">function</span>(tabla_observada) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular totales de filas y columnas</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  totales_filas <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(tabla_observada)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  totales_columnas <span class="ot">&lt;-</span> <span class="fu">colSums</span>(tabla_observada)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  total_general <span class="ot">&lt;-</span> <span class="fu">sum</span>(tabla_observada)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular frecuencias esperadas</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  frecuencias_esperadas <span class="ot">&lt;-</span> <span class="fu">outer</span>(totales_filas, totales_columnas) <span class="sc">/</span> total_general</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular el estadístico chi-cuadrado</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  chi_cuadrado <span class="ot">&lt;-</span> <span class="fu">sum</span>((tabla_observada <span class="sc">-</span> frecuencias_esperadas)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> frecuencias_esperadas)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular grados de libertad</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  grados_libertad <span class="ot">&lt;-</span> (<span class="fu">nrow</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">ncol</span>(tabla_observada) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calcular el valor p</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  valor_p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(chi_cuadrado, <span class="at">df =</span> grados_libertad)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear y devolver el resultado</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">estadistico =</span> chi_cuadrado,</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">grados_libertad =</span> grados_libertad,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_p =</span> valor_p</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>tabla_ejemplo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">15</span>), <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Grupo A"</span>, <span class="st">"Grupo B"</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(tabla_ejemplo) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Categoría 1"</span>, <span class="st">"Categoría 2"</span>)</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tabla_ejemplo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dónde-podemos-trabajar" class="level2">
+<h2 class="anchored" data-anchor-id="dónde-podemos-trabajar">¿Dónde podemos trabajar?</h2>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12"></h2>
+</section>
+<section id="section-13" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-13"></h2>
+<p><strong>Concepto clave:</strong></p>
+<p><em>El trabajo con los lenguajes de programación se realiza a través de <strong>IDE (Entornos de Desarrollo Integrados).</strong></em></p>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14"></h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Rstudio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">PyCharm</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Visual Studio</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Positron</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><img src="Imagenes/Rstudio.png" data-top="100" data-left="0" width="900" height="450"></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><img src="Imagenes/PyCharm.png" width="900" height="450"></p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><img src="Imagenes/visual_studio.png" width="900" height="450"></p>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p><img src="Imagenes/positron.png" width="900" height="450"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<div class="fragment custom blur">
+<ul>
+<li>Uso de consola o <strong>Scripts</strong></li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li>Definición de <strong>variables y atributos</strong></li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li>Ejecución de <strong>instrucciones</strong></li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li><strong>Tipos de datos</strong> (numéricos, textos, booleanos)</li>
+</ul>
+</div>
+<div class="fragment custom blur">
+<ul>
+<li><strong>Operadores</strong> (aritméticos, lógicos, asignación)</li>
+</ul>
+</div>
+</section>
+<section id="fin-de-la-segunda-parte." class="level2">
+<h2 class="anchored" data-anchor-id="fin-de-la-segunda-parte.">Fin de la segunda parte.</h2>
+<p>(Sorbo de café)</p>
+</section>
+</section>
+<section id="qué-podemos-trabajar" class="level1" data-stack-name="¿Cómo hacemos?">
+<h1 data-stack-name="¿Cómo hacemos?">¿Qué podemos trabajar?</h1>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15"></h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: { 'logLevel': 'debug', 'theme': 'forest' } }%%
+
+timeline
+    title Realización de un estudio de investigación / Innovación
+    section hipótesis, Recopilación de información y diseño
+        Teorización  : Realización de la teoría de investigación.
+        Revisión     : Revisión sistemática de la literatura y estado actual.
+        Diseño       : Diseño del estudio y de los materiales necesarios.
+    section Recogida de datos, Análisis e interpretación
+        Recogida de datos : Recogida de la información.
+        Análisis de datos : Análisis de los resultados.
+        Implementación y sostenibilidad: Valoración de la implementación y la sostenibilidad de las acciones.
+    section Difusión
+        Comunicación: Comunicación de los resultados
+
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm" class="level2">
+<h2 class="anchored" data-anchor-id="el-modelo-cross-industry-standard-process-for-data-minning-crisp-dm">El modelo <strong>Cross Industry Standard Process for Data Minning (CRISP-DM)</strong></h2>
+</section>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16"></h2>
+<p>CRISP-DM</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/cris.png" width="600" height="450" class="figure-img"></p>
+<figcaption>analyticsindiamag.com</figcaption>
+</figure>
+</div>
+</section>
+<section id="revisión-de-la-literatura" class="level2">
+<h2 class="anchored" data-anchor-id="revisión-de-la-literatura">1. Revisión de la literatura</h2>
+</section>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17"></h2>
+<p>Realización de Metaanálisis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete metafor</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un conjunto de datos de ejemplo</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Supongamos que tenemos 5 estudios con tamaños de efecto (yi) y varianzas (vi)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">study =</span> <span class="fu">c</span>(<span class="st">"Estudio 1"</span>, <span class="st">"Estudio 2"</span>, <span class="st">"Estudio 3"</span>, <span class="st">"Estudio 4"</span>, <span class="st">"Estudio 5"</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">yi =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>),   <span class="co"># Tamaños de efecto</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">vi =</span> <span class="fu">c</span>(<span class="fl">0.04</span>, <span class="fl">0.03</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.04</span>) <span class="co"># Varianzas</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los datos</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar el meta-análisis (modelo de efectos aleatorios)</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>meta_result <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">data =</span> data, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen de los resultados del meta-análisis</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(meta_result)</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un forest plot para visualizar los resultados</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="fu">forest</span>(meta_result, <span class="at">slab =</span> data<span class="sc">$</span>study)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Funnel plot para evaluar sesgos de publicación</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">funnel</span>(meta_result)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Análisis de heterogeneidad</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Heterogeneidad:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"Q ="</span>, meta_result<span class="sc">$</span>QE, <span class="st">", p ="</span>, meta_result<span class="sc">$</span>QEp, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">"I^2 ="</span>, <span class="fu">round</span>(meta_result<span class="sc">$</span>I2, <span class="dv">2</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="recogida-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="recogida-de-datos">2. Recogida de datos</h2>
+</section>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18"></h2>
+<p>Una base de datos es una colección <strong>organizada de información que se almacena electrónicamente y a la que se puede consultar de forma organizada</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Bases de datos SQL</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Bases de datos no solo SQL</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Organizan la información en <strong>tablas</strong> estructuradas previamente.</p>
+<p><img src="Imagenes/sql.webp" width="200" height="150"></p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Organizan la información de <strong>forma dinámica</strong> (Como cuadernos con hojas).</p>
+<p><img src="Imagenes/mongo.jpg" width="250" height="150"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-19" class="level2">
+<h2 class="anchored" data-anchor-id="section-19"></h2>
+<p><strong>Cuadernos de recogida de datos electrónicos</strong></p>
+<ol type="1">
+<li>Rapidez y automatización</li>
+<li>Menos errores humanos</li>
+<li>Facilidad de almacenamiento y acceso</li>
+<li>Seguridad y respaldo</li>
+<li>Análisis avanzado y visualización</li>
+<li>Integración con otros sistemas</li>
+<li>Escalabilidad</li>
+</ol>
+</section>
+<section id="procesamiento-estadístico" class="level2">
+<h2 class="anchored" data-anchor-id="procesamiento-estadístico">3. Procesamiento estadístico</h2>
+</section>
+<section id="section-20" class="level2">
+<h2 class="anchored" data-anchor-id="section-20"></h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Estadística descriptiva</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Estadística inferencial</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>Estadística destinada al resumen de datos a través de valores y gráficos.</p>
+<p>Tanto R como Python permiten realizan este tipo de análisis.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>Estadística destinada a encontrar asociaciones. Tiene dos enfoques: frecuentista y bayesiano.</p>
+<p>Tanto R como Python permiten realizar este tipo de análisis.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-21" class="level2">
+<h2 class="anchored" data-anchor-id="section-21"></h2>
+<p>Ejemplo estadística descriptiva</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Generamos de datos simulados</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Fijamos la semilla para reproducibilidad</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos dos grupos con datos simulados</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">10</span>) <span class="co"># Grupo A: media 70, desviación estándar 10</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>) <span class="co"># Grupo B: media 75, desviación estándar 12</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinamos los datos en un dataframe</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">Grupo =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">50</span>),</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Valor =</span> <span class="fu">c</span>(grupo_A, grupo_B)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Análisis descriptivo</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen estadístico general</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>resumen_por_grupo <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Grupo) <span class="sc">%&gt;%</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">Media =</span> <span class="fu">mean</span>(Valor),</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mediana =</span> <span class="fu">median</span>(Valor),</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">Desviacion_Estandar =</span> <span class="fu">sd</span>(Valor),</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">Minimo =</span> <span class="fu">min</span>(Valor),</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">Maximo =</span> <span class="fu">max</span>(Valor)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumen_por_grupo)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Visualización de datos</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot para comparar los grupos</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> Grupo, <span class="at">y =</span> Valor, <span class="at">fill =</span> Grupo)) <span class="sc">+</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Comparación de Grupos"</span>, <span class="at">x =</span> <span class="st">"Grupo"</span>, <span class="at">y =</span> <span class="st">"Valor"</span>) <span class="sc">+</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-22" class="level2">
+<h2 class="anchored" data-anchor-id="section-22"></h2>
+<p>Resultados</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>
+Adjuntando el paquete: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code># A tibble: 2 × 6
+  Grupo Media Mediana Desviacion_Estandar Minimo Maximo
+  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 A      70.3    69.3                9.26   50.3   91.7
+2 B      76.8    76.8               10.9    47.3  101. </code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="presentación_ejemplo_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-23" class="level2">
+<h2 class="anchored" data-anchor-id="section-23"></h2>
+<p>Ejemplo estadística inferencial</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos dos grupos con datos simulados</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">10</span>) <span class="co"># Grupo A: media 70, desviación estándar 10</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">75</span>, <span class="at">sd =</span> <span class="dv">12</span>) <span class="co"># Grupo B: media 75, desviación estándar 12</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinamos los datos en un dataframe</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Grupo =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">each =</span> <span class="dv">50</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Valor =</span> <span class="fu">c</span>(grupo_A, grupo_B)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(grupo_A, grupo_B)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(t_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-24" class="level2">
+<h2 class="anchored" data-anchor-id="section-24"></h2>
+<p>Resultados</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>
+    Welch Two Sample t-test
+
+data:  grupo_A and grupo_B
+t = -3.793, df = 96.588, p-value = 0.0002594
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -12.193431  -3.815942
+sample estimates:
+mean of x mean of y 
+ 67.46100  75.46568 </code></pre>
+</div>
+</div>
+</section>
+<section id="section-25" class="level2">
+<h2 class="anchored" data-anchor-id="section-25"></h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Modelaje supervisado</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Modelaje no supervisado</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Deep learning</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>Técnica dentro del aprendizaje automático (machine learning) que utiliza conjuntos de datos <strong>etiquetados</strong> para entrenar algoritmos.</p>
+<ul>
+<li>Modelos de Regresión y clasificación.(scikit-learn)</li>
+<li>…</li>
+</ul>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>Técnica dentro del aprendizaje automático (machine learning) que utiliza conjuntos de datos <strong>NO etiquetados</strong> para entrenar algoritmos.</p>
+<ul>
+<li>Clustering.</li>
+<li>…</li>
+</ul>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<p>Técnica avanzada de inteligencia artificial (IA) que utiliza <strong>redes neuronales</strong> artificiales profundas para aprender automáticamente a partir de grandes cantidades de datos.</p>
+<ul>
+<li>Redes neuronales. (Keras)</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="section-26" class="level2">
+<h2 class="anchored" data-anchor-id="section-26"></h2>
+<p>Modelos típico: Regresión Lógistica.</p>
+<p><span class="math display">\[
+y=\frac{1}{1+e^{-(\beta_{0}+\beta_{1}*x_{1}+...+\beta_{n}*x_{n})}}
+\]</span> <img src="Imagenes/regresion.png" width="250" height="250"></p>
+</section>
+<section id="section-27" class="level2">
+<h2 class="anchored" data-anchor-id="section-27"></h2>
+<p>Ejemplo</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Cargar librerías necesarias</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">library</span>(caret)  <span class="co"># Para matriz de confusión</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">library</span>(pROC)   <span class="co"># Para curva ROC</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co"># Descargar los datos del Titanic directamente desde un repositorio</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>titanic_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co"># Seleccionar las variables relevantes y eliminar valores faltantes</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>titanic_clean <span class="ot">&lt;-</span> titanic_data <span class="sc">%&gt;%</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>  <span class="fu">select</span>(Survived, Sex, Age) <span class="sc">%&gt;%</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb18-14"><a href="#cb18-14"></a></span>
+<span id="cb18-15"><a href="#cb18-15"></a><span class="co"># Convertir las variables categóricas en factores</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a>titanic_clean<span class="sc">$</span>Survived <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(titanic_clean<span class="sc">$</span>Survived)</span>
+<span id="cb18-17"><a href="#cb18-17"></a>titanic_clean<span class="sc">$</span>Sex <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(titanic_clean<span class="sc">$</span>Sex)</span>
+<span id="cb18-18"><a href="#cb18-18"></a></span>
+<span id="cb18-19"><a href="#cb18-19"></a><span class="co"># Ajustar el modelo de regresión logística</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(Survived <span class="sc">~</span> Sex <span class="sc">+</span> Age, <span class="at">data =</span> titanic_clean, <span class="at">family =</span> binomial)</span>
+<span id="cb18-21"><a href="#cb18-21"></a></span>
+<span id="cb18-22"><a href="#cb18-22"></a><span class="co"># Generar probabilidades predichas</span></span>
+<span id="cb18-23"><a href="#cb18-23"></a>probabilities <span class="ot">&lt;-</span> <span class="fu">predict</span>(model, <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb18-24"><a href="#cb18-24"></a></span>
+<span id="cb18-25"><a href="#cb18-25"></a><span class="co"># Clasificar según un umbral (por ejemplo, 0.5)</span></span>
+<span id="cb18-26"><a href="#cb18-26"></a>predicted_classes <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(probabilities <span class="sc">&gt;</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb18-27"><a href="#cb18-27"></a></span>
+<span id="cb18-28"><a href="#cb18-28"></a><span class="co"># Crear una matriz de confusión</span></span>
+<span id="cb18-29"><a href="#cb18-29"></a>conf_matrix <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="fu">as.factor</span>(predicted_classes), titanic_clean<span class="sc">$</span>Survived)</span>
+<span id="cb18-30"><a href="#cb18-30"></a></span>
+<span id="cb18-31"><a href="#cb18-31"></a><span class="co"># Extraer sensibilidad y especificidad</span></span>
+<span id="cb18-32"><a href="#cb18-32"></a><span class="fu">summary</span>(model)</span>
+<span id="cb18-33"><a href="#cb18-33"></a>sensitivity <span class="ot">&lt;-</span> conf_matrix<span class="sc">$</span>byClass[<span class="st">"Sensitivity"</span>]</span>
+<span id="cb18-34"><a href="#cb18-34"></a>specificity <span class="ot">&lt;-</span> conf_matrix<span class="sc">$</span>byClass[<span class="st">"Specificity"</span>]</span>
+<span id="cb18-35"><a href="#cb18-35"></a></span>
+<span id="cb18-36"><a href="#cb18-36"></a><span class="co"># Mostrar resultados de sensibilidad y especificidad</span></span>
+<span id="cb18-37"><a href="#cb18-37"></a><span class="fu">cat</span>(<span class="st">"Sensibilidad:"</span>, sensitivity, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-38"><a href="#cb18-38"></a><span class="fu">cat</span>(<span class="st">"Especificidad:"</span>, specificity, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-39"><a href="#cb18-39"></a></span>
+<span id="cb18-40"><a href="#cb18-40"></a><span class="co"># Calcular la curva ROC</span></span>
+<span id="cb18-41"><a href="#cb18-41"></a>roc_curve <span class="ot">&lt;-</span> <span class="fu">roc</span>(titanic_clean<span class="sc">$</span>Survived, probabilities)</span>
+<span id="cb18-42"><a href="#cb18-42"></a></span>
+<span id="cb18-43"><a href="#cb18-43"></a><span class="co"># Graficar la curva ROC</span></span>
+<span id="cb18-44"><a href="#cb18-44"></a><span class="fu">plot</span>(roc_curve, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">main =</span> <span class="st">"Curva ROC - Modelo Titanic"</span>)</span>
+<span id="cb18-45"><a href="#cb18-45"></a><span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)  <span class="co"># Línea de referencia (clasificador aleatorio)</span></span>
+<span id="cb18-46"><a href="#cb18-46"></a><span class="fu">text</span>(<span class="fl">0.6</span>, <span class="fl">0.4</span>, <span class="fu">paste</span>(<span class="st">"AUC ="</span>, <span class="fu">round</span>(<span class="fu">auc</span>(roc_curve), <span class="dv">2</span>)), <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-28" class="level2">
+<h2 class="anchored" data-anchor-id="section-28"></h2>
+<p>Resultado</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Cargando paquete requerido: lattice</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>
+Adjuntando el paquete: 'caret'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>The following objects are masked from 'package:DescTools':
+
+    MAE, RMSE</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Type 'citation("pROC")' for a citation.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>
+Adjuntando el paquete: 'pROC'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>The following objects are masked from 'package:stats':
+
+    cov, smooth, var</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>
+Call:
+glm(formula = Survived ~ Sex + Age, family = binomial, data = titanic_clean)
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  1.277273   0.230169   5.549 2.87e-08 ***
+Sexmale     -2.465920   0.185384 -13.302  &lt; 2e-16 ***
+Age         -0.005426   0.006310  -0.860     0.39    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 964.52  on 713  degrees of freedom
+Residual deviance: 749.96  on 711  degrees of freedom
+AIC: 755.96
+
+Number of Fisher Scoring iterations: 4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Setting levels: control = 0, case = 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Setting direction: controls &lt; cases</code></pre>
+</div>
+</div>
+</section>
+<section id="section-29" class="level2">
+<h2 class="anchored" data-anchor-id="section-29"></h2>
+<p>Resultado: evaluación</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Sensibilidad: 0.8490566 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>Especificidad: 0.6793103 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Setting levels: control = 0, case = 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Setting direction: controls &lt; cases</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="presentación_ejemplo_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="otros-tipos-de-análisis" class="level2">
+<h2 class="anchored" data-anchor-id="otros-tipos-de-análisis">Otros tipos de análisis</h2>
+</section>
+<section id="section-30" class="level2">
+<h2 class="anchored" data-anchor-id="section-30"></h2>
+<p>Redes neuronales en Python</p>
+<ul>
+<li>Una red neuronal consiste en entrelazar nodos entre los datos de entrada y de salida, que aumenta la complejidad potencial de la regresión</li>
+<li>La redes neuronales artificiales se utilizan para el PLN, para tratamiento de imágenes, etc</li>
+</ul>
+</section>
+<section id="section-31" class="level2">
+<h2 class="anchored" data-anchor-id="section-31"></h2>
+<p><img src="Imagenes/red.png" width="750" height="550"></p>
+</section>
+<section id="section-32" class="level2">
+<h2 class="anchored" data-anchor-id="section-32"></h2>
+<p>Modelos de epidemiología (SIR)</p>
+<p><span class="math display">\[\begin{equation}
+\frac{\textit{d}S}{\textit{dt}} =-\lambda \cdot S \nonumber
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+\frac{\textit{d}I}{\textit{dt}} =\lambda \cdot S - \gamma \cdot I \nonumber
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+\frac{\textit{d}R}{\textit{dt}} =\gamma \cdot I \nonumber
+\end{equation}\]</span> <span class="math display">\[\begin{equation}
+\lambda= \beta \cdot \frac{I}{N} \nonumber
+\end{equation}\]</span></p>
+</section>
+<section id="section-33" class="level2">
+<h2 class="anchored" data-anchor-id="section-33"></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="presentación_ejemplo_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-34" class="level2">
+<h2 class="anchored" data-anchor-id="section-34"></h2>
+<ul>
+<li>Mineria de texto.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Análisis geoespaciales.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Problemas de optimización.</li>
+</ul>
+</section>
+<section id="más-usos" class="level2">
+<h2 class="anchored" data-anchor-id="más-usos">Más usos</h2>
+</section>
+<section id="section-35" class="level2">
+<h2 class="anchored" data-anchor-id="section-35"></h2>
+<p>Teoría de juegos</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="presentación_ejemplo_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>backward induction: [(Entrar), (Entrar, No entrar)]</code></pre>
+</div>
+</div>
+</section>
+<section id="fin-de-la-tercera-parte." class="level2">
+<h2 class="anchored" data-anchor-id="fin-de-la-tercera-parte.">Fin de la tercera parte.</h2>
+<p>(Sorbo de café)</p>
+</section>
+</section>
+<section id="cómo-podemos-difundir-nuestra-información" class="level1" data-stack-name="¿Cómo difundimos?">
+<h1 data-stack-name="¿Cómo difundimos?">¿Cómo podemos difundir nuestra información?</h1>
+<section id="tipos-de-difusión" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-difusión">Tipos de difusión</h2>
+</section>
+<section id="section-36" class="level2">
+<h2 class="anchored" data-anchor-id="section-36"></h2>
+<ul>
+<li>Texto escrito (Revistas científicas).</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Ponencias (Congresos y conferencias).</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Interna (Cuadro de mando).</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>Global (Páginas web).</li>
+</ul>
+</section>
+<section id="otros-usos" class="level2">
+<h2 class="anchored" data-anchor-id="otros-usos">Otros usos</h2>
+</section>
+<section id="creación-de-programas-informáticos" class="level2">
+<h2 class="anchored" data-anchor-id="creación-de-programas-informáticos">Creación de programas informáticos</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">Información</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Ejemplos</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<ul>
+<li><p>Tanto Python como R son muy útiles para la creación de aplicaciones web, a través de frameworks</p></li>
+<li><p>Python soporta frameworks como Django o Flask, y R, Shiny</p></li>
+<li><p>Apps como Spotify o Instagram se han programado usando estos frameworks</p></li>
+</ul>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<p><img src="Imagenes/django.webp" class="fragment" width="300" height="300"> <img src="Imagenes/shiny.png" class="fragment" width="300" height="300"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-37" class="level2">
+<h2 class="anchored" data-anchor-id="section-37"></h2>
+<p><img src="Imagenes/esquema.png" width="800" height="500"></p>
+</section>
+<section id="fin-de-la-cuarta-parte." class="level2">
+<h2 class="anchored" data-anchor-id="fin-de-la-cuarta-parte.">Fin de la cuarta parte.</h2>
+<p>(Sorbo de café)</p>
+</section>
+<section id="section-38" class="level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-auto-animate="true" data-auto-animate-easing="ease-in-out" class="anchored" data-anchor-id="section-38"></h2>
+<div class="r-hstack">
+<div data-id="box1" data-auto-animate-delay="0" style="background: #98c1f9; width: 200px; height: 150px; margin: 10px;">
+<p>Revisión de la literatura</p>
+</div>
+<div data-id="box2" data-auto-animate-delay="0.1" style="background: #4f81c5; width: 200px; height: 150px; margin: 10px;">
+<p>Recogida de datos</p>
+</div>
+<div data-id="box3" data-auto-animate-delay="0.2" style="background: #3e6293; width: 200px; height: 150px; margin: 10px;">
+<p>Análisis de datos</p>
+</div>
+<div data-id="box4" data-auto-animate-delay="0.3" style="background: #193863; width: 200px; height: 150px; margin: 10px;">
+<p>Difusión</p>
+</div>
+</div>
+</section>
+<section id="section-39" class="level2" data-auto-animate="true" data-auto-animate-easing="ease-in-out">
+<h2 data-auto-animate="true" data-auto-animate-easing="ease-in-out" class="anchored" data-anchor-id="section-39"></h2>
+<div class="r-stack">
+<div data-id="box1" style="background: #98c1f9; width: 350px; height: 350px; border-radius: 200px;">
+
+</div>
+<div data-id="box2" style="background: #4f81c5; width: 250px; height: 250px; border-radius: 200px;">
+
+</div>
+<div data-id="box3" style="background: #3e6293; width: 150px; height: 150px; border-radius: 200px;">
+
+</div>
+<div data-id="box4" data-auto-animate-delay="0.3" style="background: #193863; width: 50px; height: 50px; border-radius: 200px;">
+
+</div>
+</div>
+</section>
+<section id="section-40" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-40"></h2>
+<p>Sólo el <strong>conocimiento</strong> nos dará <strong>libertad</strong></p>
+<p>. . .</p>
+<p>Sólo la <strong>libertad</strong> nos dará la capacidad de <strong>cuidar</strong></p>
+<p>. . .</p>
+<p><strong>Conocimiento</strong>➡️ <strong>Libertad</strong>➡️ <strong>Cuidar</strong></p>
+</section>
+<section id="section-41" class="level2" data-auto-animate="true">
+<h2 data-auto-animate="true" class="anchored" data-anchor-id="section-41"></h2>
+<div style="margin-top: 150px; font-size: 3em; color: #4f81c5;">
+<p><strong>Conocimiento</strong>➡️ <strong>Libertad</strong>➡️ <strong>Cuidar</strong></p>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Osakidetza, Hospital Santa Marina. 2025. I Apraiz; S Ballesteros; R Blanco.</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>
