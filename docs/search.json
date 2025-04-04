@@ -1012,7 +1012,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-22",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Resultados\n\n\n\nAdjuntando el paquete: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\n\n# A tibble: 2 × 6\n  Grupo Media Mediana Desviacion_Estandar Minimo Maximo\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 A      70.3    69.3                9.26   50.3   91.7\n2 B      76.8    76.8               10.9    47.3  101."
+    "text": "Resultados\n\n\n# A tibble: 2 × 6\n  Grupo Media Mediana Desviacion_Estandar Minimo Maximo\n  &lt;chr&gt; &lt;dbl&gt;   &lt;dbl&gt;               &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n1 A      70.3    69.3                9.26   50.3   91.7\n2 B      76.8    76.8               10.9    47.3  101."
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-23",
@@ -1047,14 +1047,14 @@
     "href": "Presentacion/presentación_ejemplo.html#section-27",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Ejemplo\n\n# Cargar librerías necesarias\nlibrary(dplyr)\nlibrary(caret)  # Para matriz de confusión\nlibrary(pROC)   # Para curva ROC\n\n# Descargar los datos del Titanic directamente desde un repositorio\nurl &lt;- \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\ntitanic_data &lt;- read.csv(url)\n\n# Seleccionar las variables relevantes y eliminar valores faltantes\ntitanic_clean &lt;- titanic_data %&gt;%\n  select(Survived, Sex, Age) %&gt;%\n  na.omit()\n\n# Convertir las variables categóricas en factores\ntitanic_clean$Survived &lt;- as.factor(titanic_clean$Survived)\ntitanic_clean$Sex &lt;- as.factor(titanic_clean$Sex)\n\n# Ajustar el modelo de regresión logística\nmodel &lt;- glm(Survived ~ Sex + Age, data = titanic_clean, family = binomial)\n\n# Generar probabilidades predichas\nprobabilities &lt;- predict(model, type = \"response\")\n\n# Clasificar según un umbral (por ejemplo, 0.5)\npredicted_classes &lt;- ifelse(probabilities &gt; 0.5, 1, 0)\n\n# Crear una matriz de confusión\nconf_matrix &lt;- confusionMatrix(as.factor(predicted_classes), titanic_clean$Survived)\n\n# Extraer sensibilidad y especificidad\nsummary(model)\nsensitivity &lt;- conf_matrix$byClass[\"Sensitivity\"]\nspecificity &lt;- conf_matrix$byClass[\"Specificity\"]\n\n# Mostrar resultados de sensibilidad y especificidad\ncat(\"Sensibilidad:\", sensitivity, \"\\n\")\ncat(\"Especificidad:\", specificity, \"\\n\")\n\n# Calcular la curva ROC\nroc_curve &lt;- roc(titanic_clean$Survived, probabilities)\n\n# Graficar la curva ROC\nplot(roc_curve, col = \"blue\", main = \"Curva ROC - Modelo Titanic\")\nabline(a = 0, b = 1, col = \"red\", lty = 2)  # Línea de referencia (clasificador aleatorio)\ntext(0.6, 0.4, paste(\"AUC =\", round(auc(roc_curve), 2)), col = \"blue\")"
+    "text": "Ejemplo\n\n# Cargar librerías necesarias\nlibrary(dplyr)  # Para curva ROC\n\n# Descargar los datos del Titanic directamente desde un repositorio\nurl &lt;- \"https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv\"\ntitanic_data &lt;- read.csv(url)\n\n# Seleccionar las variables relevantes y eliminar valores faltantes\ntitanic_clean &lt;- titanic_data %&gt;%\n  select(Survived, Sex, Age) %&gt;%\n  na.omit()\n\n# Convertir las variables categóricas en factores\ntitanic_clean$Survived &lt;- as.factor(titanic_clean$Survived)\ntitanic_clean$Sex &lt;- as.factor(titanic_clean$Sex)\n\n# Ajustar el modelo de regresión logística\nmodel &lt;- glm(Survived ~ Sex + Age, data = titanic_clean, family = binomial)\n\n# Generar probabilidades predichas\nprobabilities &lt;- predict(model, type = \"response\")\n\n# Clasificar según un umbral (por ejemplo, 0.5)\npredicted_classes &lt;- ifelse(probabilities &gt; 0.5, 1, 0)\n\n# Extraer sensibilidad y especificidad\nsummary(model)"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-28",
     "href": "Presentacion/presentación_ejemplo.html#section-28",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Resultado\n\n\nCargando paquete requerido: lattice\n\n\n\nAdjuntando el paquete: 'caret'\n\n\nThe following objects are masked from 'package:DescTools':\n\n    MAE, RMSE\n\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAdjuntando el paquete: 'pROC'\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\n\n\nCall:\nglm(formula = Survived ~ Sex + Age, family = binomial, data = titanic_clean)\n\nCoefficients:\n             Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  1.277273   0.230169   5.549 2.87e-08 ***\nSexmale     -2.465920   0.185384 -13.302  &lt; 2e-16 ***\nAge         -0.005426   0.006310  -0.860     0.39    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 964.52  on 713  degrees of freedom\nResidual deviance: 749.96  on 711  degrees of freedom\nAIC: 755.96\n\nNumber of Fisher Scoring iterations: 4\n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
+    "text": "Resultado\n\n\n\nCall:\nglm(formula = Survived ~ Sex + Age, family = binomial, data = titanic_clean)\n\nCoefficients:\n             Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  1.277273   0.230169   5.549 2.87e-08 ***\nSexmale     -2.465920   0.185384 -13.302  &lt; 2e-16 ***\nAge         -0.005426   0.006310  -0.860     0.39    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 964.52  on 713  degrees of freedom\nResidual deviance: 749.96  on 711  degrees of freedom\nAIC: 755.96\n\nNumber of Fisher Scoring iterations: 4"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#otros-tipos-de-análisis",
@@ -1068,7 +1068,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-29",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Resultado: evaluación\n\n\nSensibilidad: 0.8490566 \n\n\nEspecificidad: 0.6793103 \n\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases"
+    "text": "Resultado: evaluación\n\n\nSensibilidad: 0.8490566 \n\n\nEspecificidad: 0.6793103"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#fin-de-la-tercera-parte.",
@@ -1089,7 +1089,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-30",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Redes neuronales en Python\n\nUna red neuronal consiste en entrelazar nodos entre los datos de entrada y de salida, que aumenta la complejidad potencial de la regresión\nLa redes neuronales artificiales se utilizan para el PLN, para tratamiento de imágenes, etc"
+    "text": "Máquinas de Soporte Vectorial\n\nPython también ofrece soporte para otro tipo de algoritmos de ML, como por ejemplo las clasificaciones con maquinas de vectores de soporte (SVM)"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#otros-usos",
@@ -1103,21 +1103,21 @@
     "href": "Presentacion/presentación_ejemplo.html#section-31",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Creación de programas informáticos"
+    "text": "Ejemplo"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-33",
     "href": "Presentacion/presentación_ejemplo.html#section-33",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Revisión de la literatura\n\n\nRecogida de datos\n\n\nAnálisis de datos\n\n\nDifusión"
+    "text": "Redes neuronales en Python\n\nUna red neuronal consiste en entrelazar nodos entre los datos de entrada y de salida, que aumenta la complejidad potencial de la regresión\nLa redes neuronales artificiales se utilizan para el PLN, para tratamiento de imágenes, etc"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-35",
     "href": "Presentacion/presentación_ejemplo.html#section-35",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Teoría de juegos\n\n\n\nbackward induction: [(Entrar), (Entrar, No entrar)]"
+    "text": "Modelos de epidemiología (SIR)\n\\[\\begin{equation}\n\\frac{\\textit{d}S}{\\textit{dt}} =-\\lambda \\cdot S \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\frac{\\textit{d}I}{\\textit{dt}} =\\lambda \\cdot S - \\gamma \\cdot I \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\frac{\\textit{d}R}{\\textit{dt}} =\\gamma \\cdot I \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\lambda= \\beta \\cdot \\frac{I}{N} \\nonumber\n\\end{equation}\\]"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-36",
@@ -1537,7 +1537,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-32",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Modelos de epidemiología (SIR)\n\\[\\begin{equation}\n\\frac{\\textit{d}S}{\\textit{dt}} =-\\lambda \\cdot S \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\frac{\\textit{d}I}{\\textit{dt}} =\\lambda \\cdot S - \\gamma \\cdot I \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\frac{\\textit{d}R}{\\textit{dt}} =\\gamma \\cdot I \\nonumber\n\\end{equation}\\] \\[\\begin{equation}\n\\lambda= \\beta \\cdot \\frac{I}{N} \\nonumber\n\\end{equation}\\]"
+    "text": "Ejemplo: Solución"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-34",
@@ -1572,7 +1572,7 @@
     "href": "Presentacion/presentación_ejemplo.html#section-38",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
-    "text": "Revisión de la literatura\n\n\nRecogida de datos\n\n\nAnálisis de datos\n\n\nDifusión"
+    "text": "Teoría de juegos"
   },
   {
     "objectID": "Presentacion/presentación_ejemplo.html#section-40",
@@ -1586,6 +1586,41 @@
     "href": "Presentacion/presentación_ejemplo.html#section-41",
     "title": "Descubriendo R y Python en Osakidetza",
     "section": "",
+    "text": "Revisión de la literatura\n\n\nRecogida de datos\n\n\nAnálisis de datos\n\n\nDifusión"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-37",
+    "href": "Presentacion/presentación_ejemplo.html#section-37",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Mineria de texto.\n\n\n\nAnálisis geoespaciales.\n\n\n\n\nProblemas de optimización."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-39",
+    "href": "Presentacion/presentación_ejemplo.html#section-39",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Texto escrito (Revistas científicas).\n\n\n\nPonencias (Congresos y conferencias).\n\n\n\n\nInterna (Cuadro de mando).\n\n\n\n\nGlobal (Páginas web)."
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-43",
+    "href": "Presentacion/presentación_ejemplo.html#section-43",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
+    "text": "Sólo el conocimiento nos dará libertad\n\nSólo la libertad nos dará la capacidad de cuidar\n\n\nConocimiento➡️ Libertad➡️ Cuidar"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#section-44",
+    "href": "Presentacion/presentación_ejemplo.html#section-44",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "",
     "text": "Conocimiento➡️ Libertad➡️ Cuidar\n\n\n\n\n\n9 de abril de 2025. Descubriendo R y Python en Osakidetza"
+  },
+  {
+    "objectID": "Presentacion/presentación_ejemplo.html#en-el-café-del-turno",
+    "href": "Presentacion/presentación_ejemplo.html#en-el-café-del-turno",
+    "title": "Descubriendo R y Python en Osakidetza",
+    "section": "En el café del turno…",
+    "text": "En el café del turno…\n\n¡Comenzamos!"
   }
 ]
